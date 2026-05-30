@@ -330,40 +330,75 @@ animateStars();
 <script src="user_progress.js"></script>
 
 <script>
-document.addEventListener("DOMContentLoaded", async () => {
+(function () {
 
-    const { data: { session } } = await client.auth.getSession();
-    if (!session) { window.location.href = "index.html"; return; }
+    // ABORT — wired first and independently, so it always works even if
+    // the auth check or Supabase client fails to load. An abort button
+    // that can't abort is worse than useless.
+    function wireAbort() {
+        const logoffBtn = document.getElementById("logoffBtn");
+        if (!logoffBtn) return;
+        logoffBtn.addEventListener("click", async () => {
+            try {
+                if (typeof client !== "undefined") await client.auth.signOut();
+            } catch (e) {
+                console.error("signOut failed:", e);
+            }
+            window.location.href = "index.html";
+        });
+    }
 
-    document.getElementById("userEmail").textContent = session.user.email;
-    document.getElementById("userEmail").style.display = "inline";
+    async function init() {
+        wireAbort();
 
-    const moduleCards = document.querySelectorAll(".module-card");
-    const totalModules = moduleCards.length;
-
-    const mastered = await getMasteredSections();
-    let masteredCount = 0;
-
-    moduleCards.forEach(card => {
-        const id = card.dataset.id;
-        if (mastered.includes(id)) {
-            card.classList.add("completed");
-            masteredCount++;
-        } else {
-            card.classList.remove("completed");
+        if (typeof client === "undefined") {
+            console.error("Supabase client not loaded — is supabase.js in this directory?");
+            return;
         }
-    });
 
-    const percent = totalModules > 0 ? Math.round((masteredCount / totalModules) * 100) : 0;
-    document.getElementById("progressFill").style.width = percent + "%";
-    document.getElementById("progressText").textContent = percent + "%";
+        let session = null;
+        try {
+            ({ data: { session } } = await client.auth.getSession());
+        } catch (e) {
+            console.error("getSession failed:", e);
+            return;
+        }
+        if (!session) { window.location.href = "index.html"; return; }
 
-    document.getElementById("logoffBtn").addEventListener("click", async () => {
-        await client.auth.signOut();
-        window.location.href = "index.html";
-    });
+        const emailEl = document.getElementById("userEmail");
+        emailEl.textContent = session.user.email;
+        emailEl.style.display = "inline";
 
-});
+        const moduleCards = document.querySelectorAll(".module-card");
+        const totalModules = moduleCards.length;
+
+        const mastered = await getMasteredSections();
+        let masteredCount = 0;
+
+        moduleCards.forEach(card => {
+            const id = card.dataset.id;
+            if (mastered.includes(id)) {
+                card.classList.add("completed");
+                masteredCount++;
+            } else {
+                card.classList.remove("completed");
+            }
+        });
+
+        const percent = totalModules > 0 ? Math.round((masteredCount / totalModules) * 100) : 0;
+        document.getElementById("progressFill").style.width = percent + "%";
+        document.getElementById("progressText").textContent = percent + "%";
+    }
+
+    // Run now if the DOM is already parsed (this script sits at end of body),
+    // otherwise wait for it. Guards against DOMContentLoaded having already fired.
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", init);
+    } else {
+        init();
+    }
+
+})();
 </script>
 
 </body>
