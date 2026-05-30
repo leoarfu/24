@@ -483,9 +483,22 @@ const passwordInput = document.getElementById('passwordInput');
 const godspeedBtn = document.getElementById('godspeedBtn');
 const authMessage = document.getElementById('authMessage');
 
-client.auth.onAuthStateChange((event, session) => { if (event === 'SIGNED_IN' && session) { window.location.href = "dashboard.html"; } });
+const justSignedOut = new URLSearchParams(window.location.search).has("signedout");
 
-document.addEventListener('DOMContentLoaded', async () => { const { data: { session } } = await client.auth.getSession(); if (session) { window.location.href = "dashboard.html"; } });
+// Only auto-advance to the dashboard on a real, fresh sign-in event.
+client.auth.onAuthStateChange((event, session) => {
+    if (event === "SIGNED_IN" && session) { window.location.href = "dashboard.html"; }
+});
+
+document.addEventListener("DOMContentLoaded", async () => {
+    if (justSignedOut) {
+        // Belt and braces: ensure the local session is gone, then stay put.
+        try { await client.auth.signOut({ scope: "local" }); } catch (e) {}
+        return;
+    }
+    const { data: { session } } = await client.auth.getSession();
+    if (session) { window.location.href = "dashboard.html"; }
+});
 
 launchBtn.addEventListener('click', () => { authModal.style.display = "flex"; authMessage.innerText = ""; authMessage.style.color = "white"; });
 closeModal.addEventListener('click', () => { authModal.style.display = "none"; });
