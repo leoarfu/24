@@ -125,15 +125,12 @@ header {
 <script>
 // Bulletproof ABORT: inline onclick calls this. No dependency on script
 // timing or on Supabase loading. Always redirects; signs out first if it can.
-window.leoafAbort = function () {
-    function go() { window.location.replace("index.html"); }
+window.leoafAbort = async function () {
+    function go() { window.location.replace("index.html?signedout=1"); }
     try {
         if (typeof client !== "undefined" && client && client.auth && client.auth.signOut) {
-            var done = false;
-            var finish = function () { if (!done) { done = true; go(); } };
-            client.auth.signOut().then(finish).catch(finish);
-            setTimeout(finish, 1500); // fallback if signOut hangs
-            return;
+            // local scope clears the stored token immediately, no network wait
+            try { await client.auth.signOut({ scope: "local" }); } catch (e) {}
         }
     } catch (e) {}
     go();
