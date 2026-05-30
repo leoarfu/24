@@ -122,6 +122,23 @@ header {
 }
 </style>
 
+<script>
+// Bulletproof ABORT: inline onclick calls this. No dependency on script
+// timing or on Supabase loading. Always redirects; signs out first if it can.
+window.leoafAbort = function () {
+    function go() { window.location.replace("index.html"); }
+    try {
+        if (typeof client !== "undefined" && client && client.auth && client.auth.signOut) {
+            var done = false;
+            var finish = function () { if (!done) { done = true; go(); } };
+            client.auth.signOut().then(finish).catch(finish);
+            setTimeout(finish, 1500); // fallback if signOut hangs
+            return;
+        }
+    } catch (e) {}
+    go();
+};
+</script>
 </head>
 
 <body>
@@ -134,7 +151,7 @@ header {
     </div>
     <div class="header-controls">
         <span id="userEmail" class="user-id">AGENT</span>
-        <button id="logoffBtn" class="logoff-btn">ABORT</button>
+        <button id="logoffBtn" class="logoff-btn" onclick="leoafAbort()">ABORT</button>
     </div>
 </header>
 
@@ -332,25 +349,7 @@ animateStars();
 <script>
 (function () {
 
-    // ABORT — wired first and independently, so it always works even if
-    // the auth check or Supabase client fails to load. An abort button
-    // that can't abort is worse than useless.
-    function wireAbort() {
-        const logoffBtn = document.getElementById("logoffBtn");
-        if (!logoffBtn) return;
-        logoffBtn.addEventListener("click", async () => {
-            try {
-                if (typeof client !== "undefined") await client.auth.signOut();
-            } catch (e) {
-                console.error("signOut failed:", e);
-            }
-            window.location.href = "index.html";
-        });
-    }
-
     async function init() {
-        wireAbort();
-
         if (typeof client === "undefined") {
             console.error("Supabase client not loaded — is supabase.js in this directory?");
             return;
