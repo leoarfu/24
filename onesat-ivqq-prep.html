@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>IVVQ Manager — OneSat Ground Segment · Interview Brief</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Share+Tech+Mono&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{height:100%;-webkit-text-size-adjust:100%;overflow-x:hidden}
+body{
+  font-family:'Share Tech Mono',monospace;
+  background:#000;color:#ececec;
+  overflow-x:hidden;min-height:100vh;
+  position:relative;
+}
+
+/* ── ATMOSPHERE ── */
+#scanlines{
+  position:fixed;inset:0;z-index:60;pointer-events:none;
+  background:repeating-linear-gradient(to bottom,rgba(255,255,255,0.013) 0 1px,transparent 1px 3px);
+  mix-blend-mode:overlay;
+}
+#grain{
+  position:fixed;inset:0;z-index:59;pointer-events:none;opacity:0.032;
+  mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+}
+
+/* ── CSS VARS ── */
+:root{
+  --bg:#000;
+  --bg2:#0a0c10;
+  --ink:#ececec;
+  --soft:#909090;
+  --muted:#6a6a6a;
+  --line:rgba(236,236,236,0.18);
+  --panel:rgba(8,10,14,0.72);
+  --cyan:#00d9ff;
+  --red:#ff004f;
+  --green:#39ff14;
+  --amber:#ffaa00;
+}
+
+/* ── LAYOUT ── */
+main{
+  max-width:880px;margin:0 auto;
+  padding:0 clamp(1.2rem,4vw,3rem) 6rem;
+  position:relative;z-index:10;
+}
+
+/* ── TOP META BAR ── */
+.meta-bar{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1rem 0 1.4rem;
+  border-bottom:1px solid var(--line);
+  margin-bottom:2.8rem;
+  flex-wrap:wrap;gap:0.6rem;
+}
+.meta-id{font-size:0.72rem;color:var(--cyan);letter-spacing:0.12em}
+.meta-status{font-size:0.72rem;color:var(--soft)}
+.meta-chip{
+  font-size:0.68rem;letter-spacing:0.14em;
+  border:1px solid var(--red);color:var(--red);
+  padding:2px 8px;
+}
+
+/* ── MAST ── */
+.mast{padding:2.4rem 0 2.8rem}
+.mast-kicker{
+  font-size:0.7rem;color:var(--muted);letter-spacing:0.2em;
+  text-transform:uppercase;margin-bottom:1rem;
+}
+.mast-title{
+  font-family:'Orbitron',sans-serif;font-weight:900;
+  font-size:clamp(1.8rem,4.5vw,3rem);line-height:1.1;
+  letter-spacing:0.02em;
+}
+.mast-title .accent{color:var(--cyan)}
+.mast-sub{
+  margin-top:1rem;font-size:0.85rem;color:var(--soft);
+  line-height:1.6;max-width:620px;
+}
+
+/* ── DIVIDER ── */
+.divider{
+  display:flex;align-items:center;gap:0;
+  margin:2.6rem 0;height:1px;
+}
+.divider::before,.divider::after{
+  content:'';flex:1;height:1px;
+  background:linear-gradient(to right,transparent,var(--line));
+}
+.divider::after{background:linear-gradient(to left,transparent,var(--line))}
+.divider-glyph{
+  font-size:0.6rem;color:var(--muted);
+  padding:0 0.8rem;flex-shrink:0;
+}
+
+/* ── SECTION HEADER ── */
+.section-head{
+  font-size:0.65rem;letter-spacing:0.25em;color:var(--cyan);
+  text-transform:uppercase;margin-bottom:1.4rem;
+}
+
+/* ── PANELS ── */
+.panel{
+  background:var(--panel);border:1px solid var(--line);
+  padding:1.6rem 1.8rem;margin-bottom:1.4rem;
+  position:relative;
+}
+.panel::before,.panel::after{
+  content:'';position:absolute;width:14px;height:14px;
+  border-color:var(--cyan);border-style:solid;
+}
+.panel::before{top:-1px;left:-1px;border-width:1px 0 0 1px}
+.panel::after{bottom:-1px;right:-1px;border-width:0 1px 1px 0}
+
+/* ── STAT GRID ── */
+.stat-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:1px;background:var(--line);
+  border:1px solid var(--line);
+  margin-bottom:2rem;
+}
+.stat-cell{
+  background:#000;padding:1.2rem 1.4rem;
+}
+.stat-key{
+  font-size:0.6rem;letter-spacing:0.2em;color:var(--muted);
+  text-transform:uppercase;margin-bottom:0.5rem;
+}
+.stat-val{
+  font-family:'Orbitron',sans-serif;font-weight:700;
+  font-size:1.05rem;color:var(--cyan);
+}
+.stat-val.amber{color:var(--amber)}
+.stat-val.green{color:var(--green)}
+.stat-val.red{color:var(--red)}
+.stat-val.ink{color:var(--ink);font-size:0.82rem;font-family:'Share Tech Mono',monospace;font-weight:400}
+
+/* ── SKILL TABLE ── */
+.skill-table{width:100%;border-collapse:collapse;margin-bottom:0.4rem}
+.skill-table th{
+  font-size:0.62rem;letter-spacing:0.18em;color:var(--muted);
+  text-transform:uppercase;text-align:left;padding:0.5rem 0.8rem;
+  border-bottom:1px solid var(--line);font-weight:400;
+}
+.skill-table td{
+  font-size:0.8rem;padding:0.75rem 0.8rem;
+  border-bottom:1px solid rgba(236,236,236,0.07);
+  vertical-align:top;line-height:1.5;
+}
+.skill-table tr:last-child td{border-bottom:none}
+.skill-code{color:var(--cyan);font-size:0.72rem;white-space:nowrap}
+.skill-level{
+  font-size:0.65rem;letter-spacing:0.08em;color:var(--amber);
+  white-space:nowrap;
+}
+.skill-body{color:var(--ink)}
+.skill-note{color:var(--soft);font-size:0.75rem;margin-top:0.3rem}
+
+/* ── Q&A BLOCKS ── */
+.qa-item{margin-bottom:1.8rem}
+.qa-q{
+  font-size:0.78rem;color:var(--cyan);line-height:1.5;
+  margin-bottom:0.7rem;
+}
+.qa-q::before{content:'Q  ';color:var(--muted)}
+.qa-a{
+  font-size:0.82rem;color:var(--ink);line-height:1.65;
+  padding-left:1.4rem;border-left:1px solid var(--line);
+}
+.qa-signal{
+  display:inline-block;margin-top:0.5rem;
+  font-size:0.65rem;letter-spacing:0.1em;color:var(--muted);
+}
+.qa-signal span{color:var(--green)}
+
+/* ── NARRATIVE ── */
+.narrative{
+  font-family:'Libre Baskerville',serif;font-style:italic;
+  font-size:0.95rem;line-height:1.8;color:var(--soft);
+  max-width:660px;margin:0 auto;text-align:center;
+  padding:1.6rem 0;
+}
+
+/* ── RISK FLAGS ── */
+.risk-row{
+  display:flex;gap:1rem;align-items:flex-start;
+  margin-bottom:1rem;font-size:0.8rem;line-height:1.55;
+}
+.risk-icon{color:var(--red);flex-shrink:0;margin-top:1px}
+.risk-ok .risk-icon{color:var(--green)}
+.risk-warn .risk-icon{color:var(--amber)}
+.risk-body{color:var(--ink)}
+.risk-body strong{color:var(--ink);font-style:normal}
+.risk-note{color:var(--soft);display:block;font-size:0.73rem;margin-top:0.2rem}
+
+/* ── ANCHOR KEYWORDS ── */
+.kw-grid{
+  display:flex;flex-wrap:wrap;gap:0.5rem;
+  margin-bottom:0.6rem;
+}
+.kw{
+  font-size:0.7rem;letter-spacing:0.1em;
+  border:1px solid var(--line);color:var(--soft);
+  padding:3px 10px;
+}
+.kw.hi{border-color:var(--cyan);color:var(--cyan)}
+
+/* ── CHECKLIST ── */
+.checklist{list-style:none;font-size:0.8rem;line-height:1.6}
+.checklist li{
+  padding:0.45rem 0;
+  border-bottom:1px solid rgba(236,236,236,0.06);
+  display:flex;gap:0.7rem;align-items:flex-start;
+}
+.checklist li:last-child{border-bottom:none}
+.checklist li::before{content:'·';color:var(--cyan);flex-shrink:0;margin-top:1px}
+
+/* ── FOOTER ── */
+footer{
+  border-top:1px solid var(--line);
+  margin-top:4rem;padding:1.4rem 0;
+  display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:0.6rem;
+}
+.footer-id{font-size:0.65rem;color:var(--muted)}
+.footer-note{font-size:0.65rem;color:var(--muted);text-align:right}
+
+/* ── PRINT ── */
+@media print{
+  html,body{background:#fff;color:#111}
+  #scanlines,#grain{display:none}
+  .panel{border:1px solid #ccc;background:#fff}
+  .panel::before,.panel::after{display:none}
+  .stat-cell{background:#f5f5f5}
+  .stat-grid{background:#ccc}
+  .meta-chip{border-color:#333;color:#333}
+  .mast-title .accent,.section-head,.meta-id,.skill-code,.qa-q,.kw.hi{color:#000}
+  .stat-val{color:#111}
+  .stat-val.amber,.stat-val.green{color:#333}
+  footer,.meta-bar{border-color:#ccc}
+}
+</style>
+</head>
+<body>
+<div id="scanlines"></div>
+<div id="grain"></div>
+
+<main>
+
+<!-- ── TOP META BAR ── -->
+<div class="meta-bar">
+  <div class="meta-id">BRIEF-IVVQ-2026 · ADS/TSESV1</div>
+  <div class="meta-status">Airbus Defence &amp; Space · Toulouse Palays · G14</div>
+  <div class="meta-chip">PERSONAL USE</div>
+</div>
+
+<!-- ── MAST ── -->
+<div class="mast">
+  <div class="mast-kicker">Interview Preparation Brief</div>
+  <h1 class="mast-title">IVVQ Manager<br><span class="accent">OneSat</span> Ground Segment</h1>
+  <p class="mast-sub">
+    Airbus Defence &amp; Space · Connected Intelligence · CDI · Classe G14<br>
+    Toulouse Palays · TSESV1 · Updated 2026-06-18
+  </p>
+</div>
+
+<!-- ── ROLE SNAPSHOT ── -->
+<div class="stat-grid">
+  <div class="stat-cell">
+    <div class="stat-key">Program</div>
+    <div class="stat-val">OneSat GS</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-key">Function</div>
+    <div class="stat-val ink">IVVQ Manager</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-key">Grade</div>
+    <div class="stat-val amber">G14</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-key">Contract</div>
+    <div class="stat-val green">CDI</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-key">Exp. required</div>
+    <div class="stat-val">10+ yrs</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-key">Site</div>
+    <div class="stat-val ink">Palays, Toulouse</div>
+  </div>
+</div>
+
+<!-- ── DIVIDER ── -->
+<div class="divider"><div class="divider-glyph">◆</div></div>
+
+<!-- ── WHAT ONESAT IS ── -->
+<div class="section-head">01 · Context — What OneSat Is</div>
+<div class="panel">
+  <p style="font-size:0.83rem;line-height:1.7;margin-bottom:1rem">
+    OneSat is Airbus DS's fully software-defined GEO communications satellite platform. Its differentiator is in-orbit reconfigurability: beam coverage, bandwidth allocation, and frequency plans can be changed post-launch via software upload, without hardware modification. Customers include Intelsat (Galaxy 35/36) and Eutelsat.
+  </p>
+  <p style="font-size:0.83rem;line-height:1.7;margin-bottom:1rem">
+    The <strong style="color:var(--ink)">Ground Segment</strong> for OneSat is consequently more complex than a traditional GEO ground system. It must manage dynamic payload configuration, TT&C for a software-defined payload, service management across reconfigurable beams, and the interfaces between the Network Management System, the Payload Control System, and the Mission Control System.
+  </p>
+  <p style="font-size:0.83rem;line-height:1.7">
+    The IVVQ Manager owns validation end-to-end: from defining what "correct behaviour" looks like for a configurable system, to proving it at factory level and then on-site at the customer. The job is harder than for a fixed GEO payload because the validation space grows combinatorially with reconfiguration options.
+  </p>
+</div>
+
+<!-- ── DIVIDER ── -->
+<div class="divider"><div class="divider-glyph">◆</div></div>
+
+<!-- ── REQUIRED SKILLS BREAKDOWN ── -->
+<div class="section-head">02 · Required Competencies — Decoded</div>
+<div class="panel">
+<table class="skill-table">
+  <thead>
+    <tr>
+      <th style="width:14%">Code</th>
+      <th style="width:38%">Competency</th>
+      <th style="width:10%">Level</th>
+      <th>What They're Actually Testing</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="skill-code">A103</td>
+      <td class="skill-body">
+        System Integration, V&amp;V
+        <div class="skill-note">CO-E01-00004</div>
+      </td>
+      <td class="skill-level">Autonomous</td>
+      <td class="skill-body">
+        Can you define and own an AIV/IVVQ flow for a complex ground segment without being steered? They want someone who writes the IVVQ plan, not someone who executes someone else's.
+        <div class="skill-note">Evidence: IVVQ plans you authored, integration strategies you defined, anomalies you resolved as responsible party.</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="skill-code">A106</td>
+      <td class="skill-body">
+        System Development Logic Definition
+        <div class="skill-note">CO-E01-00007</div>
+      </td>
+      <td class="skill-level">Autonomous</td>
+      <td class="skill-body">
+        They need the IVVQ manager to understand the system development lifecycle deeply enough to challenge the engineering manager on IVVQ requirements traceability and test coverage. Not just execute — shape.
+        <div class="skill-note">Evidence: Experience in requirements review boards, IRPs, traceability matrices, or V-model gate definition.</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="skill-code">A501</td>
+      <td class="skill-body">
+        System Testing
+        <div class="skill-note">CO-E04-00001</div>
+      </td>
+      <td class="skill-level">Autonomous</td>
+      <td class="skill-body">
+        Hands-on test campaign leadership. Factory Integration Test, Site Acceptance Test, end-to-end service validation. CCB participation for anomaly/change disposition.
+        <div class="skill-note">Evidence: Test campaigns you led from plan to report, anomaly volumes managed, how you handled schedule pressure on test execution.</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="skill-code">D150</td>
+      <td class="skill-body">
+        Overall Simulation &amp; Test Means Technology
+        <div class="skill-note">CO-D15-00001</div>
+      </td>
+      <td class="skill-level">Autonomous</td>
+      <td class="skill-body">
+        Knowledge of the test platform landscape: simulators, stimulators, RF signal generation, network emulators, test management tools (JIRA/Zephyr/HP ALM/Polarion/custom). For ground segment: end-to-end chain emulation including satellite payload emulation.
+        <div class="skill-note">Evidence: Test platforms you specified or procured, integration of simulation with hardware-in-the-loop.</div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ── DIVIDER ── -->
+<div class="divider"><div class="divider-glyph">◆</div></div>
+
+<!-- ── FIT ANALYSIS ── -->
+<div class="section-head">03 · Fit Analysis — Honest Read</div>
+<div class="panel">
+
+  <div class="risk-row risk-ok">
+    <div class="risk-icon">✓</div>
+    <div class="risk-body">
+      <strong>Ground segment architecture depth.</strong> 20+ years SATCOM and ground segment, including HBC+ aero. The architecture side of this role (IVVQ strategy, test environment definition, customer interface on validation) maps directly.
+      <span class="risk-note">Play: position yourself as someone who can see the validation problem from the system design level, not just from the test bench.</span>
+    </div>
+  </div>
+
+  <div class="risk-row risk-ok">
+    <div class="risk-icon">✓</div>
+    <div class="risk-body">
+      <strong>Toulouse, internal mobility advantage.</strong> Already inside ADS. Internal candidates go first ("priorité sera donnée aux salariés dont le poste est impacté"). You know the organisation, the tools, the acronyms.
+      <span class="risk-note">Play: reference specific internal programs or processes by name. Signal that you don't need onboarding time.</span>
+    </div>
+  </div>
+
+  <div class="risk-row risk-warn">
+    <div class="risk-icon">△</div>
+    <div class="risk-body">
+      <strong>Formal IVVQ manager title.</strong> If your current role title is Architect rather than IVVQ Manager, there may be a gap on paper. The competency profile (A103/A501 at Autonomous level) is what matters — make sure your CV uses that language.
+      <span class="risk-note">Mitigation: frame any test campaign involvement, V&amp;V responsibility, or IVVQ plan authoring explicitly. Titles vary; activities are what get scored.</span>
+    </div>
+  </div>
+
+  <div class="risk-row risk-warn">
+    <div class="risk-icon">△</div>
+    <div class="risk-body">
+      <strong>OneSat payload knowledge.</strong> Software-defined payload validation has specific complexities (parametric configuration coverage, regression after uplink). If you haven't worked OneSat specifically, name the closest analogue you have.
+      <span class="risk-note">Mitigation: demonstrate understanding of what reconfigurability adds to the validation problem space. Show you've thought about it.</span>
+    </div>
+  </div>
+
+  <div class="risk-row risk-ok">
+    <div class="risk-icon">✓</div>
+    <div class="risk-body">
+      <strong>TT&amp;C and payload interface knowledge.</strong> Satellite Telemetry, Tracking and Command System is listed as preferred. Ground segment architects working on connectivity programs understand TT&amp;C interfaces deeply.
+      <span class="risk-note">Play: be specific about TT&amp;C protocol stacks (SLE, CCSDS) and how they interact with the ground system under test.</span>
+    </div>
+  </div>
+
+  <div class="risk-row risk-ok">
+    <div class="risk-icon">✓</div>
+    <div class="risk-body">
+      <strong>IP networking and service validation.</strong> The OneSat ground segment validates end-to-end IP connectivity services over a reconfigurable payload. RF + IP + ground segment = your exact background.
+    </div>
+  </div>
+
+</div>
+
+<!-- ── DIVIDER ── -->
+<div class="divider"><div class="divider-glyph">◆</div></div>
+
+<!-- ── LIKELY INTERVIEW QUESTIONS ── -->
+<div class="section-head">04 · Likely Interview Questions — Prepared Answers</div>
+
+<div class="panel">
+<div class="qa-item">
+  <div class="qa-q">Walk us through an IVVQ strategy you defined from scratch. What drove your test environment choices?</div>
+  <div class="qa-a">
+    Structure your answer around: (1) the system under test and what made it complex, (2) the validation objectives you derived from requirements, (3) the test environment trade — hardware-in-the-loop vs simulation vs stimulation — and why, (4) the phasing (unit/subsystem/system/acceptance), (5) the specific risk that drove each major decision. Close with a metric: how many anomalies were found in factory vs how many leaked to site acceptance or customer.
+    <span class="qa-signal">Signal keywords: <span>IVVQ plan · test coverage · HIL · stimulation · anomaly containment</span></span>
+  </div>
+</div>
+
+<div class="qa-item">
+  <div class="qa-q">OneSat payload is software-defined — coverage and frequency plans change via uplink. How does that affect your IVVQ approach?</div>
+  <div class="qa-a">
+    The validation space grows combinatorially. Key points to hit: you can't test every configuration permutation, so the strategy must identify coverage equivalence classes and validate representatives. You need regression test suites that run after every configuration uplink. You must validate the configuration management process itself, not just the endpoint states. Simulation of the payload configuration interface (emulating the Payload Control System) becomes critical when hardware isn't available.
+    <span class="qa-signal">Signal keywords: <span>configuration equivalence · regression strategy · payload emulator · PCS interface</span></span>
+  </div>
+</div>
+
+<div class="qa-item">
+  <div class="qa-q">Describe a situation where you had to defend your IVVQ plan against schedule pressure from the program manager.</div>
+  <div class="qa-a">
+    The panel wants to see that you hold your ground on validation integrity. Structure as: situation → what was being asked to skip or compress → your risk argument (not procedural, not rule-citing) → how you quantified the risk → the outcome. If you had a case where you were overruled and something did fail downstream, that's a stronger story than one where you always won. Show the reasoning, not just the result.
+    <span class="qa-signal">Signal keywords: <span>risk argument · test coverage delta · anomaly cost at customer</span></span>
+  </div>
+</div>
+
+<div class="qa-item">
+  <div class="qa-q">How do you set up and manage the test team? How do you handle resource conflicts across concurrent IVVQ projects?</div>
+  <div class="qa-a">
+    G14 is senior IC, not head-of-department. The resource management question is real but scoped: you'll manage a specific IVVQ product team, not the whole division. Speak to: defining skillset requirements per test phase, working with line management for allocation, identifying when to use subcontractors vs internal, and keeping the team focused when CCB changes land mid-campaign. Mention test management tooling (HP ALM, Polarion, or equivalent) as your coordination mechanism.
+    <span class="qa-signal">Signal keywords: <span>resource planning · test campaign pacing · CCB impact · tool-driven coordination</span></span>
+  </div>
+</div>
+
+<div class="qa-item">
+  <div class="qa-q">What's your experience with Site Validation? What's different about it compared to Factory Integration Test?</div>
+  <div class="qa-a">
+    Factory Integration Test: controlled environment, full instrumentation, engineer access to every interface. Site Validation: customer environment, limited access, real RF environment including interference, time pressure from contractual milestones, customer representatives watching. The delta: the ground station has its own existing infrastructure (antenna, SSPA, modem chain) that interacts with your delivered system. Anomalies at site are harder and more expensive to resolve. Your factory test must be designed to catch all issues you can catch in factory — Site Validation should be confirmation, not discovery.
+    <span class="qa-signal">Signal keywords: <span>FIT · SVT · delta environment · customer interface · anomaly containment by phase</span></span>
+  </div>
+</div>
+
+<div class="qa-item">
+  <div class="qa-q">Tell us about your participation in a CCB. How do you assess the IVVQ impact of a proposed change?</div>
+  <div class="qa-a">
+    Your CCB role as IVVQ Manager is to classify proposed changes by their test impact: non-regression (existing test suite covers it), partial regression (targeted re-test needed), or full regression (campaign restart risk). You need to do this quickly and with a cost estimate. Describe your process: change description → affected functional chains → test cases that exercise those chains → campaign schedule impact → recommendation. If the change was imposed, document the delta and get sign-off. This is how you protect yourself contractually.
+    <span class="qa-signal">Signal keywords: <span>change impact classification · regression analysis · campaign delta · traceability</span></span>
+  </div>
+</div>
+
+<div class="qa-item">
+  <div class="qa-q">Why this role? Why now?</div>
+  <div class="qa-a">
+    Keep it grounded. OneSat is the platform that defines ADS's next decade of commercial GEO. The ground segment for a software-defined satellite is a genuinely harder IVVQ problem than a fixed GEO equivalent. If you've been working on HBC+ ground segment architecture, the move to validation management of a next-generation platform is a clear and defensible step — deeper specialisation in the program that matters most to the division, rather than a lateral move.
+    <span class="qa-signal">Do not over-pitch ambition. The panel wants a committed, stable IVVQ lead, not someone using this as a stepping stone.</span>
+  </div>
+</div>
+</div>
+
+<!-- ── DIVIDER ── -->
+<div class="divider"><div class="divider-glyph">◆</div></div>
+
+<!-- ── YOUR QUESTIONS FOR THEM ── -->
+<div class="section-head">05 · Your Questions For The Panel</div>
+<div class="panel">
+<ul class="checklist">
+  <li>What is the current maturity of the OneSat GS IVVQ industrial setup — are we defining the process or executing an established one?</li>
+  <li>How many concurrent OneSat application projects will this IVVQ Manager be responsible for in the first 12 months?</li>
+  <li>What test management tool is currently in use for the OneSat GS product line? What's the migration roadmap if any?</li>
+  <li>How is the interface with the Engineering Manager structured — is the IVVQ Manager in the same team or a separate validation function?</li>
+  <li>What's the current state of the OneSat payload emulator — is it available for GS IVVQ use, or does the GS team have to build its own stimulation?</li>
+  <li>What does success look like in year one? Is there a specific milestone (e.g., a customer SAT) that defines the immediate deliverable?</li>
+</ul>
+</div>
+
+<!-- ── DIVIDER ── -->
+<div class="divider"><div class="divider-glyph">◆</div></div>
+
+<!-- ── VOCABULARY TO USE ── -->
+<div class="section-head">06 · Technical Vocabulary — Use These, Avoid Those</div>
+<div class="panel">
+  <p style="font-size:0.75rem;color:var(--muted);margin-bottom:1rem">Anchor your answers to the language of the JD and the Airbus competency framework. These terms signal calibration.</p>
+  
+  <div style="margin-bottom:1.2rem">
+    <div style="font-size:0.65rem;color:var(--soft);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:0.6rem">Use</div>
+    <div class="kw-grid">
+      <span class="kw hi">IVVQ plan</span>
+      <span class="kw hi">test coverage</span>
+      <span class="kw hi">FIT / SVT</span>
+      <span class="kw hi">anomaly disposition</span>
+      <span class="kw hi">CCB</span>
+      <span class="kw hi">traceability matrix</span>
+      <span class="kw hi">qualification campaign</span>
+      <span class="kw hi">subsystem acceptance</span>
+      <span class="kw hi">regression suite</span>
+      <span class="kw hi">test environment definition</span>
+      <span class="kw hi">HIL</span>
+      <span class="kw hi">payload emulator</span>
+      <span class="kw hi">PCS interface</span>
+      <span class="kw hi">CCSDS / SLE</span>
+      <span class="kw hi">TT&C chain</span>
+      <span class="kw hi">configuration equivalence class</span>
+      <span class="kw hi">product line validation</span>
+      <span class="kw hi">delta environment</span>
+    </div>
+  </div>
+
+  <div>
+    <div style="font-size:0.65rem;color:var(--soft);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:0.6rem">Avoid or reframe</div>
+    <div class="kw-grid">
+      <span class="kw">QA (too vague — say IVVQ)</span>
+      <span class="kw">testing (say validation or V&V)</span>
+      <span class="kw">bugs (say anomalies)</span>
+      <span class="kw">project manager framing (this is a technical lead role)</span>
+    </div>
+  </div>
+</div>
+
+<!-- ── DIVIDER ── -->
+<div class="divider"><div class="divider-glyph">◆</div></div>
+
+<!-- ── NARRATIVE STATEMENT ── -->
+<div class="section-head">07 · Positioning Statement</div>
+<div class="narrative">
+  "I've spent twenty years on the ground segment side of satellite programs — architecture, RF interfaces, IP service integration. The gap I'm addressing is moving from defining what the system should do to being accountable for proving it does. OneSat's reconfigurable payload makes that validation problem genuinely interesting and hard. That's why this role, specifically."
+</div>
+
+<!-- ── DIVIDER ── -->
+<div class="divider"><div class="divider-glyph">◆</div></div>
+
+<!-- ── PRE-INTERVIEW CHECKLIST ── -->
+<div class="section-head">08 · Pre-Interview Checklist</div>
+<div class="panel">
+<ul class="checklist">
+  <li>Identify 2–3 concrete IVVQ deliverables from your career you can describe precisely: what you defined, what the test environment looked like, what anomaly rate you managed.</li>
+  <li>Read the OneSat technical press: Airbus DS press releases, ESA OneSat references, Intelsat/Eutelsat launch announcements. Know the customer names.</li>
+  <li>Pull your Airbus internal competency profile and confirm your self-assessed levels on A103, A106, A501, D150. If any are below Autonomous, have a plan for how to address the gap in conversation.</li>
+  <li>Prepare one story about an anomaly you found late — what it cost, what you learned about test coverage from it.</li>
+  <li>Know what G14 means structurally: senior individual contributor, not a management grade. Frame your leadership experience as technical leadership, not headcount management.</li>
+  <li>Confirm internal mobility rules apply: post your interest through the official channel before or immediately after applying, so HR logs you as an internal candidate.</li>
+  <li>Prepare the answer to: "What specifically about the OneSat ground segment is different from what you've validated before?" Do not bluff. If you're uncertain about something, name it and say how you'd close the gap.</li>
+</ul>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-id">BRIEF-IVVQ-2026 · Personal use only · Not affiliated with Airbus DS HR</div>
+  <div class="footer-note">Generated 2026-06-18 · Destroy after interview</div>
+</footer>
+
+</main>
+</body>
+</html>
