@@ -194,16 +194,17 @@ footer{border-top:1px solid var(--line);margin-top:3rem;padding:1.2rem 0;display
     </div>
     <nav class="tabs" id="tabs">
       <div class="tab" data-target="s00">00 Reality Check</div>
-      <div class="tab" data-target="s01">01 Interviewer</div>
-      <div class="tab" data-target="s02">02 Context</div>
-      <div class="tab" data-target="s03">03 Competencies</div>
-      <div class="tab" data-target="s04">04 Fit Analysis</div>
-      <div class="tab" data-target="s05">05 Rusty Skills</div>
-      <div class="tab" data-target="s06">06 Likely Questions</div>
-      <div class="tab" data-target="s07">07 Your Questions</div>
-      <div class="tab" data-target="s08">08 Vocabulary</div>
-      <div class="tab" data-target="s09">09 Positioning</div>
-      <div class="tab" data-target="s10">10 Checklist</div>
+      <div class="tab" data-target="s01">01 What Is IVVQ</div>
+      <div class="tab" data-target="s02">02 Interviewer</div>
+      <div class="tab" data-target="s03">03 Context</div>
+      <div class="tab" data-target="s04">04 Competencies</div>
+      <div class="tab" data-target="s05">05 Fit Analysis</div>
+      <div class="tab" data-target="s06">06 Rusty Skills</div>
+      <div class="tab" data-target="s07">07 Likely Questions</div>
+      <div class="tab" data-target="s08">08 Your Questions</div>
+      <div class="tab" data-target="s09">09 Vocabulary</div>
+      <div class="tab" data-target="s10">10 Positioning</div>
+      <div class="tab" data-target="s11">11 Checklist</div>
     </nav>
   </div>
 </div>
@@ -238,9 +239,62 @@ footer{border-top:1px solid var(--line);margin-top:3rem;padding:1.2rem 0;display
   </div>
 </section>
 
-<!-- ════════ 01 INTERVIEWER ════════ -->
+<!-- ════════ 01 WHAT IS IVVQ ════════ -->
 <section class="panel-section" id="s01">
-  <div class="section-head"><span class="num">01</span> Interviewer Profile — Patricia Iñigo</div>
+  <div class="section-head"><span class="num">01</span> What Is IVVQ — The Discipline, Start to Finish</div>
+  <div class="section-sub">Read this before anything else if the term itself is still fuzzy. Everything downstream assumes this.</div>
+
+  <div class="panel">
+    <div class="inner-head">The Acronym</div>
+    <p><strong>IVVQ</strong> = Integration, Verification, Validation, Qualification. Sometimes written IVV or IVVQ depending on the organization; Airbus uses IVVQ. It's the discipline that proves a system does what it was designed to do, before it's handed to a customer. It sits at the end of the V-model lifecycle — the right-hand side of the "V" that climbs back up from implementation to acceptance, mirroring the left-hand side that went down from requirements to design.</p>
+  </div>
+
+  <div class="panel">
+    <div class="inner-head">The Four Words, Each Meaning Something Distinct</div>
+    <table class="skill-table">
+      <thead><tr><th style="width:16%">Term</th><th>What It Actually Means</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Integration</strong></td><td>Assembling the system's parts — hardware, software, subsystems — into a working whole, progressively. You don't integrate everything at once: unit, then subsystem, then full system. Each integration step is where you find out two things that worked alone don't work together.</td></tr>
+        <tr><td><strong>Verification</strong></td><td>"Did we build the system right?" — does it meet its specified requirements. This is a technical, requirements-by-requirements check. Verification methods are typically test, analysis, inspection, or demonstration — not every requirement needs a physical test; some are verified by review or calculation.</td></tr>
+        <tr><td><strong>Validation</strong></td><td>"Did we build the right system?" — does it actually satisfy the customer's real operational need, not just the written requirements on paper. A system can pass every verification test and still fail validation if the requirements themselves missed something the customer actually needed. This distinction — verification vs validation — is a classic interview probe. Know it cold.</td></tr>
+        <tr><td><strong>Qualification</strong></td><td>Formal, documented proof — usually for a regulator, customer, or internal review board — that the system meets its requirements under the full range of specified conditions, including worst-case and environmental extremes. Qualification is the gate you pass to be allowed to move to production, delivery, or operational use. It's verification's formal, evidence-heavy older sibling.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel">
+    <div class="inner-head">Why It Exists as a Separate Discipline</div>
+    <p>In complex systems — and a satellite ground segment is about as complex as terrestrial systems get — the cost of finding a defect rises by roughly an order of magnitude at each stage it's caught later: cheap to fix on paper during design review, more expensive during unit test, expensive during system integration, very expensive during factory test, extremely expensive and reputationally damaging if it's only found at the customer's site or — worse — after the satellite is in orbit and unreachable. IVVQ exists to push defect discovery as early as possible and to produce evidence, not just confidence, that the system works.</p>
+    <p>This is also why IVVQ in aerospace is process-heavy rather than purely technical. The artifact that matters isn't just "it worked when we tried it" — it's a documented, traceable, repeatable record showing exactly which requirement was tested, how, under what conditions, with what result, and who signed off. That documentation is what a regulator, an ESA partner, or a customer's own acceptance team will audit.</p>
+  </div>
+
+  <div class="panel">
+    <div class="inner-head">The Phases, In Order, As They'd Apply to OneSat Ground Segment</div>
+    <ul class="checklist">
+      <li><strong>Requirements definition &amp; traceability setup</strong> — every system requirement gets a unique ID and a planned verification method, captured in a traceability matrix from day one.</li>
+      <li><strong>Unit / subsystem test</strong> — individual components (e.g., the Network Management System alone) tested against their own requirements in isolation.</li>
+      <li><strong>System integration</strong> — subsystems combined (NMS + Payload Control System + Mission Control System together) and tested as an assembled chain, usually where the most surprising defects surface.</li>
+      <li><strong>Factory Integration Test (FIT)</strong> — the full ground segment, in a controlled factory environment with full instrumentation access, exercised against the complete requirement set.</li>
+      <li><strong>Qualification</strong> — formal, audited proof of compliance, often including worst-case and environmental/stress conditions, producing the evidence package a customer or regulator will sign off on.</li>
+      <li><strong>Site Acceptance Test (SAT / SVT)</strong> — the delivered system tested in the customer's actual environment, where it now interacts with their existing infrastructure (antennas, modem chains, networks) for the first time. This should be confirmation of what FIT already proved, not first discovery of new problems.</li>
+      <li><strong>In-service support / change management</strong> — once operational, any change (a software patch, a payload reconfiguration, a bug fix) goes through a Change Control Board (CCB) to assess what needs re-testing before it's accepted.</li>
+    </ul>
+  </div>
+
+  <div class="panel">
+    <div class="inner-head">What the "Manager" in IVVQ Manager Actually Means</div>
+    <p>It's not primarily a people-management title (G14 is senior individual contributor, not head-of-department — already noted elsewhere in this brief). "Manager" here means owning the IVVQ <em>strategy</em> for a product: deciding what gets tested, how, in what order, with what tools, and being the accountable point of contact when a customer or internal review board asks "how do you know this works?" You write the IVVQ plan, you defend it, you adjust it when reality doesn't cooperate, and you're the signature on the evidence package at the end.</p>
+  </div>
+
+  <div class="panel flag-amber">
+    <div class="inner-head">The One Distinction Worth Memorizing Before Anything Else</div>
+    <p><strong>Verification asks "did we build it right." Validation asks "did we build the right thing."</strong> If Patricia asks you to define IVVQ or asks the difference between verification and validation — a near-certain interview question for anyone without a formal IVVQ background — this is the one-sentence answer to lead with, then expand using the table above.</p>
+  </div>
+</section>
+
+<!-- ════════ 02 INTERVIEWER ════════ -->
+<section class="panel-section" id="s02">
+  <div class="section-head"><span class="num">02</span> Interviewer Profile — Patricia Iñigo</div>
   <div class="section-sub">14 yrs 3 mos at Airbus DS · current role since Nov 2025</div>
   <div class="panel">
     <div class="timeline">
@@ -282,8 +336,8 @@ footer{border-top:1px solid var(--line);margin-top:3rem;padding:1.2rem 0;display
 </section>
 
 <!-- ════════ 02 CONTEXT ════════ -->
-<section class="panel-section" id="s02">
-  <div class="section-head"><span class="num">02</span> Context — What OneSat Is</div>
+<section class="panel-section" id="s03">
+  <div class="section-head"><span class="num">03</span> Context — What OneSat Is</div>
   <div class="panel">
     <p>OneSat is Airbus DS's fully software-defined geostationary (GEO) communications satellite platform — it orbits at 36,000 km and can cover the entire globe with just three satellites. Its differentiator is in-orbit reconfigurability: coverage area, capacity, and frequency can be adjusted "on the fly" post-launch via software, without hardware modification. The core enabling technology is digital processing paired with active antennas, which together support several thousand beams per satellite — a sharp increase in flexibility over traditional fixed-payload GEO satellites.</p>
     <p>OneSat is GEO, not a constellation. It does not use inter-satellite links (ISL) — ISL is a mesh-networking feature relevant to LEO constellations like Starlink or OneWeb, not to a three-satellite GEO product line. Don't bring up ISL unprompted; it would read as a category confusion. Airbus's other major Toulouse program, OneWeb, is the ISL-relevant one, and it's a separate product line from OneSat.</p>
@@ -336,8 +390,8 @@ footer{border-top:1px solid var(--line);margin-top:3rem;padding:1.2rem 0;display
 </section>
 
 <!-- ════════ 03 COMPETENCIES ════════ -->
-<section class="panel-section" id="s03">
-  <div class="section-head"><span class="num">03</span> Required Competencies — Decoded</div>
+<section class="panel-section" id="s04">
+  <div class="section-head"><span class="num">04</span> Required Competencies — Decoded</div>
   <div class="panel">
     <table class="skill-table">
       <thead><tr><th style="width:11%">Code</th><th style="width:30%">Competency</th><th style="width:11%">Level</th><th>What They're Actually Testing</th></tr></thead>
@@ -372,8 +426,8 @@ footer{border-top:1px solid var(--line);margin-top:3rem;padding:1.2rem 0;display
 </section>
 
 <!-- ════════ 04 FIT ANALYSIS ════════ -->
-<section class="panel-section" id="s04">
-  <div class="section-head"><span class="num">04</span> Fit Analysis — Grounded in Your Actual Resume</div>
+<section class="panel-section" id="s05">
+  <div class="section-head"><span class="num">05</span> Fit Analysis — Grounded in Your Actual Resume</div>
   <div class="panel">
     <div class="risk-row risk-ok"><div class="risk-icon">✓</div><div class="risk-body"><strong>Fault isolation under live operational pressure, full stack.</strong> 5 years at iDirect doing "fault isolation and resolution across end-to-end SATCOM systems spanning RF, DVB-S2 modems, IP networking, and Linux." This is real diagnostic depth that most IVVQ-only candidates lack — you've debugged the thing in production, not just verified it in a lab.<span class="risk-note">Play: this is your strongest card. Frame it as "I've spent years discovering exactly how and why systems deviate from spec, under customers watching" — that's the instinct IVVQ needs, even though the formal process discipline is what you'd be learning on the job.</span></div></div>
 
@@ -392,8 +446,8 @@ footer{border-top:1px solid var(--line);margin-top:3rem;padding:1.2rem 0;display
 </section>
 
 <!-- ════════ 05 RUSTY SKILLS ════════ -->
-<section class="panel-section" id="s05">
-  <div class="section-head"><span class="num">05</span> Rusty Skills — Refresh Before The Interview</div>
+<section class="panel-section" id="s06">
+  <div class="section-head"><span class="num">06</span> Rusty Skills — Refresh Before The Interview</div>
   <div class="section-sub">Things on your resume or implied by the JD that you could plausibly be asked to elaborate on but haven't touched recently. Drill these.</div>
 
   <div class="drill">
@@ -428,8 +482,8 @@ footer{border-top:1px solid var(--line);margin-top:3rem;padding:1.2rem 0;display
 </section>
 
 <!-- ════════ 06 LIKELY QUESTIONS ════════ -->
-<section class="panel-section" id="s06">
-  <div class="section-head"><span class="num">06</span> Likely Interview Questions — Prepared Answers</div>
+<section class="panel-section" id="s07">
+  <div class="section-head"><span class="num">07</span> Likely Interview Questions — Prepared Answers</div>
   <div class="panel">
     <div class="qa-item"><div class="qa-q">You haven't held an IVVQ title before. Walk me through why I should trust you with this.</div><div class="qa-a">Don't dodge this. Lead with the iDirect fault isolation work as evidence of instinct, then the HBC+ requirements/architecture work as evidence of system-level discipline, then name the gap directly: you haven't run formal campaigns or sat in a CCB, and you'd want structured support in the first 2–3 months to ramp on Airbus's specific IVVQ tooling and process. Close by stating what you bring that a pure IVVQ-career candidate might not: direct experience with how systems actually fail in the field, not just how they're specified to behave.<span class="qa-signal">Signal keywords: <span>fault isolation · requirements traceability · honest gap · ramp plan</span></span></div></div>
 
@@ -446,8 +500,8 @@ footer{border-top:1px solid var(--line);margin-top:3rem;padding:1.2rem 0;display
 </section>
 
 <!-- ════════ 07 YOUR QUESTIONS ════════ -->
-<section class="panel-section" id="s07">
-  <div class="section-head"><span class="num">07</span> Your Questions For Patricia</div>
+<section class="panel-section" id="s08">
+  <div class="section-head"><span class="num">08</span> Your Questions For Patricia</div>
   <div class="panel">
     <ul class="checklist">
       <li>You've been in this seat since November — how much of the OneSat GS IVVQ process is established versus still being shaped under you?</li>
@@ -461,8 +515,8 @@ footer{border-top:1px solid var(--line);margin-top:3rem;padding:1.2rem 0;display
 </section>
 
 <!-- ════════ 08 VOCABULARY ════════ -->
-<section class="panel-section" id="s08">
-  <div class="section-head"><span class="num">08</span> Technical Vocabulary</div>
+<section class="panel-section" id="s09">
+  <div class="section-head"><span class="num">09</span> Technical Vocabulary</div>
   <div class="panel">
     <p style="font-size:0.78rem;color:var(--muted);margin-bottom:1.1rem">Cyan = use confidently, you can back it up. Amber = use carefully, don't over-claim depth if pushed.</p>
     <div class="kw-label">Use confidently — grounded in your resume</div>
@@ -477,16 +531,16 @@ footer{border-top:1px solid var(--line);margin-top:3rem;padding:1.2rem 0;display
 </section>
 
 <!-- ════════ 09 POSITIONING ════════ -->
-<section class="panel-section" id="s09">
-  <div class="section-head"><span class="num">09</span> Positioning Statement</div>
+<section class="panel-section" id="s10">
+  <div class="section-head"><span class="num">10</span> Positioning Statement</div>
   <div class="narrative">
     "I've spent twenty years on the side of satellite systems that defines and operates them — architecture, RF, IP networking, customer-facing fault diagnosis under live conditions. I haven't held an IVVQ title. What I've actually done is spend years discovering, in production, every way a system can fail to behave as specified. This role is where I'd build that instinct into a deliberate process instead of a reactive one. I'd need real ramp-up support on Airbus's specific IVVQ tooling and campaign discipline — and I'd want to be direct about that from day one."
   </div>
 </section>
 
 <!-- ════════ 10 CHECKLIST ════════ -->
-<section class="panel-section" id="s10">
-  <div class="section-head"><span class="num">10</span> Pre-Interview Checklist</div>
+<section class="panel-section" id="s11">
+  <div class="section-head"><span class="num">11</span> Pre-Interview Checklist</div>
   <div class="panel">
     <ul class="checklist">
       <li>Pick one iDirect fault-isolation story and rehearse it to a tight 90 seconds — symptom, cross-layer diagnosis, root cause, fix, retrospective coverage lesson.</li>
