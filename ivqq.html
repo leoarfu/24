@@ -285,8 +285,53 @@ footer{border-top:1px solid var(--line);margin-top:3rem;padding:1.2rem 0;display
 <section class="panel-section" id="s02">
   <div class="section-head"><span class="num">02</span> Context — What OneSat Is</div>
   <div class="panel">
-    <p>OneSat is Airbus DS's fully software-defined GEO communications satellite platform. Its differentiator is in-orbit reconfigurability: beam coverage, bandwidth allocation, and frequency plans can be changed post-launch via software upload, without hardware modification. Customers include Intelsat (Galaxy 35/36) and Eutelsat.</p>
+    <p>OneSat is Airbus DS's fully software-defined geostationary (GEO) communications satellite platform — it orbits at 36,000 km and can cover the entire globe with just three satellites. Its differentiator is in-orbit reconfigurability: coverage area, capacity, and frequency can be adjusted "on the fly" post-launch via software, without hardware modification. The core enabling technology is digital processing paired with active antennas, which together support several thousand beams per satellite — a sharp increase in flexibility over traditional fixed-payload GEO satellites.</p>
+    <p>OneSat is GEO, not a constellation. It does not use inter-satellite links (ISL) — ISL is a mesh-networking feature relevant to LEO constellations like Starlink or OneWeb, not to a three-satellite GEO product line. Don't bring up ISL unprompted; it would read as a category confusion. Airbus's other major Toulouse program, OneWeb, is the ISL-relevant one, and it's a separate product line from OneSat.</p>
+    <p>On antenna technology specifically: public information confirms OneSat uses active phased-array antennas on the satellite itself, enabling the multi-thousand-beam reconfigurability. What hasn't been publicly specified is the ground-terminal antenna technology (VICTS, ESA/phased-array terminals, or other) used to receive OneSat services — that's a ground-segment/terminal detail that varies by customer application and isn't documented at the product-line level. If asked specifically, say what's confirmed (active antenna array on the satellite) and don't guess at terminal-side specifics you can't back up.</p>
     <p>The Ground Segment is correspondingly more complex than a fixed GEO ground system: dynamic payload configuration, TT&C for a software-defined payload, service management across reconfigurable beams, and interfaces between the Network Management System, Payload Control System, and Mission Control System. The IVVQ Manager owns proving correctness of this system end-to-end, from factory through site.</p>
+  </div>
+
+  <div class="panel">
+    <div class="inner-head">Customers — Order Book (10 OneSat orders to date)</div>
+    <table class="skill-table">
+      <thead><tr><th style="width:18%">Customer</th><th style="width:14%">Region</th><th>Use Case / Notes</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Intelsat</strong></td><td>Global</td><td>IS-42 and IS-43, ordered 2020. Part of Intelsat's 5G-compatible reconfigurable network plan. Originally slated for 2023, now listed for 2027 — a schedule slip, not a cancellation. Feeds into Intelsat's broader multi-orbit aviation IFC strategy alongside Airbus's HBC+ terminals.</td></tr>
+        <tr><td><strong>Optus</strong></td><td>Australia</td><td>Early OneSat customer, named at Final Design Review (2021) alongside Intelsat and Sky Perfect JSAT.</td></tr>
+        <tr><td><strong>Sky Perfect JSAT</strong></td><td>Japan</td><td>Early OneSat customer, same FDR cohort.</td></tr>
+        <tr><td><strong>Thaicom</strong></td><td>Asia-Pacific</td><td>9th OneSat order (2023), Ku-band, Thaicom's first flexible satellite, positioned at 119.5°E. Eutelsat is a capacity-sharing partner on this satellite, committed to half its capacity — not a separate direct OneSat order from Eutelsat.</td></tr>
+        <tr><td><strong>Space Communication Technologies (Oman)</strong></td><td>Middle East / Oman</td><td>OmanSat-1, 10th and most recent order (Nov 2025). High Ka-band capacity over Oman, its economic waters, the Middle East, East Africa and Asia. Use cases named explicitly: government and private networks, oil and gas, banking, broadband, maritime, and aero connectivity.</td></tr>
+        <tr><td colspan="3" style="color:var(--muted);font-size:0.78rem">Several further orders are confirmed by count (10 total) but not all publicly named by customer.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel">
+    <div class="inner-head">Industries / End Uses Across the OneSat Customer Base</div>
+    <ul class="checklist">
+      <li>Commercial broadband and high-throughput connectivity (Thaicom, broad regional coverage)</li>
+      <li>Government and institutional networks (explicitly named for OmanSat-1)</li>
+      <li>Maritime and offshore connectivity</li>
+      <li>Aviation in-flight connectivity — particularly relevant to Intelsat, which is integrating OneSat-derived capacity into its multi-orbit IFC strategy alongside Airbus's own HBC+ terminal program. This is a direct link to your current HBC+ work, worth raising naturally if it comes up.</li>
+      <li>Oil and gas sector connectivity (named for OmanSat-1)</li>
+      <li>Banking / enterprise private networks (named for OmanSat-1)</li>
+      <li>Broadcast and video (a legacy GEO use case OneSat's flexible payload can also serve, though not the platform's primary differentiator)</li>
+    </ul>
+  </div>
+
+  <div class="panel">
+    <div class="inner-head">Plus / Minus — Honest Read on the Platform</div>
+    <div class="risk-row risk-ok"><div class="risk-icon">+</div><div class="risk-body"><strong>Reconfigurability lowers customer risk.</strong> A traditional GEO satellite is custom-built for one mission and effectively locked in for 15 years. OneSat lets an operator change coverage, capacity, and frequency after launch — meaningful when market demand shifts faster than a satellite's design life. This is the core sales pitch and it's real.</div></div>
+    <div class="risk-row risk-ok"><div class="risk-icon">+</div><div class="risk-body"><strong>Standardised, modular, design-to-manufacture approach.</strong> Unlike fully bespoke GEO satellites, OneSat's product-line approach is meant to compress build time and cost per unit — important competitively against both traditional GEO rivals and the cost pressure coming from LEO constellations.</div></div>
+    <div class="risk-row risk-ok"><div class="risk-icon">+</div><div class="risk-body"><strong>Diversified order book.</strong> 10 orders across distinct customers and regions (Americas/global via Intelsat, Australia, Japan, Asia-Pacific, Middle East) means no single customer's strategy shift sinks the program.</div></div>
+    <div class="risk-row risk-gap"><div class="risk-icon">−</div><div class="risk-body"><strong>Airbus has publicly acknowledged financial charges on the program.</strong> Leadership confirmed taking charges "big time" on OneSat in 2023 results without disclosing the amount, while reaffirming commitment to the program. This is a real signal that early execution had cost or schedule problems — worth knowing, not worth volunteering unprompted, but don't be caught off guard if it comes up.</div></div>
+    <div class="risk-row risk-warn"><div class="risk-icon">−</div><div class="risk-body"><strong>Schedule slip on the Intelsat satellites.</strong> IS-42/43 moved from a 2023 target to 2027 — a multi-year delay. Common in this industry, and not unique to OneSat, but it means the platform hasn't yet proven a clean on-time delivery track record on its highest-profile early order.</div></div>
+    <div class="risk-row risk-warn"><div class="risk-icon">−</div><div class="risk-body"><strong>Market headwind, not OneSat-specific.</strong> GEO demand is softening broadly as operators diversify into LEO — visible in SES's and Eutelsat's recent cancellations of competing Thales-built flexible satellites, cited explicitly as "reducing unnecessary duplication" amid GEO market caution. OneSat hasn't been cancelled by anyone, but it competes in a GEO market under real pressure from the LEO shift — the same pressure that's reportedly forcing competitors to cut orders.</div></div>
+  </div>
+
+  <div class="panel flag-amber">
+    <div class="inner-head">Program Security — Direct Answer If Asked</div>
+    <p>No customer has cancelled or publicly threatened to cancel a OneSat order. The two recent flexible-satellite cancellations in the news (Intelsat's former IS-41/IS-44 and Eutelsat's Flexsat Americas) were both Thales Alenia Space builds, a competing product line — not OneSat. Intelsat's own OneSat satellites, IS-42 and IS-43, remain on the books, delayed to 2027 but not cancelled. The order book is diversified across five-plus named customers and several unnamed ones, totalling 10 orders. The honest caveat: GEO demand is softening industry-wide, and a single bad earnings cycle for any customer could change that — but as of today there's no public signal pointing at OneSat specifically.</p>
   </div>
 </section>
 
