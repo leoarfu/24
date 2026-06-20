@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>IVVQ Manager — OneSat Ground Segment · Interview Brief</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800&family=Inter:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{height:100%;-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  font-family:'Inter',sans-serif;
+  background:#f7f6f3;color:#1c1c1c;
+  min-height:100vh;line-height:1.5;
+}
+
+:root{
+  --bg:#f7f6f3; --paper:#ffffff; --ink:#1c1c1c; --soft:#5a5a5a; --muted:#8a8a8a;
+  --line:#e2dfd8; --line-strong:#cfcbc1;
+  --cyan:#0077a8; --cyan-bg:#eaf5fa;
+  --red:#b8203f; --red-bg:#fbeaee;
+  --green:#1f7a3d; --green-bg:#eaf6ee;
+  --amber:#a65f00; --amber-bg:#fdf2e3;
+}
+
+/* ── TOP BAR ── */
+.topbar{
+  position:sticky;top:0;z-index:50;
+  background:rgba(247,246,243,0.96);
+  backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--line-strong);
+}
+.topbar-inner{
+  max-width:980px;margin:0 auto;
+  padding:0.9rem clamp(1rem,3vw,2rem) 0;
+}
+.brand-row{
+  display:flex;justify-content:space-between;align-items:baseline;
+  flex-wrap:wrap;gap:0.4rem;margin-bottom:0.9rem;
+}
+.brand{
+  font-family:'Orbitron',sans-serif;font-weight:800;
+  font-size:0.95rem;letter-spacing:0.04em;color:var(--ink);
+}
+.brand span{color:var(--cyan)}
+.brand-meta{font-size:0.74rem;color:var(--muted)}
+
+/* tabs */
+.tabs{
+  display:flex;gap:0.2rem;overflow-x:auto;
+  padding-bottom:0;scrollbar-width:thin;
+  -ms-overflow-style:none;
+}
+.tabs::-webkit-scrollbar{height:4px}
+.tabs::-webkit-scrollbar-thumb{background:var(--line-strong)}
+.tab{
+  flex-shrink:0;
+  font-size:0.76rem;font-weight:500;color:var(--soft);
+  padding:0.6rem 0.85rem;cursor:pointer;
+  border-bottom:2px solid transparent;
+  white-space:nowrap;
+  transition:color .15s ease,border-color .15s ease;
+}
+.tab:hover{color:var(--ink)}
+.tab.active{color:var(--cyan);border-bottom-color:var(--cyan);font-weight:600}
+
+/* ── LAYOUT ── */
+main{max-width:980px;margin:0 auto;padding:0 clamp(1rem,3vw,2rem) 5rem}
+
+.panel-section{display:none;padding-top:2.2rem}
+.panel-section.active{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+
+.mast{padding-bottom:1.6rem;border-bottom:1px solid var(--line)}
+.mast-kicker{font-size:0.7rem;color:var(--muted);letter-spacing:0.16em;text-transform:uppercase;margin-bottom:0.6rem}
+.mast-title{font-family:'Orbitron',sans-serif;font-weight:800;font-size:clamp(1.5rem,3.6vw,2.1rem);line-height:1.25;color:var(--ink)}
+.mast-title .accent{color:var(--cyan)}
+.mast-sub{margin-top:0.7rem;font-size:0.85rem;color:var(--soft);line-height:1.65}
+
+.section-head{
+  font-size:0.95rem;font-weight:700;color:var(--ink);
+  margin:1.8rem 0 0.4rem;
+  display:flex;align-items:baseline;gap:0.6rem;
+}
+.section-head .num{color:var(--cyan);font-family:'Orbitron',sans-serif;font-size:0.78rem;font-weight:700}
+.section-sub{font-size:0.78rem;color:var(--muted);margin-bottom:1rem}
+
+/* stat grid */
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin:1.2rem 0 1.8rem;border-radius:6px;overflow:hidden}
+.stat-cell{background:var(--paper);padding:0.95rem 1.1rem}
+.stat-key{font-size:0.62rem;letter-spacing:0.1em;color:var(--muted);text-transform:uppercase;margin-bottom:0.35rem}
+.stat-val{font-family:'Orbitron',sans-serif;font-weight:700;font-size:0.95rem;color:var(--cyan)}
+.stat-val.amber{color:var(--amber)} .stat-val.green{color:var(--green)} .stat-val.red{color:var(--red)}
+.stat-val.ink{color:var(--ink);font-size:0.8rem;font-family:'Inter',sans-serif;font-weight:600}
+
+/* panels */
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:1.4rem 1.6rem;margin-bottom:1.1rem;box-shadow:0 1px 2px rgba(0,0,0,0.03)}
+.panel.flag-red{border-left:3px solid var(--red)}
+.panel.flag-amber{border-left:3px solid var(--amber)}
+.panel p{font-size:0.86rem;line-height:1.75;color:var(--ink);margin-bottom:0.85rem}
+.panel p:last-child{margin-bottom:0}
+.panel p strong{font-weight:700}
+
+/* skill table */
+.skill-table{width:100%;border-collapse:collapse;font-size:0.83rem}
+.skill-table th{font-size:0.65rem;letter-spacing:0.1em;color:var(--muted);text-transform:uppercase;text-align:left;padding:0.5rem 0.7rem;border-bottom:2px solid var(--line);font-weight:600}
+.skill-table td{padding:0.8rem 0.7rem;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.6;color:var(--ink)}
+.skill-table tr:last-child td{border-bottom:none}
+.skill-code{color:var(--cyan);font-weight:700;font-size:0.8rem;white-space:nowrap}
+.skill-level{font-size:0.7rem;font-weight:600;color:var(--amber);white-space:nowrap}
+.skill-note{color:var(--soft);font-size:0.78rem;margin-top:0.35rem}
+
+/* qa */
+.qa-item{margin-bottom:1.4rem;padding-bottom:1.4rem;border-bottom:1px solid var(--line)}
+.qa-item:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.qa-q{font-size:0.86rem;font-weight:600;color:var(--ink);line-height:1.5;margin-bottom:0.6rem}
+.qa-q::before{content:'Q ';color:var(--cyan);font-weight:700}
+.qa-a{font-size:0.84rem;color:var(--soft);line-height:1.7;padding-left:1.2rem;border-left:2px solid var(--line)}
+.qa-signal{display:block;margin-top:0.55rem;font-size:0.72rem;color:var(--muted)}
+.qa-signal span{color:var(--green);font-weight:600}
+
+/* narrative */
+.narrative{font-family:'Libre Baskerville',serif;font-style:italic;font-size:0.98rem;line-height:1.85;color:#33312c;max-width:680px;margin:0 auto;text-align:center;padding:1rem 0;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:1.8rem 2rem}
+
+/* risk rows */
+.risk-row{display:flex;gap:0.9rem;align-items:flex-start;margin-bottom:1rem;font-size:0.84rem;line-height:1.65}
+.risk-row:last-child{margin-bottom:0}
+.risk-icon{flex-shrink:0;margin-top:1px;font-weight:700;width:1.1rem;text-align:center}
+.risk-ok .risk-icon{color:var(--green)}
+.risk-warn .risk-icon{color:var(--amber)}
+.risk-gap .risk-icon{color:var(--red)}
+.risk-body{color:var(--ink)}
+.risk-body strong{font-weight:700}
+.risk-note{color:var(--soft);display:block;font-size:0.76rem;margin-top:0.3rem;line-height:1.6}
+
+/* keywords */
+.kw-grid{display:flex;flex-wrap:wrap;gap:0.45rem;margin-bottom:0.4rem}
+.kw{font-size:0.74rem;border:1px solid var(--line-strong);color:var(--soft);padding:3px 10px;border-radius:14px;background:var(--paper)}
+.kw.hi{border-color:var(--cyan);color:var(--cyan);background:var(--cyan-bg)}
+.kw.rusty{border-color:var(--amber);color:var(--amber);background:var(--amber-bg)}
+.kw-label{font-size:0.68rem;color:var(--soft);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.55rem;font-weight:600}
+
+/* checklist */
+.checklist{list-style:none;font-size:0.84rem;line-height:1.6}
+.checklist li{padding:0.55rem 0;border-bottom:1px solid var(--line);display:flex;gap:0.7rem;align-items:flex-start;color:var(--ink)}
+.checklist li:last-child{border-bottom:none}
+.checklist li::before{content:'—';color:var(--cyan);flex-shrink:0;font-weight:700}
+
+/* timeline */
+.timeline{font-size:0.83rem;line-height:1.6}
+.tl-row{display:grid;grid-template-columns:100px 1fr;gap:1rem;padding:0.75rem 0;border-bottom:1px solid var(--line)}
+.tl-row:last-child{border-bottom:none}
+.tl-date{color:var(--cyan);font-size:0.74rem;font-weight:600;white-space:nowrap;padding-top:0.1rem}
+.tl-role{color:var(--ink);font-weight:700;font-size:0.85rem}
+.tl-org{color:var(--soft);font-size:0.79rem;margin-top:0.2rem;line-height:1.6}
+
+/* drill cards */
+.drill{background:var(--paper);border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:6px;padding:1.2rem 1.4rem;margin-bottom:1rem}
+.drill-topic{font-size:0.72rem;letter-spacing:0.08em;color:var(--amber);text-transform:uppercase;font-weight:700;margin-bottom:0.6rem}
+.drill-q{font-size:0.84rem;color:var(--ink);margin-bottom:0.6rem;line-height:1.55;font-weight:500}
+.drill-refresh{font-size:0.82rem;color:var(--soft);line-height:1.75}
+.drill-refresh strong{color:var(--cyan);font-style:normal;font-weight:700}
+
+/* sub-heads inside panels */
+.panel .inner-head{font-size:0.78rem;font-weight:700;color:var(--ink);margin-bottom:0.9rem;letter-spacing:0.02em}
+
+footer{border-top:1px solid var(--line);margin-top:3rem;padding:1.2rem 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem}
+.footer-id{font-size:0.68rem;color:var(--muted)}
+.footer-note{font-size:0.68rem;color:var(--muted);text-align:right}
+
+@media print{
+  .topbar{display:none}
+  body{background:#fff}
+  .panel-section{display:block !important}
+  .panel{box-shadow:none;border:1px solid #ccc}
+  main{padding-top:1rem}
+}
+
+@media (max-width:640px){
+  .tl-row{grid-template-columns:1fr}
+  .skill-table{font-size:0.78rem}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand-row">
+      <div class="brand">IVVQ<span> ·</span> OneSat Brief</div>
+      <div class="brand-meta">Airbus DS · Toulouse Palays · G14 · v2</div>
+    </div>
+    <nav class="tabs" id="tabs">
+      <div class="tab" data-target="s00">00 Reality Check</div>
+      <div class="tab" data-target="s01">01 Interviewer</div>
+      <div class="tab" data-target="s02">02 Context</div>
+      <div class="tab" data-target="s03">03 Competencies</div>
+      <div class="tab" data-target="s04">04 Fit Analysis</div>
+      <div class="tab" data-target="s05">05 Rusty Skills</div>
+      <div class="tab" data-target="s06">06 Likely Questions</div>
+      <div class="tab" data-target="s07">07 Your Questions</div>
+      <div class="tab" data-target="s08">08 Vocabulary</div>
+      <div class="tab" data-target="s09">09 Positioning</div>
+      <div class="tab" data-target="s10">10 Checklist</div>
+    </nav>
+  </div>
+</div>
+
+<main>
+
+<div class="mast">
+  <div class="mast-kicker">Interview Preparation Brief — v2</div>
+  <h1 class="mast-title">IVVQ Manager <span class="accent">·</span> OneSat Ground Segment</h1>
+  <p class="mast-sub">
+    Airbus Defence &amp; Space · Connected Intelligence · CDI · Classe G14 · Toulouse Palays · TSESV1<br>
+    Interviewer: Patricia Iñigo, HO OneSat Chief Engineering
+  </p>
+</div>
+
+<div class="stat-grid">
+  <div class="stat-cell"><div class="stat-key">Program</div><div class="stat-val">OneSat GS</div></div>
+  <div class="stat-cell"><div class="stat-key">Function</div><div class="stat-val ink">IVVQ Manager</div></div>
+  <div class="stat-cell"><div class="stat-key">Grade</div><div class="stat-val amber">G14</div></div>
+  <div class="stat-cell"><div class="stat-key">Contract</div><div class="stat-val green">CDI</div></div>
+  <div class="stat-cell"><div class="stat-key">Exp. required</div><div class="stat-val">10+ yrs</div></div>
+  <div class="stat-cell"><div class="stat-key">Your direct IVVQ yrs</div><div class="stat-val red">0</div></div>
+</div>
+
+<!-- ════════ 00 REALITY CHECK ════════ -->
+<section class="panel-section" id="s00">
+  <div class="section-head"><span class="num">00</span> The Real Situation — Read This First</div>
+  <div class="panel flag-red">
+    <p>You have zero formal IVVQ experience. Not "rusty" — absent. Your resume shows software architecture (HBC+), customer-facing operational support and fault isolation (iDirect), and system R&D / proposal work earlier in your career. None of that is "I owned an IVVQ plan," "I ran a qualification campaign," or "I sat in a CCB disposing anomalies."</p>
+    <p>The v1 of this brief treated that as a CV-wording problem. It isn't. Going in pretending you've done IVVQ work you haven't done is the fastest way to lose credibility with someone whose entire job is judging engineering rigor for this exact program. Patricia will know within two questions if you're inventing campaign stories.</p>
+    <p>The honest strategy: you don't have IVVQ execution experience. You have <strong>adjacent depth that IVVQ managers usually lack</strong> — RF-to-baseband fault isolation under live operational pressure, multi-vendor system architecture, and direct customer escalation ownership. The pitch is not "I've done this before." It's "I've spent 20 years finding out why systems don't behave as specified, from a different seat than IVVQ usually sits in, and I understand what proving correctness costs because I've paid that cost operationally rather than in a test plan." That's a real, defensible position. A fabricated campaign history is not.</p>
+  </div>
+</section>
+
+<!-- ════════ 01 INTERVIEWER ════════ -->
+<section class="panel-section" id="s01">
+  <div class="section-head"><span class="num">01</span> Interviewer Profile — Patricia Iñigo</div>
+  <div class="section-sub">14 yrs 3 mos at Airbus DS · current role since Nov 2025</div>
+  <div class="panel">
+    <div class="timeline">
+      <div class="tl-row">
+        <div class="tl-date">Nov 2025 –</div>
+        <div><div class="tl-role">HO OneSat Chief Engineering</div><div class="tl-org">Leads multidisciplinary team: Satellite Project Chief Engineers, E2E and Ground Segment Chief Engineers/Architects. Owns full OneSat lifecycle from design through IVV, qualification, and recurrent production.</div></div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-date">Feb–Nov 2025</div>
+        <div><div class="tl-role">OneSat System Lead Manager</div><div class="tl-org">Technical lead of a system engineering Multifunctional Team covering E2E, ground segment, ground components, and ops architects for flexible payload operation. Customer E2E technical interface.</div></div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-date">2018–2025</div>
+        <div><div class="tl-role">Telecom Satellites &amp; Constellations Proposal Manager</div><div class="tl-org">6.5 yrs preparing/negotiating commercial, governmental, institutional telecom proposals — GEO plus LEO/MEO. Ran the IRIS² preparatory proposal for 2 years.</div></div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-date">2016–2018</div>
+        <div><div class="tl-role">VHTS Advanced Project Manager</div><div class="tl-org">Led transnational task force preparing VHTS products across ground and space segments, Phase B2/C/D/E.</div></div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-date">2012–2016</div>
+        <div><div class="tl-role">R&amp;D System Engineer → Broadband SatCom R&amp;D Lead</div><div class="tl-org">Defined telecom system R&amp;D roadmap, led broadband/broadcast system team.</div></div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-date">2005–2012</div>
+        <div><div class="tl-role">Satellite Comms Engineer (Astrium) → Telecom System Engineer (EADS CASA Espacio, Madrid)</div><div class="tl-org">Hybrid satellite/terrestrial access systems (FP6/FP7), ran SUNSET Lab in Madrid.</div></div>
+      </div>
+    </div>
+    <p style="margin-top:1rem;font-size:0.79rem;color:var(--soft);line-height:1.7">MSc Telecommunication Engineering, Universidad Pública de Navarra (highest honours). Airbus DS System Engineering Qualification, 2019.</p>
+  </div>
+
+  <div class="panel">
+    <div class="inner-head">What This Means For You</div>
+    <div class="risk-row risk-ok"><div class="risk-icon">→</div><div class="risk-body"><strong>She has never run IVVQ herself either.</strong> Her path is system engineering, R&D, proposal management, then chief engineering — never a test/V&V execution role. She will not drill you on tooling minutiae she doesn't deeply own. She will evaluate whether you reason like a system engineer about validation: can you decompose a problem, identify risk, and structure a strategy. That favors you — it's closer to your actual strength than deep IVVQ tradecraft would be.</div></div>
+    <div class="risk-row risk-warn"><div class="risk-icon">→</div><div class="risk-body"><strong>She owns the entire OneSat IVV outcome now.</strong> "Overseeing the complete lifecycle... up to IVV phases including qualification and recurrent production" is in her current scope. She is not a passive panel member — she is personally accountable if IVVQ underperforms on her watch. Expect her to probe whether you'll need heavy ramp-up support from her organization, because that's a cost she'll carry.</div></div>
+    <div class="risk-row risk-ok"><div class="risk-icon">→</div><div class="risk-body"><strong>She's been in the chief engineering seat 8 months.</strong> The OneSat IVV organization is plausibly still being shaped under her. That's an opening: ask her directly what's established vs what she's still building. A genuine, well-placed question here reads as system-level thinking, which is exactly her own register.</div></div>
+    <div class="risk-row risk-warn"><div class="risk-icon">→</div><div class="risk-body"><strong>Proposal background means she's allergic to vague claims.</strong> 6.5 years writing and defending commercial/institutional proposals — including IRIS². She will have sat through, and likely written, technical claims that got challenged by customers and evaluators. Overstating your IVVQ experience to her specifically is a high-risk move; underspecifying with a clear plan to close the gap is the register she'll respect.</div></div>
+  </div>
+</section>
+
+<!-- ════════ 02 CONTEXT ════════ -->
+<section class="panel-section" id="s02">
+  <div class="section-head"><span class="num">02</span> Context — What OneSat Is</div>
+  <div class="panel">
+    <p>OneSat is Airbus DS's fully software-defined GEO communications satellite platform. Its differentiator is in-orbit reconfigurability: beam coverage, bandwidth allocation, and frequency plans can be changed post-launch via software upload, without hardware modification. Customers include Intelsat (Galaxy 35/36) and Eutelsat.</p>
+    <p>The Ground Segment is correspondingly more complex than a fixed GEO ground system: dynamic payload configuration, TT&C for a software-defined payload, service management across reconfigurable beams, and interfaces between the Network Management System, Payload Control System, and Mission Control System. The IVVQ Manager owns proving correctness of this system end-to-end, from factory through site.</p>
+  </div>
+</section>
+
+<!-- ════════ 03 COMPETENCIES ════════ -->
+<section class="panel-section" id="s03">
+  <div class="section-head"><span class="num">03</span> Required Competencies — Decoded</div>
+  <div class="panel">
+    <table class="skill-table">
+      <thead><tr><th style="width:11%">Code</th><th style="width:30%">Competency</th><th style="width:11%">Level</th><th>What They're Actually Testing</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="skill-code">A103</td>
+          <td>System Integration, V&amp;V<div class="skill-note">CO-E01-00004</div></td>
+          <td class="skill-level">Autonomous</td>
+          <td>Can you define and own an AIV/IVVQ flow for a complex ground segment without being steered.<div class="skill-note">You don't have direct evidence. Closest substitute: HBC+ architecture deliverables, supplier type-approval ownership (iDirect networks, end-to-end). Name the substitute honestly.</div></td>
+        </tr>
+        <tr>
+          <td class="skill-code">A106</td>
+          <td>System Development Logic Definition<div class="skill-note">CO-E01-00007</div></td>
+          <td class="skill-level">Autonomous</td>
+          <td>Lifecycle understanding deep enough to challenge requirements traceability and test coverage.<div class="skill-note">HBC+ requirements capture work is real evidence here — "capture and formalize system requirements in architecture deliverables" is direct lifecycle work, even without the IVVQ label.</div></td>
+        </tr>
+        <tr>
+          <td class="skill-code">A501</td>
+          <td>System Testing<div class="skill-note">CO-E04-00001</div></td>
+          <td class="skill-level">Autonomous</td>
+          <td>Hands-on test campaign leadership — FIT, SAT, CCB.<div class="skill-note">This is your weakest evidence point. Your closest substitute is iDirect fault isolation across RF/baseband/IP/Linux at live operational SATCOM networks — diagnosis, not pre-planned campaign execution. Say so plainly.</div></td>
+        </tr>
+        <tr>
+          <td class="skill-code">D150</td>
+          <td>Overall Simulation &amp; Test Means Technology<div class="skill-note">CO-D15-00001</div></td>
+          <td class="skill-level">Autonomous</td>
+          <td>Test platform landscape: simulators, stimulators, RF/network emulators, test management tools.<div class="skill-note">No direct test-tooling evidence (HP ALM/Polarion/Zephyr). You do have Wireshark, spectrum analysis, link budget tooling from iDirect — diagnostic tooling, adjacent but not the same category.</div></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ════════ 04 FIT ANALYSIS ════════ -->
+<section class="panel-section" id="s04">
+  <div class="section-head"><span class="num">04</span> Fit Analysis — Grounded in Your Actual Resume</div>
+  <div class="panel">
+    <div class="risk-row risk-ok"><div class="risk-icon">✓</div><div class="risk-body"><strong>Fault isolation under live operational pressure, full stack.</strong> 5 years at iDirect doing "fault isolation and resolution across end-to-end SATCOM systems spanning RF, DVB-S2 modems, IP networking, and Linux." This is real diagnostic depth that most IVVQ-only candidates lack — you've debugged the thing in production, not just verified it in a lab.<span class="risk-note">Play: this is your strongest card. Frame it as "I've spent years discovering exactly how and why systems deviate from spec, under customers watching" — that's the instinct IVVQ needs, even though the formal process discipline is what you'd be learning on the job.</span></div></div>
+
+    <div class="risk-row risk-ok"><div class="risk-icon">✓</div><div class="risk-body"><strong>Requirements-to-architecture discipline at HBC+.</strong> "Capture and formalize system requirements in architecture deliverables" plus defining software architecture standards across distributed teams and external suppliers is genuinely relevant to A106. This is lifecycle-definition work, not test execution, but it's not nothing.</div></div>
+
+    <div class="risk-row risk-ok"><div class="risk-icon">✓</div><div class="risk-body"><strong>Multi-vendor onboarding and type approval.</strong> Coordinating satellite service provider onboarding "from contract signature through type approval on provider networks" at HBC+ is the closest thing on your resume to acceptance/qualification ownership — a vendor's system being proven fit against your requirements before being accepted into the program. Use this analogy directly; it's honest and it's strong.</div></div>
+
+    <div class="risk-row risk-gap"><div class="risk-icon">✗</div><div class="risk-body"><strong>No campaign planning, no CCB, no formal anomaly disposition.</strong> This is the real gap, not a paper one. You have never written an IVVQ plan, never run FIT or SVT, never sat in a CCB. Do not construct a story implying otherwise.<span class="risk-note">Plan: state it directly if asked. "I haven't run a formal qualification campaign — my validation experience has been operational, finding faults in live systems rather than planning structured test campaigns in advance. I'd want [specific support] in the first months to close that." This is more credible to a chief engineer than a vague deflection.</span></div></div>
+
+    <div class="risk-row risk-gap"><div class="risk-icon">✗</div><div class="risk-body"><strong>No test management tooling experience (HP ALM, Polarion, Zephyr, DOORS).</strong> Nothing on your resume touches requirements/test management suites. You have PostgreSQL, Kubernetes, Kafka — operational and data infrastructure, not test traceability tooling.<span class="risk-note">Plan: don't claim familiarity. Say you haven't used those specific platforms but you're comfortable with structured tooling generally (cite Ansible/automation work) and will ramp quickly.</span></div></div>
+
+    <div class="risk-row risk-warn"><div class="risk-icon">△</div><div class="risk-body"><strong>TT&C — partial, not deep.</strong> The previous brief overstated this. Your resume shows DVB-S2/MF-TDMA/SCPC and RF link diagnostics, which is payload-adjacent SATCOM, but TT&C protocol stacks specifically (CCSDS, SLE) aren't evidenced on your CV. Don't claim CCSDS/SLE fluency you can't back up if pushed.<span class="risk-note">Plan: if it comes up, anchor to what you actually know — modem chain, link budgets, carrier performance — and be upfront that TT&C protocol specifics would be new ground.</span></div></div>
+
+    <div class="risk-row risk-ok"><div class="risk-icon">✓</div><div class="risk-body"><strong>Internal candidate, known quantity.</strong> Already at ADS on HBC+, in Toulouse, inside Connected Intelligence's broader sphere. Patricia can pull internal references on you faster than for an external candidate. Don't waste this — make sure whoever might speak to your work ethic and learning speed is someone she'd plausibly reach.</div></div>
+  </div>
+</section>
+
+<!-- ════════ 05 RUSTY SKILLS ════════ -->
+<section class="panel-section" id="s05">
+  <div class="section-head"><span class="num">05</span> Rusty Skills — Refresh Before The Interview</div>
+  <div class="section-sub">Things on your resume or implied by the JD that you could plausibly be asked to elaborate on but haven't touched recently. Drill these.</div>
+
+  <div class="drill">
+    <div class="drill-topic">CCSDS / TT&C Protocol Basics</div>
+    <div class="drill-q">If asked: "How does the ground system command and monitor a software-defined payload?"</div>
+    <div class="drill-refresh"><strong>CCSDS</strong> (Consultative Committee for Space Data Systems) defines the standard frame structures for telemetry and telecommand. <strong>SLE</strong> (Space Link Extension) is the protocol layer between the ground station and the mission control system for forwarding TM/TC over IP. For OneSat specifically, the Payload Control System sits between the Mission Control System and the payload — configuration commands for beam/frequency reconfiguration flow through this chain and need their own verification, separate from classic bus TT&C. You don't need deep protocol fluency, but you should be able to say this much without hesitating.</div>
+  </div>
+
+  <div class="drill">
+    <div class="drill-topic">V-Model and IVVQ Phasing</div>
+    <div class="drill-q">If asked to structure a validation approach from scratch.</div>
+    <div class="drill-refresh">Requirements → design → implementation on the left side; unit test → integration test → system test → acceptance test climbing back up the right side, each test phase verifying against the corresponding left-side definition phase. For ground segment: subsystem integration (e.g., NMS alone) → system integration (NMS+PCS+MCS together) → Factory Integration Test (full chain, controlled environment) → Qualification (formal proof against requirements) → Site Acceptance Test (customer environment, contractual milestone). Be ready to sketch this on a whiteboard without notes.</div>
+  </div>
+
+  <div class="drill">
+    <div class="drill-topic">CCB Mechanics</div>
+    <div class="drill-q">If asked how you'd handle a change request mid-campaign.</div>
+    <div class="drill-refresh">Change Control Board: any proposed change (requirement clarification, design fix, anomaly correction) gets classified by impact before being accepted — does it require no re-test, partial regression, or full regression of the affected test suite. The IVVQ role's job in CCB is to give a fast, defensible impact assessment, not veto power. You haven't sat in one, but you have made equivalent calls informally when deciding whether a provider-side network change required re-running onboarding validation at HBC+ — that's a usable bridge, stated honestly as informal/analogous.</div>
+  </div>
+
+  <div class="drill">
+    <div class="drill-topic">Link Budgets &amp; C/N — you have this, just refresh the numbers</div>
+    <div class="drill-q">If asked a quick technical sanity-check question on RF performance.</div>
+    <div class="drill-refresh">This is genuinely your strength from iDirect — don't let nerves make you hedge on it. Carrier-to-noise ratio, Eb/N0, modulation/coding trade-offs (DVB-S2 ACM), rain fade margin. If she tests you here, this is where you should sound fastest and most confident, in contrast to the IVVQ-process questions where honesty about the gap is the better posture.</div>
+  </div>
+
+  <div class="drill">
+    <div class="drill-topic">"Why are you moving from architecture into validation management?"</div>
+    <div class="drill-q">She will ask some version of this — it's the obvious question given your CV shape.</div>
+    <div class="drill-refresh">Don't frame it as a lateral skip. Frame it as: architecture defines what a system should do; you've spent the operational years since then discovering, the hard way, all the ways systems fail to do what was specified. IVVQ is the discipline that builds that discovery process in deliberately rather than reactively. You're not leaving architecture — you're moving toward owning the proof side of it, which closes a loop you've been on the outside of for 20 years.</div>
+  </div>
+</section>
+
+<!-- ════════ 06 LIKELY QUESTIONS ════════ -->
+<section class="panel-section" id="s06">
+  <div class="section-head"><span class="num">06</span> Likely Interview Questions — Prepared Answers</div>
+  <div class="panel">
+    <div class="qa-item"><div class="qa-q">You haven't held an IVVQ title before. Walk me through why I should trust you with this.</div><div class="qa-a">Don't dodge this. Lead with the iDirect fault isolation work as evidence of instinct, then the HBC+ requirements/architecture work as evidence of system-level discipline, then name the gap directly: you haven't run formal campaigns or sat in a CCB, and you'd want structured support in the first 2–3 months to ramp on Airbus's specific IVVQ tooling and process. Close by stating what you bring that a pure IVVQ-career candidate might not: direct experience with how systems actually fail in the field, not just how they're specified to behave.<span class="qa-signal">Signal keywords: <span>fault isolation · requirements traceability · honest gap · ramp plan</span></span></div></div>
+
+    <div class="qa-item"><div class="qa-q">OneSat's payload is software-defined — coverage and frequency plans change via uplink. How would you approach validating that?</div><div class="qa-a">The validation space grows combinatorially with configuration options — you can't test every permutation, so the strategy needs configuration equivalence classes, validating representative cases rather than the full space. Every uplinked reconfiguration needs a regression suite, not just a one-time qualification. You'd also need to validate the configuration management process itself — not just that a given end-state is correct, but that the path to get there is safe. This is reasoning you can do from system-architecture instinct even without IVVQ tooling experience — say so.<span class="qa-signal">Signal keywords: <span>configuration equivalence class · regression after uplink · process validation, not just state validation</span></span></div></div>
+
+    <div class="qa-item"><div class="qa-q">As Chief Engineering, I'm accountable for IVV outcomes on this program. What ramp-up support would you need from my organization in your first 90 days?</div><div class="qa-a">Answer this concretely, not vaguely — she's asking because she'll personally bear the cost. Name specifics: shadowing an active FIT or qualification campaign in the first month, a structured walkthrough of the current test management tooling and traceability process, time with the outgoing or adjacent IVVQ leads to absorb tribal knowledge of OneSat-specific gotchas, and an explicit understanding of what decisions you can make autonomously vs. what needs her sign-off early on. A specific, bounded ask is more reassuring than "I'll figure it out."<span class="qa-signal">Signal keywords: <span>bounded ramp plan · explicit decision authority · shadow before lead</span></span></div></div>
+
+    <div class="qa-item"><div class="qa-q">Describe a time you found a serious fault in a live system. What did you do?</div><div class="qa-a">Pull a real iDirect story — RF/baseband/IP fault isolation under customer pressure. Structure: symptom as reported by customer → your diagnostic path across the stack (RF → modem → IP) → root cause → fix → what you'd change about the system's test coverage in hindsight to have caught it earlier. That last beat is the bridge to IVVQ thinking: turning an operational failure into a validation-process lesson.<span class="qa-signal">Signal keywords: <span>cross-layer diagnosis · root cause · coverage gap in hindsight</span></span></div></div>
+
+    <div class="qa-item"><div class="qa-q">What's the difference between Factory Integration Test and Site Acceptance Test, and why does it matter?</div><div class="qa-a">FIT: controlled environment, full instrumentation access, no customer pressure. SAT: customer's environment, the ground station's existing infrastructure (antenna, SSPA, modem chain) now interacts with your delivered system, real RF environment including interference, contractual milestone pressure. The goal of FIT is to make SAT a confirmation, not a discovery exercise — every issue found at site is more expensive and more visible than the same issue found in factory. You know this conceptually from iDirect's customer deployment context even without having run a formal FIT/SAT pair yourself.<span class="qa-signal">Signal keywords: <span>FIT · SAT · delta environment · discovery vs confirmation</span></span></div></div>
+
+    <div class="qa-item"><div class="qa-q">Why this role, why now?</div><div class="qa-a">Keep it grounded and honest about the transition. You've spent 20 years on the side of satellite systems that defines and operates them; this role is a deliberate move toward owning the proof that they work as specified, on the program that represents the hardest version of that problem at Airbus right now. Don't oversell continuity with a fictional IVVQ track record — sell the logic of the move instead.<span class="qa-signal">Do not imply prior IVVQ ownership you don't have. The "why" should carry the answer, not a fabricated "what I've already done."</span></div></div>
+  </div>
+</section>
+
+<!-- ════════ 07 YOUR QUESTIONS ════════ -->
+<section class="panel-section" id="s07">
+  <div class="section-head"><span class="num">07</span> Your Questions For Patricia</div>
+  <div class="panel">
+    <ul class="checklist">
+      <li>You've been in this seat since November — how much of the OneSat GS IVVQ process is established versus still being shaped under you?</li>
+      <li>What does the current IVVQ team composition look like for the Ground Segment specifically — how many people, what's the skill mix?</li>
+      <li>What test management tooling is in use today for OneSat GS, and is there a migration or consolidation underway?</li>
+      <li>How is the interface between this role and the Engineering Manager structured day-to-day — separate reporting lines or close embedded collaboration?</li>
+      <li>Given I'd be coming from architecture rather than formal IVVQ, what would success look like at the 6-month mark from your seat?</li>
+      <li>What's the single hardest unresolved IVVQ problem on OneSat GS right now?</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ════════ 08 VOCABULARY ════════ -->
+<section class="panel-section" id="s08">
+  <div class="section-head"><span class="num">08</span> Technical Vocabulary</div>
+  <div class="panel">
+    <p style="font-size:0.78rem;color:var(--muted);margin-bottom:1.1rem">Cyan = use confidently, you can back it up. Amber = use carefully, don't over-claim depth if pushed.</p>
+    <div class="kw-label">Use confidently — grounded in your resume</div>
+    <div class="kw-grid" style="margin-bottom:1.3rem">
+      <span class="kw hi">fault isolation</span><span class="kw hi">RF / baseband / IP cross-layer diagnosis</span><span class="kw hi">link budget</span><span class="kw hi">C/N · Eb/N0</span><span class="kw hi">DVB-S2 / MF-TDMA / SCPC</span><span class="kw hi">requirements capture</span><span class="kw hi">architecture standards</span><span class="kw hi">type approval / supplier onboarding</span><span class="kw hi">multi-vendor integration</span>
+    </div>
+    <div class="kw-label">Use carefully — conceptual only, not hands-on</div>
+    <div class="kw-grid">
+      <span class="kw rusty">CCSDS / SLE</span><span class="kw rusty">FIT / SAT</span><span class="kw rusty">CCB</span><span class="kw rusty">qualification campaign</span><span class="kw rusty">traceability matrix</span><span class="kw rusty">HP ALM / Polarion / DOORS</span><span class="kw rusty">payload emulator / PCS interface</span>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ 09 POSITIONING ════════ -->
+<section class="panel-section" id="s09">
+  <div class="section-head"><span class="num">09</span> Positioning Statement</div>
+  <div class="narrative">
+    "I've spent twenty years on the side of satellite systems that defines and operates them — architecture, RF, IP networking, customer-facing fault diagnosis under live conditions. I haven't held an IVVQ title. What I've actually done is spend years discovering, in production, every way a system can fail to behave as specified. This role is where I'd build that instinct into a deliberate process instead of a reactive one. I'd need real ramp-up support on Airbus's specific IVVQ tooling and campaign discipline — and I'd want to be direct about that from day one."
+  </div>
+</section>
+
+<!-- ════════ 10 CHECKLIST ════════ -->
+<section class="panel-section" id="s10">
+  <div class="section-head"><span class="num">10</span> Pre-Interview Checklist</div>
+  <div class="panel">
+    <ul class="checklist">
+      <li>Pick one iDirect fault-isolation story and rehearse it to a tight 90 seconds — symptom, cross-layer diagnosis, root cause, fix, retrospective coverage lesson.</li>
+      <li>Pick one HBC+ story showing requirements-to-architecture discipline or supplier type-approval ownership.</li>
+      <li>Write your own one-sentence answer to "why are you moving from architecture into IVVQ" and say it out loud until it doesn't sound rehearsed.</li>
+      <li>Drill the V-model phasing (section 05) until you can sketch it without hesitation.</li>
+      <li>Decide your answer to the gap question before she asks it — do not improvise an answer to "you haven't done this before" live.</li>
+      <li>Read recent Airbus DS / OneSat press: Intelsat Galaxy 35/36, Eutelsat. Know what's flown and what's in production.</li>
+      <li>Confirm internal mobility process is logged through the official HUB channel, separate from this interview.</li>
+      <li>Decide on your two or three 90-day ramp-up asks (section 06, Q3) — having this ready signals seriousness, not weakness.</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-id">BRIEF-IVVQ-2026-v2 · Personal use only · Not affiliated with Airbus DS HR</div>
+  <div class="footer-note">Manager profile from LinkedIn (user-supplied) · Resume-grounded fit analysis</div>
+</footer>
+
+</main>
+
+<script>
+(function(){
+  var tabs = document.querySelectorAll('.tab');
+  var sections = document.querySelectorAll('.panel-section');
+
+  function activate(id, push){
+    tabs.forEach(function(t){ t.classList.toggle('active', t.dataset.target === id); });
+    sections.forEach(function(s){ s.classList.toggle('active', s.id === id); });
+    if(push) history.replaceState(null, '', '#' + id);
+    window.scrollTo({top:0, behavior:'instant' in window ? 'instant' : 'auto'});
+  }
+
+  tabs.forEach(function(t){
+    t.addEventListener('click', function(){ activate(t.dataset.target, true); });
+  });
+
+  var startId = (location.hash || '').replace('#','');
+  if(!startId || !document.getElementById(startId)){
+    startId = 's00';
+  }
+  activate(startId, false);
+})();
+</script>
+
+</body>
+</html>
