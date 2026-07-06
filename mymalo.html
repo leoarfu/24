@@ -107,10 +107,10 @@ header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.96);backdro
 .mobile-menu .btn{margin-top:22px;font-size:1.05rem;text-transform:none}
 
 /* ---------- hero ---------- */
-.hero{position:relative;min-height:88vh;display:flex;align-items:center;color:#fff;background:var(--bleu);padding:0}
+.hero{position:relative;min-height:88vh;display:flex;align-items:flex-start;color:#fff;background:var(--bleu);padding:0}
 .hero img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(32,42,48,.35) 0%,rgba(32,42,48,.55) 55%,rgba(32,42,48,.72) 100%)}
-.hero .wrap{position:relative;z-index:2;padding-top:90px;padding-bottom:60px}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(32,42,48,.78) 0%,rgba(32,42,48,.45) 42%,rgba(32,42,48,.08) 75%,rgba(32,42,48,0) 100%)}
+.hero .wrap{position:relative;z-index:2;padding-top:64px;padding-bottom:60px}
 .hero .logo-hero{height:clamp(60px,9vw,104px);width:auto;filter:drop-shadow(0 2px 10px rgba(0,0,0,.35)) brightness(0) invert(1);margin-bottom:18px}
 .hero h1{font-size:clamp(2rem,5vw,3.4rem);font-weight:700;max-width:18ch;text-transform:uppercase;letter-spacing:.02em}
 .hero p.tag{font-size:clamp(1rem,1.9vw,1.2rem);margin:16px 0 30px;max-width:52ch}
@@ -253,7 +253,6 @@ footer a{color:var(--jaune)}
 <section class="hero">
   <img class="bg" src="images/terrasse-vue-lettres-dunkerque-my-malo.jpg" alt="Terrasse du restaurant My Malo face à la mer, avec les lettres Dunkerque en arrière-plan" fetchpriority="high">
   <div class="wrap">
-    <span class="badge" data-i18n="hero_badge">Digue de Malo-les-Bains · Dunkerque</span>
     <h1 data-i18n="hero_title">Face à la mer, les pieds dans le Nord</h1>
     <p class="tag" data-i18n="hero_sub">Moules de Dunkerque, plats du Nord faits maison et poke bowls fraîcheur — dans un cadre lounge et bohème, sur la digue, à deux pas de la plage.</p>
     <div class="ctas">
@@ -267,7 +266,7 @@ footer a{color:var(--jaune)}
   <div class="wrap">
     <span class="eyebrow" data-i18n="menu_eyebrow">Fait maison · Produits frais</span>
     <h2 data-i18n="menu_title">La carte</h2>
-    <svg class="wave" viewBox="0 0 120 12" fill="none" aria-hidden="true"><path d="M2 8 C 14 2, 26 2, 38 8 S 62 14, 74 8 S 98 2, 118 8" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+    <svg class="wave" viewBox="0 0 120 16" fill="none" aria-hidden="true"><path d="M2 8 C 12 2, 24 2, 34 8 C 44 14, 56 14, 66 8 C 76 2, 88 2, 98 8 C 104 11.5, 112 11.5, 118 8" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg>
 
     <div class="carte-tabs" role="tablist">
       <button class="active" data-panel="c-entrees" data-i18n="tab_starters">Entrées &amp; planches</button>
@@ -383,7 +382,7 @@ footer a{color:var(--jaune)}
   <div class="wrap">
     <span class="eyebrow" data-i18n="hours_eyebrow">Horaires</span>
     <h2 data-i18n="hours_title">On vous attend, selon la saison</h2>
-    <svg class="wave" viewBox="0 0 120 12" fill="none" aria-hidden="true"><path d="M2 8 C 14 2, 26 2, 38 8 S 62 14, 74 8 S 98 2, 118 8" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+    <svg class="wave" viewBox="0 0 120 16" fill="none" aria-hidden="true"><path d="M2 8 C 12 2, 24 2, 34 8 C 44 14, 56 14, 66 8 C 76 2, 88 2, 98 8 C 104 11.5, 112 11.5, 118 8" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg>
 
     <div class="season-tabs" role="tablist">
       <button class="active" data-panel="p-normal" data-i18n="tab_normal">Saison classique</button>
@@ -430,7 +429,7 @@ footer a{color:var(--jaune)}
   <div class="wrap">
     <span class="eyebrow" data-i18n="spaces_eyebrow">Le lieu</span>
     <h2 data-i18n="spaces_title">Une salle bohème, deux terrasses face à la mer</h2>
-    <svg class="wave" viewBox="0 0 120 12" fill="none" aria-hidden="true"><path d="M2 8 C 14 2, 26 2, 38 8 S 62 14, 74 8 S 98 2, 118 8" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+    <svg class="wave" viewBox="0 0 120 16" fill="none" aria-hidden="true"><path d="M2 8 C 12 2, 24 2, 34 8 C 44 14, 56 14, 66 8 C 76 2, 88 2, 98 8 C 104 11.5, 112 11.5, 118 8" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg>
     <p data-i18n="spaces_p" style="max-width:64ch">À l'intérieur, un cadre lounge et cosy pour les soirées du Nord. Aux beaux jours, deux terrasses sur la digue de Malo-les-Bains — apéro face aux vagues, lettres de Dunkerque en toile de fond, coucher de soleil compris.</p>
     <div class="spaces-grid">
       <figure class="space space--tall"><img src="images/facade-restaurant-my-malo-digue-de-mer-dunkerque.jpg" alt="Façade du restaurant My Malo grande ouverte sur la digue de Mer à Dunkerque" loading="lazy"><figcaption data-i18n="cap_facade">Grande ouverte sur la digue</figcaption></figure>
@@ -448,7 +447,7 @@ footer a{color:var(--jaune)}
   <div class="wrap">
     <span class="eyebrow" data-i18n="rev_eyebrow">Ils en parlent</span>
     <h2 data-i18n="rev_title">Vos avis</h2>
-    <svg class="wave" viewBox="0 0 120 12" fill="none" aria-hidden="true"><path d="M2 8 C 14 2, 26 2, 38 8 S 62 14, 74 8 S 98 2, 118 8" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+    <svg class="wave" viewBox="0 0 120 16" fill="none" aria-hidden="true"><path d="M2 8 C 12 2, 24 2, 34 8 C 44 14, 56 14, 66 8 C 76 2, 88 2, 98 8 C 104 11.5, 112 11.5, 118 8" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg>
     <div class="score">
       <span class="num">4,6</span>
       <span class="stars" aria-label="4,6 étoiles sur 5">★★★★★</span>
@@ -479,7 +478,7 @@ footer a{color:var(--jaune)}
   <div class="wrap">
     <span class="eyebrow">Contact</span>
     <h2 data-i18n="c_title">Sur la digue, face à la mer</h2>
-    <svg class="wave" viewBox="0 0 120 12" fill="none" aria-hidden="true"><path d="M2 8 C 14 2, 26 2, 38 8 S 62 14, 74 8 S 98 2, 118 8" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+    <svg class="wave" viewBox="0 0 120 16" fill="none" aria-hidden="true"><path d="M2 8 C 12 2, 24 2, 34 8 C 44 14, 56 14, 66 8 C 76 2, 88 2, 98 8 C 104 11.5, 112 11.5, 118 8" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg>
     <div class="contact-grid">
       <div class="contact-info">
         <p class="big">2C Digue de Mer<br>59240 Dunkerque — Malo-les-Bains</p>
