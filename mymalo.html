@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Malo — Restaurant face à la mer, Digue de Malo-les-Bains, Dunkerque</title>
+<meta name="description" content="Restaurant My Malo sur la digue de Malo-les-Bains à Dunkerque. Moules de Dunkerque, plats du Nord faits maison, poke bowls. Deux terrasses face à la mer en été. Réservation en ligne.">
+<link rel="canonical" href="https://www.mymalo.fr/">
+<meta property="og:type" content="restaurant">
+<meta property="og:title" content="My Malo — Restaurant face à la mer à Dunkerque">
+<meta property="og:description" content="Moules de Dunkerque, plats du Nord, poke bowls. Sur la digue de Malo-les-Bains, deux terrasses face à la mer. Réservez en ligne.">
+<meta property="og:image" content="https://www.mymalo.fr/images/terrasse-face-mer-restaurant-my-malo-dunkerque.jpg">
+<meta property="og:url" content="https://www.mymalo.fr/">
+<meta property="og:site_name" content="My Malo">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:locale:alternate" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="My Malo — Restaurant face à la mer à Dunkerque">
+<meta name="twitter:image" content="https://www.mymalo.fr/images/terrasse-face-mer-restaurant-my-malo-dunkerque.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "My Malo",
+  "image": "https://www.mymalo.fr/images/facade-restaurant-my-malo-digue-de-mer-dunkerque.jpg",
+  "logo": "https://www.mymalo.fr/images/logo-my-malo-restaurant-dunkerque.png",
+  "url": "https://www.mymalo.fr/",
+  "telephone": "+33979741655",
+  "priceRange": "€€",
+  "servesCuisine": ["Française", "Cuisine du Nord", "Fruits de mer", "Poke bowls"],
+  "acceptsReservations": "https://reservation.laddition.com/booking/mymalo-fr",
+  "hasMenu": "https://www.mymalo.fr/#carte",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "2C Digue de Mer",
+    "addressLocality": "Dunkerque",
+    "postalCode": "59240",
+    "addressCountry": "FR"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 51.0503, "longitude": 2.3990 },
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.6", "reviewCount": "219" },
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "11:30", "closes": "13:30" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "18:30", "closes": "21:30" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday","Sunday"], "opens": "11:30", "closes": "14:30" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday","Sunday"], "opens": "18:30", "closes": "21:30" }
+  ],
+  "sameAs": [
+    "https://www.instagram.com/my.malo/",
+    "https://www.facebook.com/profile.php?id=100093531401384"
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bleu:#2151D3;        /* menu section-title blue */
+  --ciel:#56B7DC;        /* logo sky blue */
+  --jaune:#F5C531;       /* menu rule / subhead yellow */
+  --creme:#FAF6EC;       /* menu paper */
+  --blanc:#FFFFFF;
+  --ink:#22303B;
+  --radius:16px;
+  --maxw:1120px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Poppins',system-ui,sans-serif;color:var(--ink);background:var(--creme);line-height:1.65;font-size:16px}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3,.disp{font-family:'Quicksand',sans-serif;line-height:1.1}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+section{padding:76px 0}
+.eyebrow{font-family:'Quicksand',sans-serif;font-size:.8rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--jaune);text-shadow:0 0 1px rgba(0,0,0,.06)}
+h2{font-size:clamp(1.9rem,4vw,2.7rem);font-weight:700;color:var(--bleu);margin:.3em 0 .3em;text-transform:uppercase;letter-spacing:.02em}
+.wave{width:120px;height:12px;margin:4px 0 26px;color:var(--ciel)}
+.rule-jaune{border:none;border-top:3px solid var(--jaune);width:100%;margin:0}
+
+/* ---------- header ---------- */
+header{position:sticky;top:0;z-index:60;background:rgba(250,246,236,.94);backdrop-filter:blur(8px);border-bottom:3px solid var(--jaune)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:70px;gap:14px}
+.brand{display:flex;align-items:center;text-decoration:none}
+.brand img{height:40px;width:auto}
+.navlinks{display:flex;gap:26px;list-style:none}
+.navlinks a{text-decoration:none;font-weight:500;font-size:.93rem;color:var(--ink)}
+.navlinks a:hover{color:var(--bleu)}
+.nav-actions{display:flex;align-items:center;gap:12px}
+.lang{background:none;border:2px solid var(--ciel);color:var(--bleu);border-radius:999px;padding:5px 13px;font-weight:700;font-size:.8rem;cursor:pointer;font-family:'Quicksand',sans-serif}
+.lang:hover{background:var(--ciel);color:#fff}
+.btn{display:inline-block;text-decoration:none;font-weight:700;font-family:'Quicksand',sans-serif;border-radius:999px;padding:12px 24px;font-size:.95rem;transition:transform .15s ease;text-align:center}
+.btn:hover{transform:translateY(-1px)}
+.btn-jaune{background:var(--jaune);color:var(--ink);box-shadow:0 3px 0 rgba(34,48,59,.18)}
+.btn-bleu{background:var(--bleu);color:#fff}
+.btn-ghost{border:2px solid #fff;color:#fff}
+.burger{display:none;background:none;border:none;cursor:pointer;width:42px;height:42px;position:relative;z-index:80}
+.burger span{display:block;height:2.5px;background:var(--bleu);margin:7px 8px;border-radius:2px;transition:.25s}
+.burger.open span{background:#fff}
+.burger.open span:nth-child(1){transform:translateY(9.5px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-9.5px) rotate(-45deg)}
+.mobile-menu{position:fixed;inset:0;background:var(--bleu);color:#fff;z-index:70;display:none;flex-direction:column;justify-content:center;align-items:center;gap:6px;text-align:center}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-family:'Quicksand',sans-serif;font-size:1.9rem;font-weight:700;text-decoration:none;padding:10px;text-transform:uppercase}
+.mobile-menu a:hover{color:var(--jaune)}
+.mobile-menu .btn{margin-top:22px;font-size:1.05rem;text-transform:none}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:88vh;display:flex;align-items:flex-end;color:#fff;background:var(--bleu);padding:0}
+.hero img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(33,81,211,.12) 30%,rgba(20,38,80,.82) 100%)}
+.hero .wrap{position:relative;z-index:2;padding-bottom:72px;padding-top:130px}
+.hero .logo-hero{height:clamp(60px,9vw,104px);width:auto;filter:drop-shadow(0 2px 10px rgba(0,0,0,.35)) brightness(0) invert(1);margin-bottom:18px}
+.hero h1{font-size:clamp(2rem,5vw,3.4rem);font-weight:700;max-width:18ch;text-transform:uppercase;letter-spacing:.02em}
+.hero p.tag{font-size:clamp(1rem,1.9vw,1.2rem);margin:16px 0 30px;max-width:52ch}
+.hero .ctas{display:flex;gap:14px;flex-wrap:wrap}
+.hero .badge{display:inline-block;background:var(--jaune);color:var(--ink);font-family:'Quicksand',sans-serif;font-weight:700;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;padding:7px 15px;border-radius:999px;margin-bottom:18px}
+
+/* ---------- carte ---------- */
+.carte{background:var(--blanc)}
+.carte-tabs{display:flex;gap:10px;flex-wrap:wrap;margin:6px 0 30px}
+.carte-tabs button{font-family:'Quicksand',sans-serif;font-weight:700;font-size:.9rem;background:none;border:2px solid var(--ciel);color:var(--bleu);border-radius:999px;padding:9px 18px;cursor:pointer}
+.carte-tabs button.active{background:var(--bleu);border-color:var(--bleu);color:#fff}
+.carte-panel{display:none}
+.carte-panel.active{display:grid;grid-template-columns:1fr 1fr;gap:14px 56px}
+.menu-cat{grid-column:1/-1;font-family:'Quicksand',sans-serif;font-weight:700;color:var(--jaune);font-size:.85rem;letter-spacing:.2em;text-transform:uppercase;border-bottom:3px solid var(--jaune);padding-bottom:6px;margin-top:18px}
+.menu-cat:first-child{margin-top:0}
+.dish{break-inside:avoid}
+.dish .line{display:flex;align-items:baseline;gap:8px}
+.dish .name{font-weight:600;text-decoration:underline;text-decoration-color:var(--ciel);text-underline-offset:4px;text-decoration-thickness:2px}
+.dish .dots{flex:1;border-bottom:2px dotted #b9c3cc;transform:translateY(-4px)}
+.dish .price{font-weight:700;color:var(--bleu);white-space:nowrap;font-variant-numeric:tabular-nums}
+.dish .desc{font-size:.86rem;color:#5a6873;font-style:italic;margin-top:2px;max-width:52ch}
+.carte-note{margin-top:34px;font-size:.9rem;color:#5a6873;border-left:4px solid var(--jaune);padding-left:14px;max-width:70ch}
+.menu-formules{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px}
+.formule{background:var(--creme);border:2px solid var(--jaune);border-radius:var(--radius);padding:22px}
+.formule h3{color:var(--bleu);text-transform:uppercase;font-size:1.05rem;display:flex;justify-content:space-between;gap:10px}
+.formule p{font-size:.88rem;margin-top:8px}
+.formule .price{color:var(--bleu);font-weight:700}
+
+/* ---------- horaires ---------- */
+.hours{background:var(--bleu);color:#fff}
+.hours h2{color:#fff}
+.hours .wave{color:var(--jaune)}
+.season-tabs{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 24px}
+.season-tabs button{font-family:'Quicksand',sans-serif;font-weight:700;font-size:.92rem;background:none;border:2px solid rgba(255,255,255,.7);color:#fff;border-radius:999px;padding:9px 20px;cursor:pointer}
+.season-tabs button.active{background:var(--jaune);border-color:var(--jaune);color:var(--ink)}
+.hours-panel{display:none;max-width:640px}
+.hours-panel.active{display:block}
+.hours-table{width:100%;border-collapse:collapse;margin:8px 0}
+.hours-table td{padding:11px 6px;border-bottom:1px solid rgba(255,255,255,.25);font-size:.97rem}
+.hours-table td:last-child{text-align:right;font-variant-numeric:tabular-nums}
+.hours-note{font-size:.87rem;opacity:.8;margin-top:16px;max-width:58ch}
+.season-flash{background:var(--jaune);color:var(--ink);padding:10px 16px;border-radius:10px;font-weight:600;font-size:.9rem;display:inline-block;margin-top:12px}
+
+/* ---------- lieux / galerie ---------- */
+.spaces-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
+.space{position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:0 4px 18px rgba(34,48,59,.12)}
+.space img{height:280px;width:100%;object-fit:cover;transition:transform .4s ease}
+.space:hover img{transform:scale(1.045)}
+.space figcaption{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(transparent,rgba(20,38,80,.88));color:#fff;padding:38px 16px 13px;font-weight:600;font-size:.92rem;font-family:'Quicksand',sans-serif}
+.space--tall{grid-row:span 2}
+.space--tall img{height:100%;min-height:576px}
+
+/* ---------- avis ---------- */
+.reviews{background:var(--blanc)}
+.score{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:6px}
+.score .num{font-family:'Quicksand',sans-serif;font-size:3.6rem;font-weight:700;color:var(--bleu)}
+.stars{color:var(--jaune);font-size:1.5rem;letter-spacing:3px}
+.review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:30px 0}
+.review{background:var(--creme);border-radius:var(--radius);padding:26px;border-top:5px solid var(--ciel);font-size:.94rem}
+.review .who{font-weight:600;margin-top:14px;color:var(--bleu);font-size:.86rem;font-family:'Quicksand',sans-serif}
+.review .stars{font-size:1rem;letter-spacing:2px}
+
+/* ---------- contact ---------- */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:start;margin-top:26px}
+.contact-grid iframe{width:100%;height:350px;border:none;border-radius:var(--radius);box-shadow:0 4px 18px rgba(34,48,59,.12)}
+.contact-info p{margin-bottom:14px}
+.contact-info .big{font-family:'Quicksand',sans-serif;font-size:1.4rem;font-weight:700;color:var(--bleu)}
+.contact-info a{color:var(--bleu);font-weight:600}
+.socials{display:flex;gap:12px;margin-top:20px;flex-wrap:wrap}
+.socials a{text-decoration:none;font-weight:700;font-family:'Quicksand',sans-serif;border:2px solid var(--ciel);color:var(--bleu);border-radius:999px;padding:8px 18px;font-size:.88rem}
+.socials a:hover{background:var(--ciel);color:#fff;border-color:var(--ciel)}
+
+/* ---------- footer ---------- */
+footer{background:var(--bleu);color:#fff;padding:42px 0;font-size:.9rem}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+footer img{height:34px;filter:brightness(0) invert(1)}
+footer a{color:var(--jaune)}
+
+/* ---------- sticky mobile reserve ---------- */
+.sticky-reserve{position:fixed;left:0;right:0;bottom:0;z-index:55;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:rgba(33,81,211,.97);display:none}
+.sticky-reserve .btn{width:100%;font-size:1.05rem}
+
+/* ---------- responsive ---------- */
+@media (max-width:920px){
+  .navlinks{display:none}
+  .nav-actions .btn{display:none}
+  .burger{display:block}
+  .review-grid{grid-template-columns:1fr}
+  .spaces-grid{grid-template-columns:1fr 1fr}
+  .space--tall{grid-row:auto}
+  .space--tall img{min-height:280px;height:280px}
+  .contact-grid{grid-template-columns:1fr}
+  .carte-panel.active{grid-template-columns:1fr}
+  .menu-formules{grid-template-columns:1fr}
+  .sticky-reserve{display:block}
+  body{padding-bottom:72px}
+  section{padding:58px 0}
+}
+:focus-visible{outline:3px solid var(--jaune);outline-offset:2px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="My Malo — accueil">
+      <img src="images/logo-my-malo-restaurant-dunkerque.png" alt="Logo My Malo, restaurant à Dunkerque">
+    </a>
+    <nav aria-label="principal">
+      <ul class="navlinks">
+        <li><a href="#carte" data-i18n="nav_menu">La carte</a></li>
+        <li><a href="#horaires" data-i18n="nav_hours">Horaires</a></li>
+        <li><a href="#lieux" data-i18n="nav_spaces">Le lieu</a></li>
+        <li><a href="#avis" data-i18n="nav_reviews">Avis</a></li>
+        <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="nav-actions">
+      <button class="lang" id="langToggle" aria-label="Switch language">EN</button>
+      <a class="btn btn-jaune" href="https://reservation.laddition.com/booking/mymalo-fr" target="_blank" rel="noopener" data-i18n="reserve">Réserver</a>
+      <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#carte" data-i18n="nav_menu">La carte</a>
+  <a href="#horaires" data-i18n="nav_hours">Horaires</a>
+  <a href="#lieux" data-i18n="nav_spaces">Le lieu</a>
+  <a href="#avis" data-i18n="nav_reviews">Avis</a>
+  <a href="#contact" data-i18n="nav_contact">Contact</a>
+  <a class="btn btn-jaune" href="https://reservation.laddition.com/booking/mymalo-fr" target="_blank" rel="noopener" data-i18n="reserve_table">Réserver une table</a>
+</div>
+
+<main id="top">
+
+<section class="hero">
+  <img class="bg" src="images/terrasse-face-mer-restaurant-my-malo-dunkerque.jpg" alt="Terrasse du restaurant My Malo face à la mer, sur la digue de Malo-les-Bains à Dunkerque" fetchpriority="high">
+  <div class="wrap">
+    <span class="badge" data-i18n="hero_badge">Digue de Malo-les-Bains · Dunkerque</span>
+    <h1 data-i18n="hero_title">Face à la mer, les pieds dans le Nord</h1>
+    <p class="tag" data-i18n="hero_sub">Moules de Dunkerque, plats du Nord faits maison et poke bowls fraîcheur — dans un cadre lounge et bohème, sur la digue, à deux pas de la plage.</p>
+    <div class="ctas">
+      <a class="btn btn-jaune" href="https://reservation.laddition.com/booking/mymalo-fr" target="_blank" rel="noopener" data-i18n="reserve_table">Réserver une table</a>
+      <a class="btn btn-ghost" href="#carte" data-i18n="see_menu">Voir la carte</a>
+    </div>
+  </div>
+</section>
+
+<section class="carte" id="carte">
+  <div class="wrap">
+    <span class="eyebrow" data-i18n="menu_eyebrow">Fait maison · Produits frais</span>
+    <h2 data-i18n="menu_title">La carte</h2>
+    <svg class="wave" viewBox="0 0 120 12" fill="none" aria-hidden="true"><path d="M2 8 C 14 2, 26 2, 38 8 S 62 14, 74 8 S 98 2, 118 8" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+
+    <div class="carte-tabs" role="tablist">
+      <button class="active" data-panel="c-entrees" data-i18n="tab_starters">Entrées &amp; planches</button>
+      <button data-panel="c-plats" data-i18n="tab_mains">Plats</button>
+      <button data-panel="c-mer" data-i18n="tab_sea">Moules &amp; poissons</button>
+      <button data-panel="c-poke" data-i18n="tab_poke">Pokébowls &amp; salades</button>
+      <button data-panel="c-desserts" data-i18n="tab_desserts">Desserts &amp; glaces</button>
+      <button data-panel="c-boissons" data-i18n="tab_drinks">Boissons</button>
+    </div>
+
+    <!-- ENTRÉES -->
+    <div class="carte-panel active" id="c-entrees">
+      <div class="dish"><div class="line"><span class="name">Planche du terroir <em>(2 à 4 pers.)</em></span><span class="dots"></span><span class="price">15,00€</span></div><p class="desc" data-i18n="d_terroir">Fromages locaux de la ferme des Moëres (Flamand rouge, craquant, Tomme Flamande à la bière) et charcuterie des salaisons du « Clair bois ».</p></div>
+      <div class="dish"><div class="line"><span class="name">Planche de la mer <em>(2 à 4 pers.)</em></span><span class="dots"></span><span class="price">18,00€</span></div><p class="desc" data-i18n="d_planchemer">Saumon fumé, flétan fumé, tartinade de thon maison, gambas sautées. Disponible de mai à septembre.</p></div>
+      <div class="dish"><div class="line"><span class="name">Tortillas et guacamole</span><span class="dots"></span><span class="price">7,50€</span></div></div>
+      <div class="dish"><div class="line"><span class="name">Œufs mayonnaise maison</span><span class="dots"></span><span class="price">6,50€</span></div></div>
+      <div class="dish"><div class="line"><span class="name">Tartare duo de saumon</span><span class="dots"></span><span class="price">13,00€</span></div><p class="desc" data-i18n="d_tartare_e">Duo de saumon cru et saumon fumé.</p></div>
+      <div class="dish"><div class="line"><span class="name">Croquettes de crevettes grises ×2</span><span class="dots"></span><span class="price">15,00€</span></div><p class="desc" data-i18n="d_croq2">Croquettes artisanales de la Malle aux Croquettes, fabriquées à Dunkerque, sauce tartare maison.</p></div>
+    </div>
+
+    <!-- PLATS -->
+    <div class="carte-panel" id="c-plats">
+      <div class="menu-cat" data-i18n="cat_brasserie">Plats brasserie</div>
+      <div class="dish"><div class="line"><span class="name">Poulet croustillant maison</span><span class="dots"></span><span class="price">17,00€</span></div></div>
+      <div class="dish"><div class="line"><span class="name">Bavette Black Angus 180g</span><span class="dots"></span><span class="price">18,50€</span></div></div>
+      <div class="dish"><div class="line"><span class="name">Bavette Black Angus XL 300g</span><span class="dots"></span><span class="price">28,00€</span></div></div>
+      <div class="dish"><div class="line"><span class="name">Burger bœuf, poulet ou végétarien</span><span class="dots"></span><span class="price">17,00€</span></div><p class="desc" data-i18n="d_burger">Bun brioché, salade, tomate, oignons pickles, cheddar ou Maroilles, sauce burger My Malo.</p></div>
+      <div class="dish"><div class="line"><span class="name">Tartare de bœuf au couteau</span><span class="dots"></span><span class="price">18,50€</span></div><p class="desc" data-i18n="d_tartareb">Sauce cocktail My Malo, jaune d'œuf et ses condiments.</p></div>
+      <div class="dish"><div class="line"><span class="name">Chaud biloute</span><span class="dots"></span><span class="price">21,00€</span></div><p class="desc" data-i18n="d_biloute">Fromage du Nord de la ferme du pont des loups, cuit au four, et sa charcuterie des salaisons du « Clair bois ».</p></div>
+      <div class="menu-cat" data-i18n="cat_nord">Plats du Nord</div>
+      <div class="dish"><div class="line"><span class="name">Émincé de poulet Maroilles maison</span><span class="dots"></span><span class="price">18,50€</span></div></div>
+      <div class="dish"><div class="line"><span class="name">Carbonade flamande maison</span><span class="dots"></span><span class="price">19,00€</span></div><p class="desc" data-i18n="d_carbo">Ragoût de bœuf mijoté à la bière et au pain d'épices.</p></div>
+      <div class="dish"><div class="line"><span class="name">Potjevleesch</span><span class="dots"></span><span class="price">18,50€</span></div><p class="desc" data-i18n="d_potje">Viande de poulet, porc et lapin en gelée de bouillon.</p></div>
+      <div class="menu-cat" data-i18n="cat_sides">Accompagnements &amp; sauces</div>
+      <div class="dish"><div class="line"><span class="name" data-i18n="d_sides_n">Frites cuites au gras de bœuf, riz, ratatouille maison et/ou salade</span></div><p class="desc" data-i18n="d_sides">Portion supplémentaire +3€.</p></div>
+      <div class="dish"><div class="line"><span class="name" data-i18n="d_sauces_n">Sauces maison</span><span class="dots"></span><span class="price">1,00€</span></div><p class="desc" data-i18n="d_sauces">Mayonnaise, Maroilles, cheddar, échalotes, poivre, curry, chorizo ou tartare.</p></div>
+      <div class="menu-formules">
+        <div class="formule">
+          <h3><span data-i18n="f1_t">Menu My Malo</span><span class="price">25,00€</span></h3>
+          <p data-i18n="f1_p"><strong>Uniquement du lundi au vendredi midi, hors jours fériés.</strong><br>Plat : moules au choix, bavette Black Angus 180g ou pokébowl · Dessert : mousse au chocolat ou Dame blanche · Boisson : Loburg 25cL, verre de vin ou soft.</p>
+        </div>
+        <div class="formule">
+          <h3><span data-i18n="f2_t">Menu enfant −12 ans</span><span class="price">10,50€</span></h3>
+          <p data-i18n="f2_p">Plat : moules enfant ou nuggets frites · Dessert : crêpe au sucre ou boule de glace.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- MER -->
+    <div class="carte-panel" id="c-mer">
+      <div class="dish"><div class="line"><span class="name">Moules frites</span><span class="dots"></span><span class="price">18,00€</span></div><p class="desc" data-i18n="d_moules">Moules de Dunkerque (selon arrivage), frites et mayonnaise maison. Au choix : marinières, Maroilles, à l'ail, curry, chorizo ou crème.</p></div>
+      <div class="dish"><div class="line"><span class="name">Fish and chips maison</span><span class="dots"></span><span class="price">16,00€</span></div><p class="desc" data-i18n="d_fish">Dos de lieu noir servi avec frites et sauce tartare maison.</p></div>
+      <div class="dish"><div class="line"><span class="name">Cassolette du pêcheur</span><span class="dots"></span><span class="price">23,00€</span></div><p class="desc" data-i18n="d_casso">Poisson du jour et/ou crustacés selon arrivage, sauce échalotes ou chorizo, ratatouille maison.</p></div>
+      <div class="dish"><div class="line"><span class="name">Tartare duo de saumon</span><span class="dots"></span><span class="price">19,50€</span></div><p class="desc" data-i18n="d_tartare_p">Duo de saumon cru et saumon fumé.</p></div>
+      <div class="dish"><div class="line"><span class="name">Croquettes de crevettes grises ×3</span><span class="dots"></span><span class="price">23,00€</span></div><p class="desc" data-i18n="d_croq3">Croquettes artisanales fabriquées à Dunkerque, sauce tartare maison.</p></div>
+    </div>
+
+    <!-- POKE -->
+    <div class="carte-panel" id="c-poke">
+      <div class="menu-cat" data-i18n="cat_poke">Pokébowls — 17,00€</div>
+      <div class="dish"><div class="line"><span class="name" data-i18n="d_pokebase_n">La base</span></div><p class="desc" data-i18n="d_pokebase">Riz à sushi vinaigré, légumes cuisinés maison et légumes crus : edamame, avocat (selon arrivage), concombres marinés, choux marinés, carottes, chou chinois cuit, graines de sésame et de courge. Sauce au choix : soja salé, sucré ou sriracha.</p></div>
+      <div class="dish"><div class="line"><span class="name">Pokébowl poulet croustillant maison</span><span class="dots"></span><span class="price">17,00€</span></div></div>
+      <div class="dish"><div class="line"><span class="name">Pokébowl duo de saumon</span><span class="dots"></span><span class="price">19,00€</span></div></div>
+      <div class="dish"><div class="line"><span class="name">Pokébowl gambas sautées</span><span class="dots"></span><span class="price">19,00€</span></div></div>
+      <div class="dish"><div class="line"><span class="name">Pokébowl œufs durs</span><span class="dots"></span><span class="price">17,00€</span></div></div>
+      <div class="dish"><div class="line"><span class="name">Pokébowl vegan</span><span class="dots"></span><span class="price">17,00€</span></div><p class="desc" data-i18n="d_pokevegan">Boulettes de légumineuse maison.</p></div>
+      <div class="menu-cat" data-i18n="cat_salades">Salades</div>
+      <div class="dish"><div class="line"><span class="name">Salade poulet croustillant maison</span><span class="dots"></span><span class="price">17,00€</span></div></div>
+      <div class="dish"><div class="line"><span class="name">Salade duo de saumon cru et fumé</span><span class="dots"></span><span class="price">18,50€</span></div></div>
+      <div class="dish"><div class="line"><span class="name">Salade de la mer</span><span class="dots"></span><span class="price">19,00€</span></div><p class="desc" data-i18n="d_salmer">Croquettes de crevettes grises ×2 et tranche de saumon fumé.</p></div>
+      <div class="dish"><div class="line"><span class="name">Salade végétarienne / vegan</span><span class="dots"></span><span class="price">17,00€</span></div><p class="desc" data-i18n="d_salveg">Boulettes de légumineuse maison.</p></div>
+    </div>
+
+    <!-- DESSERTS -->
+    <div class="carte-panel" id="c-desserts">
+      <div class="menu-cat" data-i18n="cat_desserts">Desserts</div>
+      <div class="dish"><div class="line"><span class="name">Mousse au chocolat maison</span><span class="dots"></span><span class="price">6,50€</span></div></div>
+      <div class="dish"><div class="line"><span class="name">Brioche perdue</span><span class="dots"></span><span class="price">7,50€</span></div><p class="desc" data-i18n="d_brioche">Nappée de caramel maison et boule de glace vanille artisanale.</p></div>
+      <div class="dish"><div class="line"><span class="name">Fondant au chocolat</span><span class="dots"></span><span class="price">6,50€</span></div></div>
+      <div class="dish"><div class="line"><span class="name">Café ou thé gourmand</span><span class="dots"></span><span class="price">10,50€</span></div><p class="desc" data-i18n="d_gourmand">Mignardises : mousse chocolat, cannelé, muffin caramel et pom-pie.</p></div>
+      <div class="menu-cat" data-i18n="cat_glaces">Glaces artisanales</div>
+      <div class="dish"><div class="line"><span class="name" data-i18n="d_coupes_n">Coupe 1 / 2 / 3 boules</span><span class="dots"></span><span class="price">3,50 / 6,00 / 7,50€</span></div><p class="desc" data-i18n="d_parfums">Vanille délice bourbon Madagascar, fraise, chocolat fleur de cao, café moka Éthiopie, caramel beurre salé de Guérande, pistache de Sicile, spéculoos, sorbets citron et melon.</p></div>
+      <div class="menu-cat" data-i18n="cat_coupes">Coupes artisanales — 8,50€</div>
+      <div class="dish"><div class="line"><span class="name">Dame Blanche, noire ou café</span><span class="dots"></span><span class="price">8,50€</span></div></div>
+      <div class="dish"><div class="line"><span class="name">Banana split</span><span class="dots"></span><span class="price">9,50€</span></div></div>
+      <div class="dish"><div class="line"><span class="name">La My Malo</span><span class="dots"></span><span class="price">8,50€</span></div><p class="desc" data-i18n="d_coupemalo">1 boule vanille, 1 caramel beurre salé, 1 spéculoos, coulis caramel maison, chantilly et brisures de spéculoos.</p></div>
+      <div class="dish"><div class="line"><span class="name">Colonnel</span><span class="dots"></span><span class="price">8,50€</span></div><p class="desc" data-i18n="d_colonnel">2 boules sorbet citron, 4cL vodka.</p></div>
+      <div class="menu-cat" data-i18n="cat_crepes">Crêpes du Nord &amp; gaufres liégeoises</div>
+      <div class="dish"><div class="line"><span class="name" data-i18n="d_crepes_n">Nature, sucre, vergeoise, Nutella, spéculoos, caramel maison…</span><span class="dots"></span><span class="price">3,00 – 8,50€</span></div><p class="desc" data-i18n="d_crepes">Jusqu'à la Gourmande : banane, caramel maison, glace artisanale vanille et chantilly.</p></div>
+    </div>
+
+    <!-- BOISSONS -->
+    <div class="carte-panel" id="c-boissons">
+      <div class="menu-cat" data-i18n="cat_biere">Bières pression &amp; bouteilles</div>
+      <div class="dish"><div class="line"><span class="name" data-i18n="d_pression_n">Pressions 25 / 33 / 50cL</span><span class="dots"></span><span class="price" data-i18n="d_pression_p">dès 3,50€</span></div><p class="desc" data-i18n="d_pression">Loburg, Bon Secours Prestige, Gallia West IPA, Cuvée des Trolls, Kasteel Rubus, bière du moment, Picon bière…</p></div>
+      <div class="dish"><div class="line"><span class="name" data-i18n="d_bout_n">Bouteilles 33cL</span><span class="dots"></span><span class="price">4,50 – 7,50€</span></div><p class="desc" data-i18n="d_bout">Vedett Blanche, Duvel, Chimay Bleue, Paix Dieu, 1664 sans alcool.</p></div>
+      <div class="menu-cat" data-i18n="cat_cocktails">Cocktails</div>
+      <div class="dish"><div class="line"><span class="name" data-i18n="d_cockt_n">Avec alcool</span><span class="dots"></span><span class="price">4,00 – 11,00€</span></div><p class="desc" data-i18n="d_cockt">Punch maison, mojito, spritz, gin tonic, Pina Colada by My Malo, Crazy Melon by My Malo.</p></div>
+      <div class="dish"><div class="line"><span class="name" data-i18n="d_smooth_n">Sans alcool &amp; smoothies</span><span class="dots"></span><span class="price">6,50 – 9,50€</span></div><p class="desc" data-i18n="d_smooth">Melon en folie, Rouge tentation, L'exotique, Coco Câline, virgin mojito, virgin gin tonic.</p></div>
+      <div class="menu-cat" data-i18n="cat_vins">Vins &amp; bulles</div>
+      <div class="dish"><div class="line"><span class="name" data-i18n="d_vins_n">Blancs, rouges, rosés</span><span class="dots"></span><span class="price" data-i18n="d_vins_p">verre dès 4,50€</span></div><p class="desc" data-i18n="d_vins">Chardonnay, Côtes du Rhône AOP, Chablis AOP, Pinot noir, ST Nicolas de Bourgueil, Côtes de Provence AOP… Bouteilles de 24€ à 42€.</p></div>
+      <div class="dish"><div class="line"><span class="name" data-i18n="d_bulles_n">Champagne &amp; bulles</span><span class="dots"></span><span class="price" data-i18n="d_bulles_p">coupe dès 5,50€</span></div><p class="desc" data-i18n="d_bulles">Imaginarium blanc de blanc brut, Champagne Veuve de Beaumont.</p></div>
+      <div class="menu-cat" data-i18n="cat_chaud">Boissons chaudes &amp; softs</div>
+      <div class="dish"><div class="line"><span class="name" data-i18n="d_cafe_n">Cafés &amp; thés Malongo</span><span class="dots"></span><span class="price">2,50 – 5,50€</span></div><p class="desc" data-i18n="d_cafe">Expresso, café viennois, latte, chocolat chaud, Irish ou Bailey's coffee, thés Darjeeling et infusions. Décaféiné sur demande.</p></div>
+      <div class="dish"><div class="line"><span class="name" data-i18n="d_soft_n">Softs &amp; jus</span><span class="dots"></span><span class="price">3,00 – 5,00€</span></div><p class="desc" data-i18n="d_soft">Eaux, sodas, jus Granini, sirops, diabolos.</p></div>
+    </div>
+
+    <p class="carte-note" data-i18n="carte_note">Origines viandes et poissons : poulet des Hauts-de-France, bavette Angus U.E., bœuf U.E./France, moules de Dunkerque selon arrivage, saumon élevé en Écosse, crevettes grises pêchées en mer du Nord, charcuterie régionale des Hauts-de-France. La liste des allergènes est disponible sur demande. Prix taxes et service compris. L'abus d'alcool est dangereux pour la santé, à consommer avec modération.</p>
+  </div>
+</section>
+
+<section class="hours" id="horaires">
+  <div class="wrap">
+    <span class="eyebrow" data-i18n="hours_eyebrow">Horaires</span>
+    <h2 data-i18n="hours_title">On vous attend, selon la saison</h2>
+    <svg class="wave" viewBox="0 0 120 12" fill="none" aria-hidden="true"><path d="M2 8 C 14 2, 26 2, 38 8 S 62 14, 74 8 S 98 2, 118 8" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+
+    <div class="season-tabs" role="tablist">
+      <button class="active" data-panel="p-normal" data-i18n="tab_normal">Saison classique</button>
+      <button data-panel="p-ete" data-i18n="tab_summer">Été · terrasses</button>
+      <button data-panel="p-fetes" data-i18n="tab_holidays">Fêtes de fin d'année</button>
+      <button data-panel="p-carnaval" data-i18n="tab_carnival">Carnaval</button>
+    </div>
+
+    <div class="hours-panel active" id="p-normal">
+      <table class="hours-table">
+        <tr><td data-i18n="d_monfri">Lundi – Vendredi</td><td>11:30 – 13:30 &nbsp;/&nbsp; 18:30 – 21:30</td></tr>
+        <tr><td data-i18n="d_weekend">Samedi – Dimanche</td><td>11:30 – 14:30 &nbsp;/&nbsp; 18:30 – 21:30</td></tr>
+      </table>
+    </div>
+
+    <div class="hours-panel" id="p-ete">
+      <table class="hours-table">
+        <tr><td data-i18n="d_everyday">Tous les jours</td><td>11:30 – 14:30 &nbsp;/&nbsp; 18:30 – 22:00</td></tr>
+      </table>
+      <span class="season-flash" data-i18n="flash_summer">☀️ Nos deux terrasses face à la mer sont ouvertes !</span>
+    </div>
+
+    <div class="hours-panel" id="p-fetes">
+      <table class="hours-table">
+        <tr><td data-i18n="d_vac">Vacances scolaires</td><td>11:30 – 14:30 &nbsp;/&nbsp; 18:30 – 21:30</td></tr>
+        <tr><td data-i18n="d_2412">24 &amp; 31 décembre</td><td data-i18n="v_midi">Service du midi uniquement</td></tr>
+        <tr><td data-i18n="d_2512">25 décembre &amp; 1er janvier</td><td data-i18n="v_ferme">Fermé</td></tr>
+      </table>
+    </div>
+
+    <div class="hours-panel" id="p-carnaval">
+      <table class="hours-table">
+        <tr><td data-i18n="d_bandes">Jours de bandes</td><td data-i18n="v_bandes">Ouvert en continu — venez en clet'che !</td></tr>
+        <tr><td data-i18n="d_autres">Autres jours</td><td data-i18n="v_autres">Horaires de saison classique</td></tr>
+      </table>
+      <span class="season-flash" data-i18n="flash_carnival">🎭 Pendant le Carnaval de Dunkerque, suivez nos réseaux pour les horaires du jour !</span>
+    </div>
+
+    <p class="hours-note" data-i18n="hours_note">Nos horaires sont indicatifs et peuvent évoluer selon la saison et la météo. En cas de doute, appelez-nous au 09 79 74 16 55.</p>
+  </div>
+</section>
+
+<section id="lieux">
+  <div class="wrap">
+    <span class="eyebrow" data-i18n="spaces_eyebrow">Le lieu</span>
+    <h2 data-i18n="spaces_title">Une salle bohème, deux terrasses face à la mer</h2>
+    <svg class="wave" viewBox="0 0 120 12" fill="none" aria-hidden="true"><path d="M2 8 C 14 2, 26 2, 38 8 S 62 14, 74 8 S 98 2, 118 8" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+    <p data-i18n="spaces_p" style="max-width:64ch">À l'intérieur, un cadre lounge et cosy pour les soirées du Nord. Aux beaux jours, deux terrasses sur la digue de Malo-les-Bains — apéro face aux vagues, lettres de Dunkerque en toile de fond, coucher de soleil compris.</p>
+    <div class="spaces-grid">
+      <figure class="space space--tall"><img src="images/facade-restaurant-my-malo-digue-de-mer-dunkerque.jpg" alt="Façade du restaurant My Malo grande ouverte sur la digue de Mer à Dunkerque" loading="lazy"><figcaption data-i18n="cap_facade">Grande ouverte sur la digue</figcaption></figure>
+      <figure class="space"><img src="images/terrasse-parasols-vue-mer-restaurant-my-malo.jpg" alt="Terrasse du My Malo sous les parasols avec vue sur la mer du Nord" loading="lazy"><figcaption data-i18n="cap_terrasse1">Les terrasses, en été</figcaption></figure>
+      <figure class="space"><img src="images/table-terrasse-restaurant-my-malo-malo-les-bains.jpg" alt="Table dressée en terrasse au restaurant My Malo à Malo-les-Bains" loading="lazy"><figcaption data-i18n="cap_table">Votre table vous attend</figcaption></figure>
+      <figure class="space"><img src="images/terrasse-vue-lettres-dunkerque-my-malo.jpg" alt="Vue sur les lettres Dunkerque depuis la terrasse du restaurant My Malo" loading="lazy"><figcaption data-i18n="cap_lettres">Vue sur les lettres de Dunkerque</figcaption></figure>
+      <figure class="space"><img src="images/restaurant-my-malo-terrasse-soir-digue-dunkerque.jpg" alt="Restaurant My Malo le soir avec ses guirlandes lumineuses sur la digue de Dunkerque" loading="lazy"><figcaption data-i18n="cap_soir">Les soirées sur la digue</figcaption></figure>
+      <figure class="space"><img src="images/plage-dunkerque-malo-les-bains-lettres-dunkerque.jpg" alt="Plage de Malo-les-Bains et lettres Dunkerque, à deux pas du restaurant" loading="lazy"><figcaption data-i18n="cap_plage">La plage, juste en face</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="reviews" id="avis">
+  <div class="wrap">
+    <span class="eyebrow" data-i18n="rev_eyebrow">Ils en parlent</span>
+    <h2 data-i18n="rev_title">Vos avis</h2>
+    <svg class="wave" viewBox="0 0 120 12" fill="none" aria-hidden="true"><path d="M2 8 C 14 2, 26 2, 38 8 S 62 14, 74 8 S 98 2, 118 8" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+    <div class="score">
+      <span class="num">4,6</span>
+      <span class="stars" aria-label="4,6 étoiles sur 5">★★★★★</span>
+      <span data-i18n="rev_count">sur Google — plus de 200 avis</span>
+    </div>
+    <div class="review-grid">
+      <div class="review">
+        <span class="stars">★★★★★</span>
+        <p data-i18n="rev1">« Commande rapide, plats délicieux, belle déco, équipe souriante et prix corrects. Pour moi, un des meilleurs restaurants de Dunkerque ! »</p>
+        <p class="who">Dimitri — Google</p>
+      </div>
+      <div class="review">
+        <span class="stars">★★★★★</span>
+        <p data-i18n="rev2">« Endroit chaleureux, plats particulièrement savoureux. Mention spéciale pour le service, très sympathique. Je recommande. »</p>
+        <p class="who">Rudy — Google</p>
+      </div>
+      <div class="review">
+        <span class="stars">★★★★★</span>
+        <p data-i18n="rev3">« Serveuse attentionnée et parfaitement anglophone, plats arrivés sans attente, prix très raisonnables pour le front de mer. J'y retournerai. »</p>
+        <p class="who">Ryan — Google</p>
+      </div>
+    </div>
+    <a class="btn btn-bleu" href="https://www.google.com/maps/search/?api=1&query=My+Malo+2C+Digue+de+Mer+59240+Dunkerque" target="_blank" rel="noopener" data-i18n="rev_all">Lire tous les avis sur Google</a>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <span class="eyebrow">Contact</span>
+    <h2 data-i18n="c_title">Sur la digue, face à la mer</h2>
+    <svg class="wave" viewBox="0 0 120 12" fill="none" aria-hidden="true"><path d="M2 8 C 14 2, 26 2, 38 8 S 62 14, 74 8 S 98 2, 118 8" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <p class="big">2C Digue de Mer<br>59240 Dunkerque — Malo-les-Bains</p>
+        <p><a href="https://www.google.com/maps/dir//My+Malo,+2C+Digue+de+Mer,+59240+Dunkerque" target="_blank" rel="noopener" data-i18n="c_dir">Itinéraire via Google Maps →</a></p>
+        <p data-i18n="c_phone_label">Réservez par téléphone :</p>
+        <p class="big"><a href="tel:+33979741655" style="text-decoration:none">09 79 74 16 55</a></p>
+        <a class="btn btn-jaune" href="https://reservation.laddition.com/booking/mymalo-fr" target="_blank" rel="noopener" data-i18n="c_book">Réserver en ligne</a>
+        <div class="socials">
+          <a href="https://www.instagram.com/my.malo/" target="_blank" rel="noopener">Instagram @my.malo</a>
+          <a href="https://www.facebook.com/profile.php?id=100093531401384" target="_blank" rel="noopener">Facebook</a>
+        </div>
+      </div>
+      <iframe title="Carte — My Malo, Dunkerque" src="https://maps.google.com/maps?q=My%20Malo%2C%202C%20Digue%20de%20Mer%2C%2059240%20Dunkerque&z=16&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <img src="images/logo-my-malo-restaurant-dunkerque.png" alt="My Malo" style="margin-bottom:10px">
+      2C Digue de Mer, 59240 Dunkerque<br>
+      <span data-i18n="f_line">Moules de Dunkerque · Plats du Nord · Pokébowls · Fait maison</span>
+    </div>
+    <div>
+      <a href="https://www.instagram.com/my.malo/" target="_blank" rel="noopener">@my.malo</a><br>
+      © 2026 My Malo
+    </div>
+  </div>
+</footer>
+
+<div class="sticky-reserve">
+  <a class="btn btn-jaune" href="https://reservation.laddition.com/booking/mymalo-fr" target="_blank" rel="noopener" data-i18n="reserve_table">Réserver une table</a>
+</div>
+
+<script>
+/* ---------- hamburger ---------- */
+const burger = document.getElementById('burger');
+const mobileMenu = document.getElementById('mobileMenu');
+burger.addEventListener('click', () => {
+  const open = mobileMenu.classList.toggle('open');
+  burger.classList.toggle('open', open);
+  burger.setAttribute('aria-expanded', open);
+  document.body.style.overflow = open ? 'hidden' : '';
+});
+mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  mobileMenu.classList.remove('open'); burger.classList.remove('open');
+  burger.setAttribute('aria-expanded','false'); document.body.style.overflow='';
+}));
+
+/* ---------- tab systems (carte + hours) ---------- */
+function tabs(sel){
+  document.querySelectorAll(sel + ' button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const group = btn.closest(sel);
+      group.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+      const container = group.parentElement;
+      container.querySelectorAll('.carte-panel, .hours-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.panel).classList.add('active');
+    });
+  });
+}
+tabs('.carte-tabs');
+tabs('.season-tabs');
+
+/* ---------- i18n ---------- */
+const i18n = {
+  fr: {}, // captured from DOM
+  en: {
+    nav_menu:"Menu", nav_hours:"Opening hours", nav_spaces:"The place", nav_reviews:"Reviews", nav_contact:"Contact",
+    reserve:"Book a table", reserve_table:"Book a table", see_menu:"See the menu",
+    hero_badge:"Malo-les-Bains seafront · Dunkirk",
+    hero_title:"Facing the sea, rooted in the North",
+    hero_sub:"Dunkirk mussels, homemade Northern-French classics and fresh poke bowls — in a laid-back, boho setting right on the seafront promenade, steps from the beach.",
+    menu_eyebrow:"Homemade · Fresh produce", menu_title:"The menu",
+    tab_starters:"Starters & boards", tab_mains:"Mains", tab_sea:"Mussels & fish", tab_poke:"Poke bowls & salads", tab_desserts:"Desserts & ice cream", tab_drinks:"Drinks",
+    d_terroir:"Local farmhouse cheeses from Ferme des Moëres (Flamand rouge, craquant, beer-washed Tomme Flamande) and regional cured meats from « Clair bois ».",
+    d_planchemer:"Smoked salmon, smoked halibut, homemade tuna spread, sautéed prawns. Available May to September.",
+    d_tartare_e:"Duo of raw and smoked salmon.",
+    d_croq2:"Artisan grey-shrimp croquettes from La Malle aux Croquettes, made in Dunkirk, homemade tartare sauce.",
+    cat_brasserie:"Brasserie mains", cat_nord:"Northern classics", cat_sides:"Sides & sauces",
+    d_burger:"Brioche bun, lettuce, tomato, pickled onions, cheddar or Maroilles cheese, My Malo burger sauce.",
+    d_tartareb:"Hand-cut beef tartare, My Malo cocktail sauce, egg yolk and condiments.",
+    d_biloute:"Oven-baked Northern cheese from Ferme du Pont des Loups with regional cured meats.",
+    d_carbo:"Beef stew slow-cooked in beer with gingerbread.",
+    d_potje:"Chicken, pork and rabbit set in jellied broth — a Flemish classic.",
+    d_sides_n:"Beef-fat fries, rice, homemade ratatouille and/or salad",
+    d_sides:"Extra portion +€3.",
+    d_sauces_n:"Homemade sauces",
+    d_sauces:"Mayonnaise, Maroilles, cheddar, shallot, pepper, curry, chorizo or tartare.",
+    f1_t:"My Malo set menu", f1_p:"<strong>Monday to Friday lunch only, excluding public holidays.</strong><br>Main: mussels of your choice, 180g Black Angus bavette or poke bowl · Dessert: chocolate mousse or Dame blanche · Drink: Loburg 25cL, glass of wine or soft drink.",
+    f2_t:"Kids' menu (under 12)", f2_p:"Main: kids' mussels or nuggets and fries · Dessert: sugar crêpe or scoop of ice cream.",
+    d_moules:"Dunkirk mussels (subject to landings), fries and homemade mayonnaise. Choose: marinière, Maroilles, garlic, curry, chorizo or cream.",
+    d_fish:"Coley fillet with fries and homemade tartare sauce.",
+    d_casso:"Fish of the day and/or shellfish depending on the catch, shallot or chorizo sauce, homemade ratatouille.",
+    d_tartare_p:"Duo of raw and smoked salmon.",
+    d_croq3:"Artisan croquettes made in Dunkirk, homemade tartare sauce.",
+    cat_poke:"Poke bowls — €17.00", cat_salades:"Salads",
+    d_pokebase_n:"The base",
+    d_pokebase:"Seasoned sushi rice with house-cooked and raw vegetables: edamame, avocado (subject to availability), pickled cucumber and cabbage, carrots, cooked Chinese cabbage, sesame and pumpkin seeds. Sauce: salted soy, sweet soy or sriracha.",
+    d_pokevegan:"Homemade legume patties.",
+    d_salmer:"Two grey-shrimp croquettes and a slice of smoked salmon.",
+    d_salveg:"Homemade legume patties.",
+    cat_desserts:"Desserts", cat_glaces:"Artisan ice cream", cat_coupes:"Sundaes — €8.50", cat_crepes:"Northern crêpes & Liège waffles",
+    d_brioche:"Topped with homemade caramel and a scoop of artisan vanilla ice cream.",
+    d_gourmand:"With mini treats: chocolate mousse, cannelé, caramel muffin and pom-pie.",
+    d_coupes_n:"1 / 2 / 3 scoops",
+    d_parfums:"Madagascar bourbon vanilla, strawberry, chocolate, Ethiopian mocha coffee, Guérande salted-butter caramel, Sicilian pistachio, speculoos, lemon and melon sorbets.",
+    d_coupemalo:"Vanilla, salted-butter caramel and speculoos scoops, homemade caramel coulis, whipped cream and speculoos crumble.",
+    d_colonnel:"Two scoops of lemon sorbet, 4cL vodka.",
+    d_crepes_n:"Plain, sugar, brown sugar, Nutella, speculoos, homemade caramel…",
+    d_crepes:"Up to La Gourmande: banana, homemade caramel, artisan vanilla ice cream and whipped cream.",
+    cat_biere:"Draught & bottled beers", cat_cocktails:"Cocktails", cat_vins:"Wines & bubbles", cat_chaud:"Hot drinks & softs",
+    d_pression_n:"Draught 25 / 33 / 50cL", d_pression_p:"from €3.50",
+    d_pression:"Loburg, Bon Secours Prestige, Gallia West IPA, Cuvée des Trolls, Kasteel Rubus, beer of the moment, Picon bière…",
+    d_bout_n:"Bottles 33cL", d_bout:"Vedett Blanche, Duvel, Chimay Bleue, Paix Dieu, alcohol-free 1664.",
+    d_cockt_n:"With alcohol", d_cockt:"House punch, mojito, spritz, gin & tonic, Pina Colada by My Malo, Crazy Melon by My Malo.",
+    d_smooth_n:"Alcohol-free & smoothies", d_smooth:"Melon en folie, Rouge tentation, L'exotique, Coco Câline, virgin mojito, virgin gin & tonic.",
+    d_vins_n:"White, red & rosé wines", d_vins_p:"glass from €4.50",
+    d_vins:"Chardonnay, Côtes du Rhône AOP, Chablis AOP, Pinot noir, St Nicolas de Bourgueil, Côtes de Provence AOP… Bottles €24–42.",
+    d_bulles_n:"Champagne & sparkling", d_bulles_p:"glass from €5.50",
+    d_bulles:"Imaginarium blanc de blanc brut, Champagne Veuve de Beaumont.",
+    d_cafe_n:"Malongo coffees & teas",
+    d_cafe:"Espresso, Viennese coffee, latte, hot chocolate, Irish or Bailey's coffee, Darjeeling teas and infusions. Decaf on request.",
+    d_soft_n:"Softs & juices", d_soft:"Waters, sodas, Granini juices, syrups, diabolos.",
+    carte_note:"Meat and fish origins: chicken from Hauts-de-France, EU Angus bavette, EU/French beef, Dunkirk mussels subject to landings, salmon farmed in Scotland, grey shrimp caught in the North Sea, regional charcuterie from Hauts-de-France. Allergen list available on request. Prices include tax and service. Alcohol abuse is dangerous for your health — drink responsibly.",
+    hours_eyebrow:"Opening hours", hours_title:"We're open — season by season",
+    tab_normal:"Regular season", tab_summer:"Summer · terraces", tab_holidays:"Winter holidays", tab_carnival:"Carnival",
+    d_monfri:"Monday – Friday", d_weekend:"Saturday – Sunday", d_everyday:"Every day",
+    d_vac:"School holidays", d_2412:"Dec 24 & 31", v_midi:"Lunch service only", d_2512:"Dec 25 & Jan 1", v_ferme:"Closed",
+    d_bandes:"Parade days (« bandes »)", v_bandes:"Open all day — come in costume!", d_autres:"Other days", v_autres:"Regular season hours",
+    flash_summer:"☀️ Our two seafront terraces are open!",
+    flash_carnival:"🎭 During the Dunkirk Carnival, follow our socials for each day's hours!",
+    hours_note:"Hours are indicative and may vary with the season and the weather. When in doubt, call us on +33 9 79 74 16 55.",
+    spaces_eyebrow:"The place", spaces_title:"A boho dining room, two terraces facing the sea",
+    spaces_p:"Inside, a cosy lounge setting for Northern evenings. In fine weather, two terraces right on the Malo-les-Bains promenade — sunset apéro with the Dunkerque letters as a backdrop.",
+    cap_facade:"Wide open onto the promenade", cap_terrasse1:"The terraces, in summer", cap_table:"Your table is waiting",
+    cap_lettres:"View of the Dunkerque letters", cap_soir:"Evenings on the seafront", cap_plage:"The beach, right across",
+    rev_eyebrow:"What guests say", rev_title:"Your reviews", rev_count:"on Google — 200+ reviews",
+    rev1:"“Quick service, delicious dishes, lovely decor, smiling team and fair prices. One of the best restaurants in Dunkirk!”",
+    rev2:"“Warm and welcoming place, genuinely tasty food. Special mention for the very friendly service. Recommended.”",
+    rev3:"“Attentive, fluent English-speaking waitress, food arrived promptly, very fair prices for the seafront. I'll be back.”",
+    rev_all:"Read all reviews on Google",
+    c_title:"On the promenade, facing the sea",
+    c_dir:"Directions via Google Maps →", c_phone_label:"Book by phone:", c_book:"Book online",
+    f_line:"Dunkirk mussels · Northern classics · Poke bowls · Homemade"
+  }
+};
+document.querySelectorAll('[data-i18n]').forEach(el => { i18n.fr[el.dataset.i18n] = i18n.fr[el.dataset.i18n] || el.innerHTML; });
+
+let lang = 'fr';
+const langToggle = document.getElementById('langToggle');
+langToggle.addEventListener('click', () => {
+  lang = lang === 'fr' ? 'en' : 'fr';
+  document.documentElement.lang = lang;
+  langToggle.textContent = lang === 'fr' ? 'EN' : 'FR';
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const t = i18n[lang][el.dataset.i18n];
+    if (t) el.innerHTML = t;
+  });
+});
+</script>
+</body>
+</html>
