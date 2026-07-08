@@ -152,18 +152,16 @@ header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.96);backdro
 .season-flash{background:var(--jaune);color:var(--ink);padding:10px 16px;border-radius:10px;font-weight:600;font-size:.9rem;display:inline-block;margin-top:12px}
 
 /* ---------- lieux / galerie ---------- */
-.spaces-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
+.spaces-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:32px;max-height:calc(3*220px + 2*14px);overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;padding-right:6px}
 .space{position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:0 4px 18px rgba(34,48,59,.12);cursor:zoom-in}
-.space img{height:280px;width:100%;object-fit:cover;transition:transform .4s ease}
+.space img{height:220px;width:100%;object-fit:cover;transition:transform .4s ease}
 .space:hover img{transform:scale(1.045)}
 .space figcaption{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(transparent,rgba(32,42,48,.88));color:#fff;padding:38px 16px 13px;font-weight:600;font-size:.92rem;font-family:'Quicksand',sans-serif;pointer-events:none}
-.space--tall{grid-row:span 2}
-.space--tall img{height:100%;min-height:576px}
 
 /* ---------- lightbox ---------- */
 .lightbox{position:fixed;inset:0;z-index:100;background:rgba(23,30,35,.92);display:none;align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
 .lightbox.open{display:flex}
-.lightbox img{max-width:min(1100px,94vw);max-height:88vh;width:auto;height:auto;border-radius:12px;box-shadow:0 10px 50px rgba(0,0,0,.5)}
+.lightbox img{max-width:min(1100px,94vw);max-height:88vh;width:auto;height:auto;border:none;border-radius:0;box-shadow:none;outline:none}
 
 /* ---------- avis ---------- */
 .reviews{background:var(--blanc)}
@@ -200,9 +198,10 @@ footer img{height:34px}
   .nav-actions .btn{display:none}
   .burger{display:block}
   .review-grid{grid-template-columns:1fr}
-  .spaces-grid{grid-template-columns:1fr 1fr}
-  .space--tall{grid-row:auto}
-  .space--tall img{min-height:280px;height:280px}
+  .spaces-grid{gap:8px;max-height:calc(100vw - 44px);padding-right:0}
+  .space{border-radius:10px}
+  .space img{height:auto;aspect-ratio:1/1}
+  .space figcaption{display:none}
   .contact-grid{grid-template-columns:1fr}
   .carte-panel.active{grid-template-columns:1fr}
   .menu-formules{grid-template-columns:1fr}
@@ -439,14 +438,30 @@ footer img{height:34px}
     <svg class="wave" viewBox="0 0 120 16" fill="none" aria-hidden="true"><path d="M2 8 C 12 2, 24 2, 34 8 C 44 14, 56 14, 66 8 C 76 2, 88 2, 98 8 C 104 11.5, 112 11.5, 118 8" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg>
     <p data-i18n="spaces_p" style="max-width:64ch">À l'intérieur, un cadre lounge et cosy pour les soirées du Nord. Aux beaux jours, deux terrasses sur la digue de Malo-les-Bains — apéro face aux vagues, lettres de Dunkerque en toile de fond, coucher de soleil compris.</p>
     <div class="spaces-grid">
-      <figure class="space space--tall"><img src="images/facade-restaurant-my-malo-digue-de-mer-dunkerque.jpg" alt="Façade du restaurant My Malo grande ouverte sur la digue de Mer à Dunkerque" loading="lazy"><figcaption data-i18n="cap_facade">Ouvert sur la digue</figcaption></figure>
+      <figure class="space"><img src="images/facade-restaurant-my-malo-digue-de-mer-dunkerque.jpg" alt="Façade du restaurant My Malo grande ouverte sur la digue de Mer à Dunkerque" loading="lazy"><figcaption data-i18n="cap_facade">Ouvert sur la digue</figcaption></figure>
       <figure class="space"><img src="images/terrasse-parasols-vue-mer-restaurant-my-malo.jpg" alt="Terrasse du My Malo sous les parasols avec vue sur la mer du Nord" loading="lazy"><figcaption data-i18n="cap_terrasse1">Les terrasses, en été</figcaption></figure>
+      <figure class="space"><img src="images/terrasse-parasol-face-mer-my-malo.jpg" alt="Terrasse du restaurant My Malo sous un grand parasol, face à la plage de Malo-les-Bains" loading="lazy"><figcaption data-i18n="cap_tface">La terrasse, face à la mer</figcaption></figure>
       <figure class="space"><img src="images/table-terrasse-restaurant-my-malo-malo-les-bains.jpg" alt="Table dressée en terrasse au restaurant My Malo à Malo-les-Bains" loading="lazy"><figcaption data-i18n="cap_table">Votre table vous attend</figcaption></figure>
-      <figure class="space"><img src="images/terrasse-face-mer-restaurant-my-malo-dunkerque.jpg" alt="Terrasse du restaurant My Malo face à la mer du Nord, sur la digue de Malo-les-Bains" loading="lazy"><figcaption data-i18n="cap_large">Face au large, toute l'année</figcaption></figure>
-      <figure class="space"><img src="images/terrasse-restaurant-plage-malo-les-bains.jpg" alt="Terrasse du restaurant My Malo côté plage de Malo-les-Bains" loading="lazy"><figcaption data-i18n="cap_lettres">Sur la digue de Malo-les-Bains</figcaption></figure>
+      <figure class="space"><img src="images/table-terrasse-vue-plage-my-malo.jpg" alt="Table en terrasse avec rose et muguet, vue sur la plage de Dunkerque" loading="lazy"><figcaption data-i18n="cap_tplage">Vue sur la plage</figcaption></figure>
+      <figure class="space"><img src="images/rose-muguet-table-terrasse-my-malo.jpg" alt="Rose rouge et muguet sur une table de la terrasse du My Malo" loading="lazy"><figcaption data-i18n="cap_detail">Les petits détails</figcaption></figure>
+      <figure class="space"><img src="images/salle-restaurant-my-malo-vue-mer.jpg" alt="Salle du restaurant My Malo ouverte sur la terrasse et la mer" loading="lazy"><figcaption data-i18n="cap_salle">La salle, ouverte sur la mer</figcaption></figure>
+      <figure class="space"><img src="images/salle-table-dressee-my-malo-dunkerque.jpg" alt="Table dressée dans la salle du restaurant My Malo à Dunkerque" loading="lazy"><figcaption data-i18n="cap_atable">À table</figcaption></figure>
+      <figure class="space"><img src="images/coin-boheme-salon-my-malo.jpg" alt="Coin salon bohème avec canapé et coussins au restaurant My Malo" loading="lazy"><figcaption data-i18n="cap_boheme">Le coin bohème</figcaption></figure>
+      <figure class="space"><img src="images/coin-cosy-interieur-my-malo.jpg" alt="Coin cosy de la salle du My Malo, table haute et mur terracotta" loading="lazy"><figcaption data-i18n="cap_cosy">Le coin cosy</figcaption></figure>
+      <figure class="space"><img src="images/moules-cuisine-my-malo-dunkerque.jpg" alt="Casseroles de moules de Dunkerque fumantes en cuisine au My Malo" loading="lazy"><figcaption data-i18n="cap_cuisine">Les moules, en cuisine</figcaption></figure>
+      <figure class="space"><img src="images/moules-de-dunkerque-coucher-de-soleil-my-malo.jpg" alt="Casserole de moules de Dunkerque au coucher du soleil, terrasse du My Malo" loading="lazy"><figcaption data-i18n="cap_msunset">Moules au coucher du soleil</figcaption></figure>
+      <figure class="space"><img src="images/planche-de-la-mer-guacamole-my-malo.jpg" alt="Planche de la mer et tortillas guacamole en terrasse au My Malo" loading="lazy"><figcaption data-i18n="cap_apero">L'apéro face à la mer</figcaption></figure>
+      <figure class="space"><img src="images/pokebowl-saumon-my-malo-dunkerque.jpg" alt="Pokébowl au saumon avec edamame, chou rouge et carottes au My Malo" loading="lazy"><figcaption data-i18n="cap_poke1">Pokébowl fraîcheur</figcaption></figure>
+      <figure class="space"><img src="images/pokebowl-duo-saumon-my-malo.jpg" alt="Pokébowl duo de saumon, avocat et légumes frais au restaurant My Malo" loading="lazy"><figcaption data-i18n="cap_poke2">Pokébowl duo de saumon</figcaption></figure>
+      <figure class="space"><img src="images/coupe-speculoos-glace-my-malo.jpg" alt="Coupe glacée au spéculoos avec coulis de caramel maison au My Malo" loading="lazy"><figcaption data-i18n="cap_speculoos">Coupe spéculoos</figcaption></figure>
+      <figure class="space"><img src="images/smoothies-maison-my-malo-dunkerque.jpg" alt="Smoothies maison servis en terrasse au restaurant My Malo à Dunkerque" loading="lazy"><figcaption data-i18n="cap_smoothies">Smoothies maison</figcaption></figure>
+      <figure class="space"><img src="images/guirlandes-terrasse-soir-my-malo-dunkerque.jpg" alt="Guirlandes lumineuses au-dessus de la terrasse du My Malo à la tombée du soir" loading="lazy"><figcaption data-i18n="cap_guirlandes">Les guirlandes, à la tombée du soir</figcaption></figure>
+      <figure class="space"><img src="images/terrasse-my-malo-soiree-ete-digue-dunkerque.jpg" alt="Soirée d'été sur la terrasse du My Malo, digue de Dunkerque" loading="lazy"><figcaption data-i18n="cap_soiree">Soirée d'été en terrasse</figcaption></figure>
+      <figure class="space"><img src="images/terrasse-crepuscule-vue-mer-my-malo.jpg" alt="Terrasse du My Malo au crépuscule avec vue sur la mer du Nord" loading="lazy"><figcaption data-i18n="cap_crepuscule">Le crépuscule sur la digue</figcaption></figure>
       <figure class="space"><img src="images/restaurant-my-malo-terrasse-soir-digue-dunkerque.jpg" alt="Restaurant My Malo le soir avec ses guirlandes lumineuses sur la digue de Dunkerque" loading="lazy"><figcaption data-i18n="cap_soir">Les soirées sur la digue</figcaption></figure>
+      <figure class="space"><img src="images/lettres-dunkerque-vue-salle-my-malo.jpg" alt="Les lettres colorées de Dunkerque vues depuis la salle du My Malo" loading="lazy"><figcaption data-i18n="cap_lsalle">Les lettres, depuis la salle</figcaption></figure>
+      <figure class="space"><img src="images/lettres-dunkerque-plage-malo-les-bains.jpg" alt="Les lettres colorées de Dunkerque sur la digue, plage de Malo-les-Bains" loading="lazy"><figcaption data-i18n="cap_ldk">Les lettres de Dunkerque</figcaption></figure>
       <figure class="space"><img src="images/plage-dunkerque-malo-les-bains-lettres-dunkerque.jpg" alt="Plage de Malo-les-Bains et lettres Dunkerque, à deux pas du restaurant" loading="lazy"><figcaption data-i18n="cap_plage">La plage, juste en face</figcaption></figure>
-      <figure class="space"><img src="images/lettres-dunkerque-digue-de-mer.jpg" alt="Les lettres Dunkerque sur la digue de Mer, devant le restaurant My Malo" loading="lazy"><figcaption data-i18n="cap_digue">Les lettres de Dunkerque sur la digue</figcaption></figure>
     </div>
   </div>
 </section>
@@ -652,8 +667,12 @@ const i18n = {
     spaces_eyebrow:"The place", spaces_title:"A boho dining room, two terraces facing the sea",
     spaces_p:"Inside, a cosy lounge setting for Northern evenings. In fine weather, two terraces right on the Malo-les-Bains promenade — sunset apéro with the Dunkerque letters as a backdrop.",
     cap_facade:"Open onto the promenade", cap_terrasse1:"The terraces, in summer", cap_table:"Your table is waiting",
-    cap_large:"Open sea view, all year round",
-    cap_lettres:"On the Malo-les-Bains promenade", cap_soir:"Evenings on the seafront", cap_plage:"The beach, right across", cap_digue:"The Dunkerque letters on the promenade",
+    cap_tface:"The terrace, facing the sea", cap_tplage:"Beach view", cap_detail:"The little details",
+    cap_salle:"The dining room, open to the sea", cap_atable:"At the table", cap_boheme:"The boho corner", cap_cosy:"The cosy corner",
+    cap_cuisine:"Mussels, in the kitchen", cap_msunset:"Mussels at sunset", cap_apero:"Apéro facing the sea",
+    cap_poke1:"Fresh poke bowl", cap_poke2:"Salmon duo poke bowl", cap_speculoos:"Speculoos sundae", cap_smoothies:"House smoothies",
+    cap_guirlandes:"String lights at dusk", cap_soiree:"Summer evening on the terrace", cap_crepuscule:"Dusk on the promenade",
+    cap_soir:"Evenings on the seafront", cap_lsalle:"The letters, from the dining room", cap_ldk:"The Dunkerque letters", cap_plage:"The beach, right across",
     rev_eyebrow:"What guests say", rev_title:"Your reviews", rev_count:"on Google — 200+ reviews",
     rev1:"“Quick service, delicious dishes, lovely decor, smiling team and fair prices. One of the best restaurants in Dunkirk!”",
     rev2:"“Warm and welcoming place, genuinely tasty food. Special mention for the very friendly service. Recommended.”",
@@ -731,8 +750,12 @@ const i18n = {
     spaces_eyebrow:"De zaak", spaces_title:"Een boho-zaal, twee terrassen aan zee",
     spaces_p:"Binnen een gezellig lounge-kader voor avonden in het Noorden. Bij mooi weer twee terrassen op de zeedijk van Malo-les-Bains — aperitief met zicht op zee en de letters van Duinkerke.",
     cap_facade:"Open op de dijk", cap_terrasse1:"De terrassen, in de zomer", cap_table:"Uw tafel staat klaar",
-    cap_large:"Zicht op zee, het hele jaar",
-    cap_lettres:"Op de dijk van Malo-les-Bains", cap_soir:"Avonden op de dijk", cap_plage:"Het strand, recht tegenover", cap_digue:"De letters van Duinkerke op de dijk",
+    cap_tface:"Het terras, recht aan zee", cap_tplage:"Zicht op het strand", cap_detail:"De kleine details",
+    cap_salle:"De zaal, open naar de zee", cap_atable:"Aan tafel", cap_boheme:"De boho-hoek", cap_cosy:"De gezellige hoek",
+    cap_cuisine:"Mosselen, in de keuken", cap_msunset:"Mosselen bij zonsondergang", cap_apero:"Aperitief aan zee",
+    cap_poke1:"Frisse pokébowl", cap_poke2:"Pokébowl duo van zalm", cap_speculoos:"Speculooscoupe", cap_smoothies:"Huisgemaakte smoothies",
+    cap_guirlandes:"Lichtjes in de schemering", cap_soiree:"Zomeravond op het terras", cap_crepuscule:"Schemering op de dijk",
+    cap_soir:"Avonden op de dijk", cap_lsalle:"De letters, vanuit de zaal", cap_ldk:"De letters van Duinkerke", cap_plage:"Het strand, recht tegenover",
     rev_eyebrow:"Wat onze gasten zeggen", rev_title:"Uw reviews", rev_count:"op Google — meer dan 200 reviews",
     rev1:"« Snelle bediening, heerlijke gerechten, mooi interieur, vriendelijk team en correcte prijzen. Voor mij een van de beste restaurants van Duinkerke! »",
     rev2:"« Warme, gezellige zaak, bijzonder lekker eten. Speciale vermelding voor de zeer sympathieke bediening. Een aanrader. »",
@@ -810,8 +833,12 @@ const i18n = {
     spaces_eyebrow:"L'indrot", spaces_title:"Eun' salle bohème, deux terrasses dvant l'mér",
     spaces_p:"À l'intérieur, un cadre lounge et cosy pour chés soirées ed ch'Nord. Aux biaux jours, deux terrasses su l'digue ed Malo-les-Bains — apéro dvant les vagues, lettes ed Dunkerque in toile ed fond, couchant d'soleil compris.",
     cap_facade:"Ouvert su l'digue", cap_terrasse1:"Chés terrasses, in été", cap_table:"Eut' tabe alle t'attind",
-    cap_large:"Dvant l'large, tout l'année",
-    cap_lettres:"Su l'digue ed Malo-les-Bains", cap_soir:"Chés soirées su l'digue", cap_plage:"L'plache, juste in face", cap_digue:"Chés lettes ed Dunkerque su l'digue",
+    cap_tface:"L'terrasse, dvant l'mér", cap_tplage:"Vue su l'plache", cap_detail:"Chés tiots détails",
+    cap_salle:"L'salle, ouvarte su l'mér", cap_atable:"À tabe", cap_boheme:"Ch'coin bohème", cap_cosy:"Ch'coin cosy",
+    cap_cuisine:"Chés moules, in cuisine", cap_msunset:"Moules au couchant", cap_apero:"L'apéro dvant l'mér",
+    cap_poke1:"Pokébowl tout frais", cap_poke2:"Pokébowl duo d'saumon", cap_speculoos:"Coupe spéculoos", cap_smoothies:"Smoothies à l'mason",
+    cap_guirlandes:"Chés guirlandes à l'nuit tombante", cap_soiree:"Soirée d'été in terrasse", cap_crepuscule:"Ch'crépuscule su l'digue",
+    cap_soir:"Chés soirées su l'digue", cap_lsalle:"Chés lettes, dépis l'salle", cap_ldk:"Chés lettes ed Dunkerque", cap_plage:"L'plache, juste in face",
     rev_eyebrow:"Is in parl'tent", rev_title:"Vos avis", rev_count:"su Google — pus ed 200 avis",
     rev1:"« Commande rapide, plats délicieux, belle déco, équipe souriante et prix corrects. Pour mi, un des meilleurs restaurants ed Dunkerque ! »",
     rev2:"« Indrot caleureux, plats particulièremint savoureux. Mention spéciale pour ch'service, très sympathique. Ej' recommande. »",
