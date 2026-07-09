@@ -6,7 +6,7 @@
 <title>My Malo — Restaurant face à la mer, Digue de Malo-les-Bains, Dunkerque</title>
 <meta name="description" content="Restaurant My Malo sur la digue de Malo-les-Bains à Dunkerque. Moules de Dunkerque, plats du Nord faits maison, poke bowls. Deux terrasses face à la mer en été. Réservation en ligne.">
 <link rel="canonical" href="https://www.mymalo.fr/">
-<meta property="og:type" content="restaurant">
+<meta property="og:type" content="restaurant.restaurant">
 <meta property="og:title" content="My Malo — Restaurant face à la mer à Dunkerque">
 <meta property="og:description" content="Moules de Dunkerque, plats du Nord, poke bowls. Sur la digue de Malo-les-Bains, deux terrasses face à la mer. Réservez en ligne.">
 <meta property="og:image" content="https://www.mymalo.fr/images/terrasse-vue-lettres-dunkerque-my-malo.jpg">
@@ -14,6 +14,7 @@
 <meta property="og:site_name" content="My Malo">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:locale:alternate" content="en_GB">
+<meta property="og:locale:alternate" content="nl_NL">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="My Malo — Restaurant face à la mer à Dunkerque">
 <meta name="twitter:image" content="https://www.mymalo.fr/images/terrasse-vue-lettres-dunkerque-my-malo.jpg">
@@ -38,7 +39,6 @@
     "addressCountry": "FR"
   },
   "geo": { "@type": "GeoCoordinates", "latitude": 51.0503, "longitude": 2.3990 },
-  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.6", "reviewCount": "219" },
   "openingHoursSpecification": [
     { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "11:30", "closes": "13:30" },
     { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "18:30", "closes": "21:30" },
@@ -66,7 +66,7 @@
   --maxw:1120px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
 body{font-family:'Poppins',system-ui,sans-serif;color:var(--ink);background:var(--creme);line-height:1.65;font-size:16px}
 img{max-width:100%;display:block}
 a{color:inherit}
@@ -87,7 +87,7 @@ header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.96);backdro
 .navlinks a{text-decoration:none;font-weight:500;font-size:.93rem;color:var(--ink)}
 .navlinks a:hover{color:var(--bleu)}
 .nav-actions{display:flex;align-items:center;gap:12px}
-.lang{background:none;border:2px solid var(--ciel);color:var(--bleu);border-radius:999px;padding:5px 13px;font-weight:700;font-size:.8rem;cursor:pointer;font-family:'Quicksand',sans-serif}
+.lang{background:#fff;border:2px solid var(--ciel);color:var(--bleu);border-radius:999px;padding:5px 13px;font-weight:700;font-size:.8rem;cursor:pointer;font-family:'Quicksand',sans-serif;appearance:none;-webkit-appearance:none}
 .lang:hover{background:var(--ciel);color:#fff}
 .btn{display:inline-block;text-decoration:none;font-weight:700;font-family:'Quicksand',sans-serif;border-radius:999px;padding:12px 24px;font-size:.95rem;transition:transform .15s ease;text-align:center}
 .btn:hover{transform:translateY(-1px)}
@@ -96,26 +96,23 @@ header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.96);backdro
 .btn-ghost{border:2px solid #fff;color:#fff}
 .burger{display:none;background:none;border:none;cursor:pointer;width:42px;height:42px;position:relative;z-index:80}
 .burger span{display:block;height:2.5px;background:var(--bleu);margin:7px 8px;border-radius:2px;transition:.25s}
-.burger.open span{background:#fff}
-.burger.open span:nth-child(1){transform:translateY(9.5px) rotate(45deg)}
-.burger.open span:nth-child(2){opacity:0}
-.burger.open span:nth-child(3){transform:translateY(-9.5px) rotate(-45deg)}
+.burger.open{visibility:hidden}
 .mobile-menu{position:fixed;inset:0;background:var(--bleu);color:#fff;z-index:70;display:none;flex-direction:column;justify-content:center;align-items:center;gap:6px;text-align:center}
 .mobile-menu.open{display:flex}
 .mobile-menu a{font-family:'Quicksand',sans-serif;font-size:1.9rem;font-weight:700;text-decoration:none;padding:10px;text-transform:uppercase}
 .mobile-menu a:hover{color:var(--jaune)}
 .mobile-menu .btn{margin-top:22px;font-size:1.05rem;text-transform:none}
+.menu-close{position:absolute;top:14px;right:16px;background:none;border:none;color:#fff;font-size:2.6rem;line-height:1;font-family:'Quicksand',sans-serif;cursor:pointer;padding:6px 12px}
+.menu-close:hover{color:var(--jaune)}
 
 /* ---------- hero ---------- */
 .hero{position:relative;min-height:88vh;display:flex;align-items:flex-start;color:#fff;background:var(--bleu);padding:0}
 .hero img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(32,42,48,.78) 0%,rgba(32,42,48,.45) 42%,rgba(32,42,48,.08) 75%,rgba(32,42,48,0) 100%)}
 .hero .wrap{position:relative;z-index:2;padding-top:64px;padding-bottom:60px}
-.hero .logo-hero{height:clamp(60px,9vw,104px);width:auto;filter:drop-shadow(0 2px 10px rgba(0,0,0,.35)) brightness(0) invert(1);margin-bottom:18px}
 .hero h1{font-size:clamp(2rem,5vw,3.4rem);font-weight:700;max-width:18ch;text-transform:uppercase;letter-spacing:.02em}
 .hero p.tag{font-size:clamp(1rem,1.9vw,1.2rem);margin:16px 0 30px;max-width:52ch}
 .hero .ctas{display:flex;gap:14px;flex-wrap:wrap}
-.hero .badge{display:inline-block;background:var(--jaune);color:var(--ink);font-family:'Quicksand',sans-serif;font-weight:700;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;padding:7px 15px;border-radius:999px;margin-bottom:18px}
 
 /* ---------- carte ---------- */
 .carte{background:var(--blanc)}
@@ -155,13 +152,16 @@ header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.96);backdro
 .season-flash{background:var(--jaune);color:var(--ink);padding:10px 16px;border-radius:10px;font-weight:600;font-size:.9rem;display:inline-block;margin-top:12px}
 
 /* ---------- lieux / galerie ---------- */
-.spaces-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
-.space{position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:0 4px 18px rgba(34,48,59,.12)}
-.space img{height:280px;width:100%;object-fit:cover;transition:transform .4s ease}
+.spaces-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:32px;max-height:calc(3*220px + 2*14px);overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;padding-right:6px}
+.space{position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:0 4px 18px rgba(34,48,59,.12);cursor:zoom-in}
+.space img{height:220px;width:100%;object-fit:cover;transition:transform .4s ease}
 .space:hover img{transform:scale(1.045)}
-.space figcaption{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(transparent,rgba(32,42,48,.88));color:#fff;padding:38px 16px 13px;font-weight:600;font-size:.92rem;font-family:'Quicksand',sans-serif}
-.space--tall{grid-row:span 2}
-.space--tall img{height:100%;min-height:576px}
+.space figcaption{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(transparent,rgba(32,42,48,.88));color:#fff;padding:38px 16px 13px;font-weight:600;font-size:.92rem;font-family:'Quicksand',sans-serif;pointer-events:none}
+
+/* ---------- lightbox ---------- */
+.lightbox{position:fixed;inset:0;z-index:100;background:rgba(23,30,35,.92);display:none;align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+.lightbox.open{display:flex}
+.lightbox img{max-width:min(1100px,94vw);max-height:88vh;width:auto;height:auto;border:none;border-radius:0;box-shadow:none;outline:none}
 
 /* ---------- avis ---------- */
 .reviews{background:var(--blanc)}
@@ -187,7 +187,6 @@ header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.96);backdro
 footer{background:var(--bleu);color:#fff;padding:42px 0;font-size:.9rem}
 footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
 footer img{height:34px}
-footer a{color:var(--jaune)}
 
 /* ---------- sticky mobile reserve ---------- */
 .sticky-reserve{position:fixed;left:0;right:0;bottom:0;z-index:55;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:rgba(62,76,84,.97);display:none}
@@ -199,14 +198,15 @@ footer a{color:var(--jaune)}
   .nav-actions .btn{display:none}
   .burger{display:block}
   .review-grid{grid-template-columns:1fr}
-  .spaces-grid{grid-template-columns:1fr 1fr}
-  .space--tall{grid-row:auto}
-  .space--tall img{min-height:280px;height:280px}
+  .spaces-grid{gap:8px;max-height:calc(100vw - 44px);padding-right:0}
+  .space{border-radius:10px}
+  .space img{height:auto;aspect-ratio:1/1}
+  .space figcaption{display:none}
   .contact-grid{grid-template-columns:1fr}
   .carte-panel.active{grid-template-columns:1fr}
   .menu-formules{grid-template-columns:1fr}
   .sticky-reserve{display:block}
-  body{padding-bottom:72px}
+  footer{padding-bottom:calc(110px + env(safe-area-inset-bottom))}
   section{padding:58px 0}
 }
 :focus-visible{outline:3px solid var(--jaune);outline-offset:2px}
@@ -229,7 +229,12 @@ footer a{color:var(--jaune)}
       </ul>
     </nav>
     <div class="nav-actions">
-      <button class="lang" id="langToggle" aria-label="Switch language">EN</button>
+      <select class="lang" id="langSelect" aria-label="Langue / Language">
+        <option value="fr" selected>FR</option>
+        <option value="en">EN</option>
+        <option value="nl">NL</option>
+        <option value="chti">CH'TI</option>
+      </select>
       <a class="btn btn-jaune" href="https://reservation.laddition.com/booking/mymalo-fr" target="_blank" rel="noopener" data-i18n="reserve">Réserver</a>
       <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu">
         <span></span><span></span><span></span>
@@ -239,6 +244,7 @@ footer a{color:var(--jaune)}
 </header>
 
 <div class="mobile-menu" id="mobileMenu">
+  <button class="menu-close" id="menuClose" aria-label="Fermer le menu">×</button>
   <a href="#top" data-i18n="nav_home">Accueil</a>
   <a href="#carte" data-i18n="nav_menu">La carte</a>
   <a href="#horaires" data-i18n="nav_hours">Horaires</a>
@@ -432,13 +438,30 @@ footer a{color:var(--jaune)}
     <svg class="wave" viewBox="0 0 120 16" fill="none" aria-hidden="true"><path d="M2 8 C 12 2, 24 2, 34 8 C 44 14, 56 14, 66 8 C 76 2, 88 2, 98 8 C 104 11.5, 112 11.5, 118 8" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg>
     <p data-i18n="spaces_p" style="max-width:64ch">À l'intérieur, un cadre lounge et cosy pour les soirées du Nord. Aux beaux jours, deux terrasses sur la digue de Malo-les-Bains — apéro face aux vagues, lettres de Dunkerque en toile de fond, coucher de soleil compris.</p>
     <div class="spaces-grid">
-      <figure class="space space--tall"><img src="images/facade-restaurant-my-malo-digue-de-mer-dunkerque.jpg" alt="Façade du restaurant My Malo grande ouverte sur la digue de Mer à Dunkerque" loading="lazy"><figcaption data-i18n="cap_facade">Grande ouverte sur la digue</figcaption></figure>
+      <figure class="space"><img src="images/facade-restaurant-my-malo-digue-de-mer-dunkerque.jpg" alt="Façade du restaurant My Malo grande ouverte sur la digue de Mer à Dunkerque" loading="lazy"><figcaption data-i18n="cap_facade">Ouvert sur la digue</figcaption></figure>
       <figure class="space"><img src="images/terrasse-parasols-vue-mer-restaurant-my-malo.jpg" alt="Terrasse du My Malo sous les parasols avec vue sur la mer du Nord" loading="lazy"><figcaption data-i18n="cap_terrasse1">Les terrasses, en été</figcaption></figure>
+      <figure class="space"><img src="images/terrasse-parasol-face-mer-my-malo.jpg" alt="Terrasse du restaurant My Malo sous un grand parasol, face à la plage de Malo-les-Bains" loading="lazy"><figcaption data-i18n="cap_tface">La terrasse, face à la mer</figcaption></figure>
       <figure class="space"><img src="images/table-terrasse-restaurant-my-malo-malo-les-bains.jpg" alt="Table dressée en terrasse au restaurant My Malo à Malo-les-Bains" loading="lazy"><figcaption data-i18n="cap_table">Votre table vous attend</figcaption></figure>
-      <figure class="space"><img src="images/terrasse-restaurant-plage-malo-les-bains.jpg" alt="Terrasse du restaurant My Malo côté plage de Malo-les-Bains" loading="lazy"><figcaption data-i18n="cap_lettres">Sur la digue de Malo-les-Bains</figcaption></figure>
+      <figure class="space"><img src="images/table-terrasse-vue-plage-my-malo.jpg" alt="Table en terrasse avec rose et muguet, vue sur la plage de Dunkerque" loading="lazy"><figcaption data-i18n="cap_tplage">Vue sur la plage</figcaption></figure>
+      <figure class="space"><img src="images/rose-muguet-table-terrasse-my-malo.jpg" alt="Rose rouge et muguet sur une table de la terrasse du My Malo" loading="lazy"><figcaption data-i18n="cap_detail">Les petits détails</figcaption></figure>
+      <figure class="space"><img src="images/salle-restaurant-my-malo-vue-mer.jpg" alt="Salle du restaurant My Malo ouverte sur la terrasse et la mer" loading="lazy"><figcaption data-i18n="cap_salle">La salle, ouverte sur la mer</figcaption></figure>
+      <figure class="space"><img src="images/salle-table-dressee-my-malo-dunkerque.jpg" alt="Table dressée dans la salle du restaurant My Malo à Dunkerque" loading="lazy"><figcaption data-i18n="cap_atable">À table</figcaption></figure>
+      <figure class="space"><img src="images/coin-boheme-salon-my-malo.jpg" alt="Coin salon bohème avec canapé et coussins au restaurant My Malo" loading="lazy"><figcaption data-i18n="cap_boheme">Le coin bohème</figcaption></figure>
+      <figure class="space"><img src="images/coin-cosy-interieur-my-malo.jpg" alt="Coin cosy de la salle du My Malo, table haute et mur terracotta" loading="lazy"><figcaption data-i18n="cap_cosy">Le coin cosy</figcaption></figure>
+      <figure class="space"><img src="images/moules-cuisine-my-malo-dunkerque.jpg" alt="Casseroles de moules de Dunkerque fumantes en cuisine au My Malo" loading="lazy"><figcaption data-i18n="cap_cuisine">Les moules, en cuisine</figcaption></figure>
+      <figure class="space"><img src="images/moules-de-dunkerque-coucher-de-soleil-my-malo.jpg" alt="Casserole de moules de Dunkerque au coucher du soleil, terrasse du My Malo" loading="lazy"><figcaption data-i18n="cap_msunset">Moules au coucher du soleil</figcaption></figure>
+      <figure class="space"><img src="images/planche-de-la-mer-guacamole-my-malo.jpg" alt="Planche de la mer et tortillas guacamole en terrasse au My Malo" loading="lazy"><figcaption data-i18n="cap_apero">L'apéro face à la mer</figcaption></figure>
+      <figure class="space"><img src="images/pokebowl-saumon-my-malo-dunkerque.jpg" alt="Pokébowl au saumon avec edamame, chou rouge et carottes au My Malo" loading="lazy"><figcaption data-i18n="cap_poke1">Pokébowl fraîcheur</figcaption></figure>
+      <figure class="space"><img src="images/pokebowl-duo-saumon-my-malo.jpg" alt="Pokébowl duo de saumon, avocat et légumes frais au restaurant My Malo" loading="lazy"><figcaption data-i18n="cap_poke2">Pokébowl duo de saumon</figcaption></figure>
+      <figure class="space"><img src="images/coupe-speculoos-glace-my-malo.jpg" alt="Coupe glacée au spéculoos avec coulis de caramel maison au My Malo" loading="lazy"><figcaption data-i18n="cap_speculoos">Coupe spéculoos</figcaption></figure>
+      <figure class="space"><img src="images/smoothies-maison-my-malo-dunkerque.jpg" alt="Smoothies maison servis en terrasse au restaurant My Malo à Dunkerque" loading="lazy"><figcaption data-i18n="cap_smoothies">Smoothies maison</figcaption></figure>
+      <figure class="space"><img src="images/guirlandes-terrasse-soir-my-malo-dunkerque.jpg" alt="Guirlandes lumineuses au-dessus de la terrasse du My Malo à la tombée du soir" loading="lazy"><figcaption data-i18n="cap_guirlandes">Les guirlandes, à la tombée du soir</figcaption></figure>
+      <figure class="space"><img src="images/terrasse-my-malo-soiree-ete-digue-dunkerque.jpg" alt="Soirée d'été sur la terrasse du My Malo, digue de Dunkerque" loading="lazy"><figcaption data-i18n="cap_soiree">Soirée d'été en terrasse</figcaption></figure>
+      <figure class="space"><img src="images/terrasse-crepuscule-vue-mer-my-malo.jpg" alt="Terrasse du My Malo au crépuscule avec vue sur la mer du Nord" loading="lazy"><figcaption data-i18n="cap_crepuscule">Le crépuscule sur la digue</figcaption></figure>
       <figure class="space"><img src="images/restaurant-my-malo-terrasse-soir-digue-dunkerque.jpg" alt="Restaurant My Malo le soir avec ses guirlandes lumineuses sur la digue de Dunkerque" loading="lazy"><figcaption data-i18n="cap_soir">Les soirées sur la digue</figcaption></figure>
+      <figure class="space"><img src="images/lettres-dunkerque-vue-salle-my-malo.jpg" alt="Les lettres colorées de Dunkerque vues depuis la salle du My Malo" loading="lazy"><figcaption data-i18n="cap_lsalle">Les lettres, depuis la salle</figcaption></figure>
+      <figure class="space"><img src="images/lettres-dunkerque-plage-malo-les-bains.jpg" alt="Les lettres colorées de Dunkerque sur la digue, plage de Malo-les-Bains" loading="lazy"><figcaption data-i18n="cap_ldk">Les lettres de Dunkerque</figcaption></figure>
       <figure class="space"><img src="images/plage-dunkerque-malo-les-bains-lettres-dunkerque.jpg" alt="Plage de Malo-les-Bains et lettres Dunkerque, à deux pas du restaurant" loading="lazy"><figcaption data-i18n="cap_plage">La plage, juste en face</figcaption></figure>
-      <figure class="space"><img src="images/lettres-dunkerque-digue-de-mer.jpg" alt="Les lettres Dunkerque sur la digue de Mer, devant le restaurant My Malo" loading="lazy"><figcaption data-i18n="cap_digue">Les lettres, sur la digue</figcaption></figure>
     </div>
   </div>
 </section>
@@ -506,7 +529,6 @@ footer a{color:var(--jaune)}
       <span data-i18n="f_line">Moules de Dunkerque · Plats du Nord · Pokébowls · Fait maison</span>
     </div>
     <div>
-      <a href="https://www.instagram.com/my.malo/" target="_blank" rel="noopener">@my.malo</a><br>
       © 2026 My Malo
     </div>
   </div>
@@ -516,20 +538,47 @@ footer a{color:var(--jaune)}
   <a class="btn btn-jaune" href="https://reservation.laddition.com/booking/mymalo-fr" target="_blank" rel="noopener" data-i18n="reserve_table">Réserver une table</a>
 </div>
 
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo agrandie">
+  <img src="" alt="">
+</div>
+
 <script>
 /* ---------- hamburger ---------- */
 const burger = document.getElementById('burger');
 const mobileMenu = document.getElementById('mobileMenu');
+const menuClose = document.getElementById('menuClose');
+function closeMenu(){
+  mobileMenu.classList.remove('open'); burger.classList.remove('open');
+  burger.setAttribute('aria-expanded','false'); document.body.style.overflow='';
+}
 burger.addEventListener('click', () => {
   const open = mobileMenu.classList.toggle('open');
   burger.classList.toggle('open', open);
   burger.setAttribute('aria-expanded', open);
   document.body.style.overflow = open ? 'hidden' : '';
 });
-mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-  mobileMenu.classList.remove('open'); burger.classList.remove('open');
-  burger.setAttribute('aria-expanded','false'); document.body.style.overflow='';
-}));
+menuClose.addEventListener('click', closeMenu);
+mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+
+/* ---------- lightbox ---------- */
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = lightbox.querySelector('img');
+document.querySelectorAll('.space').forEach(fig => {
+  fig.addEventListener('click', () => {
+    const img = fig.querySelector('img');
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.alt;
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  });
+});
+function closeLightbox(){
+  lightbox.classList.remove('open');
+  lightboxImg.src = '';
+  document.body.style.overflow = '';
+}
+lightbox.addEventListener('click', closeLightbox);
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox(); });
 
 /* ---------- tab systems (carte + hours) ---------- */
 function tabs(sel){
@@ -553,7 +602,6 @@ const i18n = {
   en: {
     nav_home:"Home", nav_menu:"Menu", nav_hours:"Opening hours", nav_spaces:"The place", nav_reviews:"Reviews", nav_contact:"Contact",
     reserve:"Book a table", reserve_table:"Book a table", see_menu:"See the menu",
-    hero_badge:"Malo-les-Bains seafront · Dunkirk",
     hero_title:"Facing the sea, rooted in the North",
     hero_sub:"Dunkirk mussels, homemade Northern-French classics and fresh poke bowls — in a laid-back, boho setting right on the seafront promenade, steps from the beach.",
     menu_eyebrow:"Homemade · Fresh produce", menu_title:"The menu",
@@ -618,8 +666,13 @@ const i18n = {
     hours_note:"Hours are indicative and may vary with the season and the weather. When in doubt, call us on +33 9 79 74 16 55.",
     spaces_eyebrow:"The place", spaces_title:"A boho dining room, two terraces facing the sea",
     spaces_p:"Inside, a cosy lounge setting for Northern evenings. In fine weather, two terraces right on the Malo-les-Bains promenade — sunset apéro with the Dunkerque letters as a backdrop.",
-    cap_facade:"Wide open onto the promenade", cap_terrasse1:"The terraces, in summer", cap_table:"Your table is waiting",
-    cap_lettres:"On the Malo-les-Bains promenade", cap_soir:"Evenings on the seafront", cap_plage:"The beach, right across", cap_digue:"The Dunkerque letters, on the promenade",
+    cap_facade:"Open onto the promenade", cap_terrasse1:"The terraces, in summer", cap_table:"Your table is waiting",
+    cap_tface:"The terrace, facing the sea", cap_tplage:"Beach view", cap_detail:"The little details",
+    cap_salle:"The dining room, open to the sea", cap_atable:"At the table", cap_boheme:"The boho corner", cap_cosy:"The cosy corner",
+    cap_cuisine:"Mussels, in the kitchen", cap_msunset:"Mussels at sunset", cap_apero:"Apéro facing the sea",
+    cap_poke1:"Fresh poke bowl", cap_poke2:"Salmon duo poke bowl", cap_speculoos:"Speculoos sundae", cap_smoothies:"House smoothies",
+    cap_guirlandes:"String lights at dusk", cap_soiree:"Summer evening on the terrace", cap_crepuscule:"Dusk on the promenade",
+    cap_soir:"Evenings on the seafront", cap_lsalle:"The letters, from the dining room", cap_ldk:"The Dunkerque letters", cap_plage:"The beach, right across",
     rev_eyebrow:"What guests say", rev_title:"Your reviews", rev_count:"on Google — 200+ reviews",
     rev1:"“Quick service, delicious dishes, lovely decor, smiling team and fair prices. One of the best restaurants in Dunkirk!”",
     rev2:"“Warm and welcoming place, genuinely tasty food. Special mention for the very friendly service. Recommended.”",
@@ -628,16 +681,181 @@ const i18n = {
     c_title:"On the promenade, facing the sea",
     c_dir:"Directions via Google Maps →", c_phone_label:"Book by phone:", c_book:"Book online",
     f_line:"Dunkirk mussels · Northern classics · Poke bowls · Homemade"
+  },
+  nl: {
+    nav_home:"Home", nav_menu:"De kaart", nav_hours:"Openingsuren", nav_spaces:"De zaak", nav_reviews:"Reviews", nav_contact:"Contact",
+    reserve:"Reserveren", reserve_table:"Reserveer een tafel", see_menu:"Bekijk de kaart",
+    hero_title:"Aan zee, thuis in het Noorden",
+    hero_sub:"Duinkerkse mosselen, huisgemaakte klassiekers uit Noord-Frankrijk en frisse pokébowls — in een gezellig boho-kader op de zeedijk, op een paar stappen van het strand.",
+    menu_eyebrow:"Huisgemaakt · Verse producten", menu_title:"De kaart",
+    tab_starters:"Voorgerechten & planken", tab_mains:"Hoofdgerechten", tab_sea:"Mosselen & vis", tab_poke:"Pokébowls & salades", tab_desserts:"Desserts & ijs", tab_drinks:"Dranken",
+    d_terroir:"Lokale boerderijkazen van Ferme des Moëres (Flamand rouge, craquant, Tomme Flamande met bier) en streekcharcuterie van « Clair bois ».",
+    d_planchemer:"Gerookte zalm, gerookte heilbot, huisgemaakte tonijnspread, gebakken gamba's. Beschikbaar van mei tot september.",
+    d_tartare_e:"Duo van rauwe en gerookte zalm.",
+    d_croq2:"Ambachtelijke garnaalkroketten van La Malle aux Croquettes, gemaakt in Duinkerke, huisgemaakte tartaarsaus.",
+    cat_brasserie:"Brasseriegerechten", cat_nord:"Klassiekers uit het Noorden", cat_sides:"Bijgerechten & sauzen",
+    d_burger:"Briochebroodje, sla, tomaat, gepekelde uitjes, cheddar of Maroilles, My Malo-burgersaus.",
+    d_tartareb:"Met de hand gesneden rundstartaar, My Malo-cocktailsaus, eigeel en garnituur.",
+    d_biloute:"In de oven gebakken kaas uit het Noorden van Ferme du Pont des Loups, met streekcharcuterie.",
+    d_carbo:"Rundsstoofpot, langzaam gegaard in bier met peperkoek.",
+    d_potje:"Kip, varken en konijn in gelei van bouillon — een Vlaamse klassieker.",
+    d_sides_n:"Frietjes gebakken in rundsvet, rijst, huisgemaakte ratatouille en/of salade",
+    d_sides:"Extra portie +3€.",
+    d_sauces_n:"Huisgemaakte sauzen",
+    d_sauces:"Mayonaise, Maroilles, cheddar, sjalot, peper, curry, chorizo of tartaar.",
+    f1_t:"Menu My Malo", f1_p:"<strong>Enkel van maandag tot vrijdagmiddag, niet op feestdagen.</strong><br>Hoofdgerecht: mosselen naar keuze, Black Angus bavette 180g of pokébowl · Dessert: chocolademousse of Dame blanche · Drank: Loburg 25cL, glas wijn of frisdrank.",
+    f2_t:"Kindermenu −12 jaar", f2_p:"Hoofdgerecht: kindermosselen of nuggets met frietjes · Dessert: suikerpannenkoek of bolletje ijs.",
+    d_moules:"Duinkerkse mosselen (volgens aanvoer), frietjes en huisgemaakte mayonaise. Naar keuze: natuur, Maroilles, look, curry, chorizo of room.",
+    d_fish:"Koolvisfilet met frietjes en huisgemaakte tartaarsaus.",
+    d_casso:"Vis van de dag en/of schaaldieren volgens aanvoer, sjalotten- of chorizosaus, huisgemaakte ratatouille.",
+    d_tartare_p:"Duo van rauwe en gerookte zalm.",
+    d_croq3:"Ambachtelijke kroketten uit Duinkerke, huisgemaakte tartaarsaus.",
+    cat_poke:"Pokébowls — 17,00€", cat_salades:"Salades",
+    d_pokebase_n:"De basis",
+    d_pokebase:"Sushirijst met huisbereide en rauwe groenten: edamame, avocado (volgens aanvoer), gemarineerde komkommer en kool, wortelen, gegaarde Chinese kool, sesam- en pompoenpitten. Saus naar keuze: gezouten soja, zoete soja of sriracha.",
+    d_pokevegan:"Huisgemaakte balletjes van peulvruchten.",
+    d_salmer:"Twee garnaalkroketten en een sneetje gerookte zalm.",
+    d_salveg:"Huisgemaakte balletjes van peulvruchten.",
+    cat_desserts:"Desserts", cat_glaces:"Ambachtelijk ijs", cat_coupes:"Coupes — 8,50€", cat_crepes:"Pannenkoeken uit het Noorden & Luikse wafels",
+    d_brioche:"Met huisgemaakte karamel en een bolletje ambachtelijk vanille-ijs.",
+    d_gourmand:"Met zoetigheden: chocolademousse, cannelé, karamelmuffin en pom-pie.",
+    d_coupes_n:"1 / 2 / 3 bollen",
+    d_parfums:"Bourbonvanille uit Madagaskar, aardbei, chocolade, mokkakoffie uit Ethiopië, karamel met gezouten boter uit Guérande, Siciliaanse pistache, speculoos, citroen- en meloensorbet.",
+    d_coupemalo:"Bolletjes vanille, gezouten karamel en speculoos, huisgemaakte karamelcoulis, slagroom en speculooskruimels.",
+    d_colonnel:"Twee bollen citroensorbet, 4cL wodka.",
+    d_crepes_n:"Natuur, suiker, kandijsuiker, Nutella, speculoos, huisgemaakte karamel…",
+    d_crepes:"Tot en met La Gourmande: banaan, huisgemaakte karamel, ambachtelijk vanille-ijs en slagroom.",
+    cat_biere:"Bieren van 't vat & flesjes", cat_cocktails:"Cocktails", cat_vins:"Wijnen & bubbels", cat_chaud:"Warme dranken & frisdranken",
+    d_pression_n:"Van 't vat 25 / 33 / 50cL", d_pression_p:"vanaf 3,50€",
+    d_pression:"Loburg, Bon Secours Prestige, Gallia West IPA, Cuvée des Trolls, Kasteel Rubus, bier van het moment, Picon bière…",
+    d_bout_n:"Flesjes 33cL", d_bout:"Vedett Blanche, Duvel, Chimay Blauw, Paix Dieu, alcoholvrije 1664.",
+    d_cockt_n:"Met alcohol", d_cockt:"Huispunch, mojito, spritz, gin-tonic, Pina Colada by My Malo, Crazy Melon by My Malo.",
+    d_smooth_n:"Alcoholvrij & smoothies", d_smooth:"Melon en folie, Rouge tentation, L'exotique, Coco Câline, virgin mojito, virgin gin-tonic.",
+    d_vins_n:"Wit, rood & rosé", d_vins_p:"glas vanaf 4,50€",
+    d_vins:"Chardonnay, Côtes du Rhône AOP, Chablis AOP, Pinot noir, St Nicolas de Bourgueil, Côtes de Provence AOP… Flessen van 24€ tot 42€.",
+    d_bulles_n:"Champagne & bubbels", d_bulles_p:"glas vanaf 5,50€",
+    d_bulles:"Imaginarium blanc de blanc brut, Champagne Veuve de Beaumont.",
+    d_cafe_n:"Malongo-koffies & thees",
+    d_cafe:"Espresso, Weense koffie, latte, warme chocolademelk, Irish of Bailey's coffee, Darjeeling-thee en infusies. Deca op aanvraag.",
+    d_soft_n:"Frisdranken & sappen", d_soft:"Waters, frisdranken, Granini-sappen, siropen, diabolo's.",
+    carte_note:"Herkomst vlees en vis: kip uit Hauts-de-France, Angus-bavette EU, rund EU/Frankrijk, Duinkerkse mosselen volgens aanvoer, zalm gekweekt in Schotland, grijze garnalen uit de Noordzee, streekcharcuterie uit Hauts-de-France. Allergenenlijst op aanvraag. Prijzen inclusief taksen en bediening. Overmatig alcoholgebruik schaadt de gezondheid — drink met mate.",
+    hours_eyebrow:"Openingsuren", hours_title:"Welkom, seizoen na seizoen",
+    tab_normal:"Gewoon seizoen", tab_summer:"Zomer · terrassen", tab_holidays:"Eindejaarsfeesten", tab_carnival:"Carnaval",
+    d_monfri:"Maandag – vrijdag", d_weekend:"Zaterdag – zondag", d_everyday:"Alle dagen",
+    d_vac:"Schoolvakanties", d_2412:"24 & 31 december", v_midi:"Enkel middagservice", d_2512:"25 december & 1 januari", v_ferme:"Gesloten",
+    d_bandes:"Stoetdagen (« bandes »)", v_bandes:"Doorlopend open — kom verkleed!", d_autres:"Andere dagen", v_autres:"Uren van het gewone seizoen",
+    flash_summer:"☀️ Onze twee terrassen aan zee zijn open!",
+    flash_carnival:"🎭 Tijdens het carnaval van Duinkerke: volg onze socials voor de uren van de dag!",
+    hours_note:"Onze uren zijn indicatief en kunnen variëren met het seizoen en het weer. Bij twijfel: bel ons op +33 9 79 74 16 55.",
+    spaces_eyebrow:"De zaak", spaces_title:"Een boho-zaal, twee terrassen aan zee",
+    spaces_p:"Binnen een gezellig lounge-kader voor avonden in het Noorden. Bij mooi weer twee terrassen op de zeedijk van Malo-les-Bains — aperitief met zicht op zee en de letters van Duinkerke.",
+    cap_facade:"Open op de dijk", cap_terrasse1:"De terrassen, in de zomer", cap_table:"Uw tafel staat klaar",
+    cap_tface:"Het terras, recht aan zee", cap_tplage:"Zicht op het strand", cap_detail:"De kleine details",
+    cap_salle:"De zaal, open naar de zee", cap_atable:"Aan tafel", cap_boheme:"De boho-hoek", cap_cosy:"De gezellige hoek",
+    cap_cuisine:"Mosselen, in de keuken", cap_msunset:"Mosselen bij zonsondergang", cap_apero:"Aperitief aan zee",
+    cap_poke1:"Frisse pokébowl", cap_poke2:"Pokébowl duo van zalm", cap_speculoos:"Speculooscoupe", cap_smoothies:"Huisgemaakte smoothies",
+    cap_guirlandes:"Lichtjes in de schemering", cap_soiree:"Zomeravond op het terras", cap_crepuscule:"Schemering op de dijk",
+    cap_soir:"Avonden op de dijk", cap_lsalle:"De letters, vanuit de zaal", cap_ldk:"De letters van Duinkerke", cap_plage:"Het strand, recht tegenover",
+    rev_eyebrow:"Wat onze gasten zeggen", rev_title:"Uw reviews", rev_count:"op Google — meer dan 200 reviews",
+    rev1:"« Snelle bediening, heerlijke gerechten, mooi interieur, vriendelijk team en correcte prijzen. Voor mij een van de beste restaurants van Duinkerke! »",
+    rev2:"« Warme, gezellige zaak, bijzonder lekker eten. Speciale vermelding voor de zeer sympathieke bediening. Een aanrader. »",
+    rev3:"« Attente serveerster die perfect Engels spreekt, gerechten zonder wachttijd, zeer redelijke prijzen voor de zeedijk. Ik kom terug. »",
+    rev_all:"Lees alle reviews op Google",
+    c_title:"Op de dijk, recht aan zee",
+    c_dir:"Route via Google Maps →", c_phone_label:"Reserveren per telefoon:", c_book:"Online reserveren",
+    f_line:"Duinkerkse mosselen · Gerechten uit het Noorden · Pokébowls · Huisgemaakt"
+  },
+  chti: {
+    nav_home:"L'accueul", nav_menu:"Èl carte", nav_hours:"Chés horaires", nav_spaces:"L'indrot", nav_reviews:"Chés avis", nav_contact:"Contact",
+    reserve:"Réserver", reserve_table:"Réserver eun' tabe", see_menu:"Vir èl carte",
+    hero_title:"Dvant l'mér, chés pieds din ch'Nord",
+    hero_sub:"Moules ed Dunkerque, plats du Nord faits à l'mason et pokébowls tout frais — din un cadre lounge et bohème, su l'digue, à deux pas d'el plache.",
+    menu_eyebrow:"Fait à l'mason · Produits frais", menu_title:"Èl carte",
+    tab_starters:"Intrées & planches", tab_mains:"Plats", tab_sea:"Moules & pichons", tab_poke:"Pokébowls & salades", tab_desserts:"Desserts & glaches", tab_drinks:"Boissons",
+    d_terroir:"Fromaches d'no coin d'la ferme des Moëres (Flamand rouge, craquant, Tomme Flamande à l'bière) et charcut'rie des salaisons du « Clair bois ».",
+    d_planchemer:"Saumon fumé, flétan fumé, tartinade ed thon à l'mason, gambas sautées. À c't'heure ed mai à septembe.",
+    d_tartare_e:"Duo d'saumon cru et d'saumon fumé.",
+    d_croq2:"Croquettes artisanales d'la Malle aux Croquettes, faites à Dunkerque, sauce tartare à l'mason.",
+    cat_brasserie:"Plats brasserie", cat_nord:"Plats ed ch'Nord", cat_sides:"Accompagnéments & sauces",
+    d_burger:"Bun brioché, salade, tomate, ognons pickles, cheddar ou Maroilles, sauce burger My Malo.",
+    d_tartareb:"Sauce cocktail My Malo, jaune d'œu et ses condiments.",
+    d_biloute:"Fromache ed ch'Nord d'la ferme du pont des loups, cuit au four, aveuc s'charcut'rie des salaisons du « Clair bois ».",
+    d_carbo:"Ragoût ed bœu mijoté à l'bière et au pain d'épices, comme cheulle ed no grand-mère.",
+    d_potje:"Viande ed poulet, porc et lapin in gelée d'bouillon — un vrai plat ed cheu nous.",
+    d_sides_n:"Frites cuites au cras d'bœu, riz, ratatouille à l'mason et/ou salade",
+    d_sides:"Portion in plus +3€.",
+    d_sauces_n:"Sauces à l'mason",
+    d_sauces:"Mayonnaise, Maroilles, cheddar, échalotes, poive, curry, chorizo ou tartare.",
+    f1_t:"Menu My Malo", f1_p:"<strong>Rin qu'du lundi au vendredi midi, hors jours fériés.</strong><br>Plat : moules au chox, bavette Black Angus 180g ou pokébowl · Dessert : mousse au chocolat ou Dame blanche · Boisson : Loburg 25cL, vère ed vin ou soft.",
+    f2_t:"Menu tiot −12 ans", f2_p:"Plat : moules tiot ou nuggets frites · Dessert : crêpe au chuc ou boule ed glache.",
+    d_moules:"Moules ed Dunkerque (selon arrivache), frites et mayonnaise à l'mason. Au chox : marinières, Maroilles, à l'ail, curry, chorizo ou crinme.",
+    d_fish:"Dos ed lieu noir servi aveuc frites et sauce tartare à l'mason.",
+    d_casso:"Pichon du jour et/ou crustacés selon arrivache, sauce échalotes ou chorizo, ratatouille à l'mason.",
+    d_tartare_p:"Duo d'saumon cru et d'saumon fumé.",
+    d_croq3:"Croquettes artisanales faites à Dunkerque, sauce tartare à l'mason.",
+    cat_poke:"Pokébowls — 17,00€", cat_salades:"Salades",
+    d_pokebase_n:"Èl base",
+    d_pokebase:"Riz à sushi vinaigré, légumes cuisinés à l'mason et légumes crus : edamame, avocat (selon arrivache), concombes marinés, choux marinés, carottes, chou chinois cuit, graines ed sésame et d'courge. Sauce au chox : soja salé, sucré ou sriracha.",
+    d_pokevegan:"Boulettes ed légumineuse à l'mason.",
+    d_salmer:"Croquettes ed crevettes grises ×2 et tranche ed saumon fumé.",
+    d_salveg:"Boulettes ed légumineuse à l'mason.",
+    cat_desserts:"Desserts", cat_glaces:"Glaches artisanales", cat_coupes:"Coupes artisanales — 8,50€", cat_crepes:"Crêpes ed ch'Nord & gaufes liégeoises",
+    d_brioche:"Nappée d'caramel à l'mason et boule ed glache vanille artisanale.",
+    d_gourmand:"Mignardises : mousse chocolat, cannelé, muffin caramel et pom-pie.",
+    d_coupes_n:"Coupe 1 / 2 / 3 boules",
+    d_parfums:"Vanille délice bourbon Madagascar, fraise, chocolat fleur ed cao, café moka Éthiopie, caramel beurre salé d'Guérande, pistache ed Sicile, spéculoos, sorbets citron et melon.",
+    d_coupemalo:"1 boule vanille, 1 caramel beurre salé, 1 spéculoos, coulis caramel à l'mason, chantilly et brisures ed spéculoos.",
+    d_colonnel:"2 boules sorbet citron, 4cL vodka.",
+    d_crepes_n:"Nature, chuc, vergeoise, Nutella, spéculoos, caramel à l'mason…",
+    d_crepes:"Jusqu'à la Gourmande : banane, caramel à l'mason, glache artisanale vanille et chantilly.",
+    cat_biere:"Bières pression & bouteilles", cat_cocktails:"Cocktails", cat_vins:"Vins & bulles", cat_chaud:"Boissons caudes & softs",
+    d_pression_n:"Pressions 25 / 33 / 50cL", d_pression_p:"à partir ed 3,50€",
+    d_pression:"Loburg, Bon Secours Prestige, Gallia West IPA, Cuvée des Trolls, Kasteel Rubus, bière du momint, Picon bière…",
+    d_bout_n:"Bouteilles 33cL", d_bout:"Vedett Blanche, Duvel, Chimay Bleue, Paix Dieu, 1664 sans alcool.",
+    d_cockt_n:"Aveuc alcool", d_cockt:"Punch à l'mason, mojito, spritz, gin tonic, Pina Colada by My Malo, Crazy Melon by My Malo.",
+    d_smooth_n:"Sans alcool & smoothies", d_smooth:"Melon en folie, Rouge tentation, L'exotique, Coco Câline, virgin mojito, virgin gin tonic.",
+    d_vins_n:"Blancs, rouches, rosés", d_vins_p:"vère à partir ed 4,50€",
+    d_vins:"Chardonnay, Côtes du Rhône AOP, Chablis AOP, Pinot noir, ST Nicolas de Bourgueil, Côtes de Provence AOP… Bouteilles ed 24€ à 42€.",
+    d_bulles_n:"Champagne & bulles", d_bulles_p:"coupe à partir ed 5,50€",
+    d_bulles:"Imaginarium blanc de blanc brut, Champagne Veuve de Beaumont.",
+    d_cafe_n:"Cafés & thés Malongo",
+    d_cafe:"Expresso, café viennois, latte, chocolat caud, Irish ou Bailey's coffee, thés Darjeeling et infusions. Décaféiné su d'mande.",
+    d_soft_n:"Softs & jus", d_soft:"Eaux, sodas, jus Granini, sirops, diabolos.",
+    carte_note:"Origines viandes et pichons : poulet des Hauts-de-France, bavette Angus U.E., bœu U.E./France, moules ed Dunkerque selon arrivache, saumon élevé in Écosse, crevettes grises pêchées in mér du Nord, charcut'rie régionale des Hauts-de-France. L'liste des allergènes est disponibe su d'mande. Prix taxes et service compris. L'abus d'alcool est dangereux pour l'santé, à consommer aveuc modération.",
+    hours_eyebrow:"Chés horaires", hours_title:"In vous attind, selon l'saison",
+    tab_normal:"Saison classique", tab_summer:"Été · terrasses", tab_holidays:"Fêtes ed fin d'année", tab_carnival:"Carnaval",
+    d_monfri:"Lundi – Vendredi", d_weekend:"Sam'di – Dimanche", d_everyday:"Tous les jours",
+    d_vac:"Vacances scolaires", d_2412:"24 & 31 décembe", v_midi:"Service du midi rin qu'ça", d_2512:"25 décembe & 1er janvier", v_ferme:"Freumé",
+    d_bandes:"Jours ed bandes", v_bandes:"Ouvert tout l'jour — vénez in clet'che, hein biloute !", d_autres:"Eutes jours", v_autres:"Horaires ed saison classique",
+    flash_summer:"☀️ Nos deux terrasses dvant l'mér is sont ouvertes !",
+    flash_carnival:"🎭 Pindant ch'Carnaval ed Dunkerque, suivez nos réseaux pour chés horaires du jour !",
+    hours_note:"Nos horaires y sont indicatifs et is peuv'tent bouger selon l'saison et l'temps qu'i fait. Si t'es pas sûr, téléphone-nous au 09 79 74 16 55.",
+    spaces_eyebrow:"L'indrot", spaces_title:"Eun' salle bohème, deux terrasses dvant l'mér",
+    spaces_p:"À l'intérieur, un cadre lounge et cosy pour chés soirées ed ch'Nord. Aux biaux jours, deux terrasses su l'digue ed Malo-les-Bains — apéro dvant les vagues, lettes ed Dunkerque in toile ed fond, couchant d'soleil compris.",
+    cap_facade:"Ouvert su l'digue", cap_terrasse1:"Chés terrasses, in été", cap_table:"Eut' tabe alle t'attind",
+    cap_tface:"L'terrasse, dvant l'mér", cap_tplage:"Vue su l'plache", cap_detail:"Chés tiots détails",
+    cap_salle:"L'salle, ouvarte su l'mér", cap_atable:"À tabe", cap_boheme:"Ch'coin bohème", cap_cosy:"Ch'coin cosy",
+    cap_cuisine:"Chés moules, in cuisine", cap_msunset:"Moules au couchant", cap_apero:"L'apéro dvant l'mér",
+    cap_poke1:"Pokébowl tout frais", cap_poke2:"Pokébowl duo d'saumon", cap_speculoos:"Coupe spéculoos", cap_smoothies:"Smoothies à l'mason",
+    cap_guirlandes:"Chés guirlandes à l'nuit tombante", cap_soiree:"Soirée d'été in terrasse", cap_crepuscule:"Ch'crépuscule su l'digue",
+    cap_soir:"Chés soirées su l'digue", cap_lsalle:"Chés lettes, dépis l'salle", cap_ldk:"Chés lettes ed Dunkerque", cap_plage:"L'plache, juste in face",
+    rev_eyebrow:"Is in parl'tent", rev_title:"Vos avis", rev_count:"su Google — pus ed 200 avis",
+    rev1:"« Commande rapide, plats délicieux, belle déco, équipe souriante et prix corrects. Pour mi, un des meilleurs restaurants ed Dunkerque ! »",
+    rev2:"« Indrot caleureux, plats particulièremint savoureux. Mention spéciale pour ch'service, très sympathique. Ej' recommande. »",
+    rev3:"« Serveuse attintionnée et parfaitemint anglophone, plats arrivés sans attinte, prix très raisonnabes pour ch'front d'mér. J'y r'tournerai. »",
+    rev_all:"Lire tous chés avis su Google",
+    c_title:"Su l'digue, dvant l'mér",
+    c_dir:"Itinéraire via Google Maps →", c_phone_label:"Réservez par téléphone :", c_book:"Réserver in ligne",
+    f_line:"Moules ed Dunkerque · Plats ed ch'Nord · Pokébowls · Fait à l'mason"
   }
 };
 document.querySelectorAll('[data-i18n]').forEach(el => { i18n.fr[el.dataset.i18n] = i18n.fr[el.dataset.i18n] || el.innerHTML; });
 
-let lang = 'fr';
-const langToggle = document.getElementById('langToggle');
-langToggle.addEventListener('click', () => {
-  lang = lang === 'fr' ? 'en' : 'fr';
-  document.documentElement.lang = lang;
-  langToggle.textContent = lang === 'fr' ? 'EN' : 'FR';
+const langCodes = { fr:'fr', en:'en', nl:'nl', chti:'pcd' };
+const langSelect = document.getElementById('langSelect');
+langSelect.addEventListener('change', () => {
+  const lang = langSelect.value;
+  document.documentElement.lang = langCodes[lang];
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const t = i18n[lang][el.dataset.i18n];
     if (t) el.innerHTML = t;
