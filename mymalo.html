@@ -40,10 +40,10 @@
   },
   "geo": { "@type": "GeoCoordinates", "latitude": 51.0503, "longitude": 2.3990 },
   "openingHoursSpecification": [
-    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "11:30", "closes": "13:30" },
-    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "18:30", "closes": "21:30" },
-    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday","Sunday"], "opens": "11:30", "closes": "14:30" },
-    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday","Sunday"], "opens": "18:30", "closes": "21:30" }
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday"], "opens": "12:00", "closes": "13:30" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday","Saturday"], "opens": "12:00", "closes": "14:30" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday","Saturday"], "opens": "19:00", "closes": "21:30" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Sunday"], "opens": "12:00", "closes": "14:30" }
   ],
   "sameAs": [
     "https://www.instagram.com/my.malo/",
@@ -279,6 +279,7 @@ footer img{height:34px}
       <button data-panel="c-plats" data-i18n="tab_mains">Plats</button>
       <button data-panel="c-mer" data-i18n="tab_sea">Moules &amp; poissons</button>
       <button data-panel="c-poke" data-i18n="tab_poke">Pokébowls &amp; salades</button>
+      <button data-panel="c-vege" data-i18n="tab_veg">Végétarien</button>
       <button data-panel="c-desserts" data-i18n="tab_desserts">Desserts &amp; glaces</button>
       <button data-panel="c-boissons" data-i18n="tab_drinks">Boissons</button>
     </div>
@@ -346,6 +347,16 @@ footer img{height:34px}
       <div class="dish"><div class="line"><span class="name">Salade végétarienne / vegan</span><span class="dots"></span><span class="price">17,00€</span></div><p class="desc" data-i18n="d_salveg">Boulettes de légumineuse maison.</p></div>
     </div>
 
+    <!-- VÉGÉTARIEN -->
+    <div class="carte-panel" id="c-vege">
+      <div class="dish"><div class="line"><span class="name">Tortillas et guacamole</span><span class="dots"></span><span class="price">7,50€</span></div></div>
+      <div class="dish"><div class="line"><span class="name">Œufs mayonnaise maison</span><span class="dots"></span><span class="price">6,50€</span></div></div>
+      <div class="dish"><div class="line"><span class="name">Burger steak légumineuse</span><span class="dots"></span><span class="price">17,00€</span></div><p class="desc" data-i18n="d_burgerveg">Steak de légumineuse maison, bun brioché, salade, tomate, oignons pickles, cheddar ou Maroilles, sauce burger My Malo.</p></div>
+      <div class="dish"><div class="line"><span class="name">Pokébowl œufs durs</span><span class="dots"></span><span class="price">17,00€</span></div></div>
+      <div class="dish"><div class="line"><span class="name">Pokébowl vegan</span><span class="dots"></span><span class="price">17,00€</span></div><p class="desc" data-i18n="d_pokevegan">Boulettes de légumineuse maison.</p></div>
+      <div class="dish"><div class="line"><span class="name">Salade végétarienne / vegan</span><span class="dots"></span><span class="price">17,00€</span></div><p class="desc" data-i18n="d_salveg">Boulettes de légumineuse maison.</p></div>
+    </div>
+
     <!-- DESSERTS -->
     <div class="carte-panel" id="c-desserts">
       <div class="menu-cat" data-i18n="cat_desserts">Desserts</div>
@@ -393,14 +404,15 @@ footer img{height:34px}
     <div class="season-tabs" role="tablist">
       <button class="active" data-panel="p-normal" data-i18n="tab_normal">Saison classique</button>
       <button data-panel="p-ete" data-i18n="tab_summer">Été · terrasses</button>
-      <button data-panel="p-fetes" data-i18n="tab_holidays">Fêtes de fin d'année</button>
+      <button data-panel="p-fetes" data-i18n="tab_holidays">Fin d'année</button>
       <button data-panel="p-carnaval" data-i18n="tab_carnival">Carnaval</button>
     </div>
 
     <div class="hours-panel active" id="p-normal">
       <table class="hours-table">
-        <tr><td data-i18n="d_monfri">Lundi – Vendredi</td><td>11:30 – 13:30 &nbsp;/&nbsp; 18:30 – 21:30</td></tr>
-        <tr><td data-i18n="d_weekend">Samedi – Dimanche</td><td>11:30 – 14:30 &nbsp;/&nbsp; 18:30 – 21:30</td></tr>
+        <tr><td data-i18n="d_monthu">Lundi – Jeudi</td><td>12:00 – 13:30</td></tr>
+        <tr><td data-i18n="d_frisat">Vendredi et Samedi</td><td>12:00 – 14:30 &nbsp;/&nbsp; 19:00 – 21:30</td></tr>
+        <tr><td data-i18n="d_sun">Dimanche</td><td>12:00 – 14:30</td></tr>
       </table>
     </div>
 
@@ -413,16 +425,13 @@ footer img{height:34px}
 
     <div class="hours-panel" id="p-fetes">
       <table class="hours-table">
-        <tr><td data-i18n="d_vac">Vacances scolaires</td><td>11:30 – 14:30 &nbsp;/&nbsp; 18:30 – 21:30</td></tr>
-        <tr><td data-i18n="d_2412">24 &amp; 31 décembre</td><td data-i18n="v_midi">Service du midi uniquement</td></tr>
-        <tr><td data-i18n="d_2512">25 décembre &amp; 1er janvier</td><td data-i18n="v_ferme">Fermé</td></tr>
+        <tr><td data-i18n="d_decjan">Décembre et janvier</td><td data-i18n="v_ferme">Fermé</td></tr>
       </table>
     </div>
 
     <div class="hours-panel" id="p-carnaval">
       <table class="hours-table">
-        <tr><td data-i18n="d_bandes">Jours de bandes</td><td data-i18n="v_bandes">Ouvert en continu — venez en clet'che !</td></tr>
-        <tr><td data-i18n="d_autres">Autres jours</td><td data-i18n="v_autres">Horaires de saison classique</td></tr>
+        <tr><td data-i18n="d_carnaval">Samedis de carnaval et dimanches des bandes de Dunkerque et de Malo</td><td data-i18n="v_carnaval">Repas sur réservation, de 19h00 jusqu'à 4h00 du matin maximum</td></tr>
       </table>
       <span class="season-flash" data-i18n="flash_carnival">🎭 Pendant le Carnaval de Dunkerque, suivez nos réseaux pour les horaires du jour !</span>
     </div>
@@ -602,10 +611,11 @@ const i18n = {
   en: {
     nav_home:"Home", nav_menu:"Menu", nav_hours:"Opening hours", nav_spaces:"The place", nav_reviews:"Reviews", nav_contact:"Contact",
     reserve:"Book a table", reserve_table:"Book a table", see_menu:"See the menu",
-    hero_title:"Facing the sea, rooted in the North",
+    hero_title:"Facing the sea, take a seat on the promenade",
     hero_sub:"Dunkirk mussels, homemade Northern-French classics and fresh poke bowls — in a laid-back, boho setting right on the seafront promenade, steps from the beach.",
     menu_eyebrow:"Homemade · Fresh produce", menu_title:"The menu",
-    tab_starters:"Starters & boards", tab_mains:"Mains", tab_sea:"Mussels & fish", tab_poke:"Poke bowls & salads", tab_desserts:"Desserts & ice cream", tab_drinks:"Drinks",
+    tab_starters:"Starters & boards", tab_mains:"Mains", tab_sea:"Mussels & fish", tab_poke:"Poke bowls & salads", tab_veg:"Vegetarian", tab_desserts:"Desserts & ice cream", tab_drinks:"Drinks",
+    d_burgerveg:"Homemade legume patty, brioche bun, lettuce, tomato, pickled onions, cheddar or Maroilles, My Malo burger sauce.",
     d_terroir:"Local farmhouse cheeses from Ferme des Moëres (Flamand rouge, craquant, beer-washed Tomme Flamande) and regional cured meats from « Clair bois ».",
     d_planchemer:"Smoked salmon, smoked halibut, homemade tuna spread, sautéed prawns. Available May to September.",
     d_tartare_e:"Duo of raw and smoked salmon.",
@@ -657,10 +667,10 @@ const i18n = {
     d_soft_n:"Softs & juices", d_soft:"Waters, sodas, Granini juices, syrups, diabolos.",
     carte_note:"Meat and fish origins: chicken from Hauts-de-France, EU Angus bavette, EU/French beef, Dunkirk mussels subject to landings, salmon farmed in Scotland, grey shrimp caught in the North Sea, regional charcuterie from Hauts-de-France. Allergen list available on request. Prices include tax and service. Alcohol abuse is dangerous for your health — drink responsibly.",
     hours_eyebrow:"Opening hours", hours_title:"We're open — season by season",
-    tab_normal:"Regular season", tab_summer:"Summer · terraces", tab_holidays:"Winter holidays", tab_carnival:"Carnival",
-    d_monfri:"Monday – Friday", d_weekend:"Saturday – Sunday", d_everyday:"Every day",
-    d_vac:"School holidays", d_2412:"Dec 24 & 31", v_midi:"Lunch service only", d_2512:"Dec 25 & Jan 1", v_ferme:"Closed",
-    d_bandes:"Parade days (« bandes »)", v_bandes:"Open all day — come in costume!", d_autres:"Other days", v_autres:"Regular season hours",
+    tab_normal:"Regular season", tab_summer:"Summer · terraces", tab_holidays:"End of year", tab_carnival:"Carnival",
+    d_monthu:"Monday – Thursday", d_frisat:"Friday & Saturday", d_sun:"Sunday", d_everyday:"Every day",
+    d_decjan:"December and January", v_ferme:"Closed",
+    d_carnaval:"Carnival Saturdays and the Sundays of the Dunkerque and Malo bandes", v_carnaval:"Dinner by reservation, from 7 pm until 4 am at the latest",
     flash_summer:"☀️ Our two seafront terraces are open!",
     flash_carnival:"🎭 During the Dunkirk Carnival, follow our socials for each day's hours!",
     hours_note:"Hours are indicative and may vary with the season and the weather. When in doubt, call us on +33 9 79 74 16 55.",
@@ -685,10 +695,11 @@ const i18n = {
   nl: {
     nav_home:"Home", nav_menu:"De kaart", nav_hours:"Openingsuren", nav_spaces:"De zaak", nav_reviews:"Reviews", nav_contact:"Contact",
     reserve:"Reserveren", reserve_table:"Reserveer een tafel", see_menu:"Bekijk de kaart",
-    hero_title:"Aan zee, thuis in het Noorden",
+    hero_title:"Aan zee, strijk neer op de dijk",
     hero_sub:"Duinkerkse mosselen, huisgemaakte klassiekers uit Noord-Frankrijk en frisse pokébowls — in een gezellig boho-kader op de zeedijk, op een paar stappen van het strand.",
     menu_eyebrow:"Huisgemaakt · Verse producten", menu_title:"De kaart",
-    tab_starters:"Voorgerechten & planken", tab_mains:"Hoofdgerechten", tab_sea:"Mosselen & vis", tab_poke:"Pokébowls & salades", tab_desserts:"Desserts & ijs", tab_drinks:"Dranken",
+    tab_starters:"Voorgerechten & planken", tab_mains:"Hoofdgerechten", tab_sea:"Mosselen & vis", tab_poke:"Pokébowls & salades", tab_veg:"Vegetarisch", tab_desserts:"Desserts & ijs", tab_drinks:"Dranken",
+    d_burgerveg:"Huisgemaakte peulvruchtenburger, briochebroodje, sla, tomaat, gepekelde uitjes, cheddar of Maroilles, My Malo-burgersaus.",
     d_terroir:"Lokale boerderijkazen van Ferme des Moëres (Flamand rouge, craquant, Tomme Flamande met bier) en streekcharcuterie van « Clair bois ».",
     d_planchemer:"Gerookte zalm, gerookte heilbot, huisgemaakte tonijnspread, gebakken gamba's. Beschikbaar van mei tot september.",
     d_tartare_e:"Duo van rauwe en gerookte zalm.",
@@ -740,10 +751,10 @@ const i18n = {
     d_soft_n:"Frisdranken & sappen", d_soft:"Waters, frisdranken, Granini-sappen, siropen, diabolo's.",
     carte_note:"Herkomst vlees en vis: kip uit Hauts-de-France, Angus-bavette EU, rund EU/Frankrijk, Duinkerkse mosselen volgens aanvoer, zalm gekweekt in Schotland, grijze garnalen uit de Noordzee, streekcharcuterie uit Hauts-de-France. Allergenenlijst op aanvraag. Prijzen inclusief taksen en bediening. Overmatig alcoholgebruik schaadt de gezondheid — drink met mate.",
     hours_eyebrow:"Openingsuren", hours_title:"Welkom, seizoen na seizoen",
-    tab_normal:"Gewoon seizoen", tab_summer:"Zomer · terrassen", tab_holidays:"Eindejaarsfeesten", tab_carnival:"Carnaval",
-    d_monfri:"Maandag – vrijdag", d_weekend:"Zaterdag – zondag", d_everyday:"Alle dagen",
-    d_vac:"Schoolvakanties", d_2412:"24 & 31 december", v_midi:"Enkel middagservice", d_2512:"25 december & 1 januari", v_ferme:"Gesloten",
-    d_bandes:"Stoetdagen (« bandes »)", v_bandes:"Doorlopend open — kom verkleed!", d_autres:"Andere dagen", v_autres:"Uren van het gewone seizoen",
+    tab_normal:"Gewoon seizoen", tab_summer:"Zomer · terrassen", tab_holidays:"Eindejaar", tab_carnival:"Carnaval",
+    d_monthu:"Maandag – donderdag", d_frisat:"Vrijdag en zaterdag", d_sun:"Zondag", d_everyday:"Alle dagen",
+    d_decjan:"December en januari", v_ferme:"Gesloten",
+    d_carnaval:"Carnavalszaterdagen en de zondagen van de bandes van Duinkerke en Malo", v_carnaval:"Diner op reservering, van 19u00 tot uiterlijk 4u00 's nachts",
     flash_summer:"☀️ Onze twee terrassen aan zee zijn open!",
     flash_carnival:"🎭 Tijdens het carnaval van Duinkerke: volg onze socials voor de uren van de dag!",
     hours_note:"Onze uren zijn indicatief en kunnen variëren met het seizoen en het weer. Bij twijfel: bel ons op +33 9 79 74 16 55.",
@@ -771,7 +782,8 @@ const i18n = {
     hero_title:"Dvant l'mér, chés pieds din ch'Nord",
     hero_sub:"Moules ed Dunkerque, plats du Nord faits à l'mason et pokébowls tout frais — din un cadre lounge et bohème, su l'digue, à deux pas d'el plache.",
     menu_eyebrow:"Fait à l'mason · Produits frais", menu_title:"Èl carte",
-    tab_starters:"Intrées & planches", tab_mains:"Plats", tab_sea:"Moules & pichons", tab_poke:"Pokébowls & salades", tab_desserts:"Desserts & glaches", tab_drinks:"Boissons",
+    tab_starters:"Intrées & planches", tab_mains:"Plats", tab_sea:"Moules & pichons", tab_poke:"Pokébowls & salades", tab_veg:"Végétarien", tab_desserts:"Desserts & glaches", tab_drinks:"Boissons",
+    d_burgerveg:"Steak ed légumineuse à l'mason, bun brioché, salade, tomate, ognons pickles, cheddar ou Maroilles, sauce burger My Malo.",
     d_terroir:"Fromaches d'no coin d'la ferme des Moëres (Flamand rouge, craquant, Tomme Flamande à l'bière) et charcut'rie des salaisons du « Clair bois ».",
     d_planchemer:"Saumon fumé, flétan fumé, tartinade ed thon à l'mason, gambas sautées. À c't'heure ed mai à septembe.",
     d_tartare_e:"Duo d'saumon cru et d'saumon fumé.",
@@ -823,10 +835,10 @@ const i18n = {
     d_soft_n:"Softs & jus", d_soft:"Eaux, sodas, jus Granini, sirops, diabolos.",
     carte_note:"Origines viandes et pichons : poulet des Hauts-de-France, bavette Angus U.E., bœu U.E./France, moules ed Dunkerque selon arrivache, saumon élevé in Écosse, crevettes grises pêchées in mér du Nord, charcut'rie régionale des Hauts-de-France. L'liste des allergènes est disponibe su d'mande. Prix taxes et service compris. L'abus d'alcool est dangereux pour l'santé, à consommer aveuc modération.",
     hours_eyebrow:"Chés horaires", hours_title:"In vous attind, selon l'saison",
-    tab_normal:"Saison classique", tab_summer:"Été · terrasses", tab_holidays:"Fêtes ed fin d'année", tab_carnival:"Carnaval",
-    d_monfri:"Lundi – Vendredi", d_weekend:"Sam'di – Dimanche", d_everyday:"Tous les jours",
-    d_vac:"Vacances scolaires", d_2412:"24 & 31 décembe", v_midi:"Service du midi rin qu'ça", d_2512:"25 décembe & 1er janvier", v_ferme:"Freumé",
-    d_bandes:"Jours ed bandes", v_bandes:"Ouvert tout l'jour — vénez in clet'che, hein biloute !", d_autres:"Eutes jours", v_autres:"Horaires ed saison classique",
+    tab_normal:"Saison classique", tab_summer:"Été · terrasses", tab_holidays:"Fin d'année", tab_carnival:"Carnaval",
+    d_monthu:"Lundi – Jeudi", d_frisat:"Vendredi et Sam'di", d_sun:"Dimanche", d_everyday:"Tous les jours",
+    d_decjan:"Décembe et janvier", v_ferme:"Freumé",
+    d_carnaval:"Sam'dis d'carnaval et dimanches des bandes ed Dunkerque et d'Malo", v_carnaval:"Repas su réservation, ed 19h00 jusqu'à 4h00 du matin maxi",
     flash_summer:"☀️ Nos deux terrasses dvant l'mér is sont ouvertes !",
     flash_carnival:"🎭 Pindant ch'Carnaval ed Dunkerque, suivez nos réseaux pour chés horaires du jour !",
     hours_note:"Nos horaires y sont indicatifs et is peuv'tent bouger selon l'saison et l'temps qu'i fait. Si t'es pas sûr, téléphone-nous au 09 79 74 16 55.",
