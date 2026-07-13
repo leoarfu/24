@@ -6,6 +6,10 @@
 <title>My Malo — Restaurant face à la mer, Digue de Malo-les-Bains, Dunkerque</title>
 <meta name="description" content="Restaurant My Malo sur la digue de Malo-les-Bains à Dunkerque. Moules de Dunkerque, plats du Nord faits maison, poke bowls. Deux terrasses face à la mer en été. Réservation en ligne.">
 <link rel="canonical" href="https://www.mymalo.fr/">
+<link rel="icon" href="favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta property="og:type" content="restaurant.restaurant">
 <meta property="og:title" content="My Malo — Restaurant face à la mer à Dunkerque">
 <meta property="og:description" content="Moules de Dunkerque, plats du Nord, poke bowls. Sur la digue de Malo-les-Bains, deux terrasses face à la mer. Réservez en ligne.">
@@ -40,10 +44,10 @@
   },
   "geo": { "@type": "GeoCoordinates", "latitude": 51.0503, "longitude": 2.3990 },
   "openingHoursSpecification": [
-    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "11:30", "closes": "13:30" },
-    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "18:30", "closes": "21:30" },
-    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday","Sunday"], "opens": "11:30", "closes": "14:30" },
-    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday","Sunday"], "opens": "18:30", "closes": "21:30" }
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday"], "opens": "12:00", "closes": "13:30" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday","Saturday"], "opens": "12:00", "closes": "14:30" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday","Saturday"], "opens": "19:00", "closes": "21:30" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Sunday"], "opens": "12:00", "closes": "14:30" }
   ],
   "sameAs": [
     "https://www.instagram.com/my.malo/",
@@ -111,6 +115,9 @@ header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.96);backdro
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(32,42,48,.78) 0%,rgba(32,42,48,.45) 42%,rgba(32,42,48,.08) 75%,rgba(32,42,48,0) 100%)}
 .hero .wrap{position:relative;z-index:2;padding-top:64px;padding-bottom:60px}
 .hero h1{font-size:clamp(2rem,5vw,3.4rem);font-weight:700;max-width:18ch;text-transform:uppercase;letter-spacing:.02em}
+.h1-kicker{display:block;font-size:clamp(.78rem,1.4vw,.95rem);font-weight:700;letter-spacing:.18em;color:var(--jaune);margin-bottom:12px;max-width:none}
+.intro{padding:52px 0}
+.intro p{max-width:72ch}
 .hero p.tag{font-size:clamp(1rem,1.9vw,1.2rem);margin:16px 0 30px;max-width:52ch}
 .hero .ctas{display:flex;gap:14px;flex-wrap:wrap}
 
@@ -206,7 +213,7 @@ footer img{height:34px}
   .carte-panel.active{grid-template-columns:1fr}
   .menu-formules{grid-template-columns:1fr}
   .sticky-reserve{display:block}
-  body{padding-bottom:72px}
+  footer{padding-bottom:calc(110px + env(safe-area-inset-bottom))}
   section{padding:58px 0}
 }
 :focus-visible{outline:3px solid var(--jaune);outline-offset:2px}
@@ -259,12 +266,20 @@ footer img{height:34px}
 <section class="hero">
   <img class="bg" src="images/terrasse-vue-lettres-dunkerque-my-malo.jpg" alt="Terrasse du restaurant My Malo face à la mer, avec les lettres Dunkerque en arrière-plan" fetchpriority="high">
   <div class="wrap">
-    <h1 data-i18n="hero_title">Face à la mer, les pieds dans le Nord</h1>
+    <h1><span class="h1-kicker" data-i18n="hero_kicker">Restaurant My Malo · Digue de Malo-les-Bains, Dunkerque</span><span data-i18n="hero_title">Face à la mer, posez-vous sur la digue</span></h1>
     <p class="tag" data-i18n="hero_sub">Moules de Dunkerque, plats du Nord faits maison et poke bowls fraîcheur — dans un cadre lounge et bohème, sur la digue, à deux pas de la plage.</p>
    <!-- <div class="ctas">
       <a class="btn btn-jaune" href="https://reservation.laddition.com/booking/mymalo-fr" target="_blank" rel="noopener" data-i18n="reserve_table">Réserver une table</a>
       <a class="btn btn-ghost" href="#carte" data-i18n="see_menu">Voir la carte</a>
     </div> -->
+  </div>
+</section>
+
+<section class="intro">
+  <div class="wrap">
+    <h2 data-i18n="intro_title">Votre bar-restaurant sur la digue de Malo-les-Bains</h2>
+    <svg class="wave" viewBox="0 0 120 16" fill="none" aria-hidden="true"><path d="M2 8 C 12 2, 24 2, 34 8 C 44 14, 56 14, 66 8 C 76 2, 88 2, 98 8 C 104 11.5, 112 11.5, 118 8" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg>
+    <p data-i18n="intro_p">My Malo est un bar-restaurant situé face à la mer, sur la digue de Malo-les-Bains à Dunkerque. À la carte : moules de Dunkerque selon arrivage, spécialités du Nord faites maison — carbonade flamande, potjevleesch, poulet au Maroilles — et poke bowls frais. Aux beaux jours, profitez de nos deux terrasses face à la plage ; le reste de l'année, la salle lounge et bohème vous accueille. Réservez en ligne ou au 09 79 74 16 55.</p>
   </div>
 </section>
 
@@ -279,6 +294,7 @@ footer img{height:34px}
       <button data-panel="c-plats" data-i18n="tab_mains">Plats</button>
       <button data-panel="c-mer" data-i18n="tab_sea">Moules &amp; poissons</button>
       <button data-panel="c-poke" data-i18n="tab_poke">Pokébowls &amp; salades</button>
+      <button data-panel="c-vege" data-i18n="tab_veg">Végétarien</button>
       <button data-panel="c-desserts" data-i18n="tab_desserts">Desserts &amp; glaces</button>
       <button data-panel="c-boissons" data-i18n="tab_drinks">Boissons</button>
     </div>
@@ -346,6 +362,16 @@ footer img{height:34px}
       <div class="dish"><div class="line"><span class="name">Salade végétarienne / vegan</span><span class="dots"></span><span class="price">17,00€</span></div><p class="desc" data-i18n="d_salveg">Boulettes de légumineuse maison.</p></div>
     </div>
 
+    <!-- VÉGÉTARIEN -->
+    <div class="carte-panel" id="c-vege">
+      <div class="dish"><div class="line"><span class="name">Tortillas et guacamole</span><span class="dots"></span><span class="price">7,50€</span></div></div>
+      <div class="dish"><div class="line"><span class="name">Œufs mayonnaise maison</span><span class="dots"></span><span class="price">6,50€</span></div></div>
+      <div class="dish"><div class="line"><span class="name">Burger steak légumineuse</span><span class="dots"></span><span class="price">17,00€</span></div><p class="desc" data-i18n="d_burgerveg">Steak de légumineuse maison, bun brioché, salade, tomate, oignons pickles, cheddar ou Maroilles, sauce burger My Malo.</p></div>
+      <div class="dish"><div class="line"><span class="name">Pokébowl œufs durs</span><span class="dots"></span><span class="price">17,00€</span></div></div>
+      <div class="dish"><div class="line"><span class="name">Pokébowl vegan</span><span class="dots"></span><span class="price">17,00€</span></div><p class="desc" data-i18n="d_pokevegan">Boulettes de légumineuse maison.</p></div>
+      <div class="dish"><div class="line"><span class="name">Salade végétarienne / vegan</span><span class="dots"></span><span class="price">17,00€</span></div><p class="desc" data-i18n="d_salveg">Boulettes de légumineuse maison.</p></div>
+    </div>
+
     <!-- DESSERTS -->
     <div class="carte-panel" id="c-desserts">
       <div class="menu-cat" data-i18n="cat_desserts">Desserts</div>
@@ -393,14 +419,15 @@ footer img{height:34px}
     <div class="season-tabs" role="tablist">
       <button class="active" data-panel="p-normal" data-i18n="tab_normal">Saison classique</button>
       <button data-panel="p-ete" data-i18n="tab_summer">Été · terrasses</button>
-      <button data-panel="p-fetes" data-i18n="tab_holidays">Fêtes de fin d'année</button>
+      <button data-panel="p-fetes" data-i18n="tab_holidays">Fin d'année</button>
       <button data-panel="p-carnaval" data-i18n="tab_carnival">Carnaval</button>
     </div>
 
     <div class="hours-panel active" id="p-normal">
       <table class="hours-table">
-        <tr><td data-i18n="d_monfri">Lundi – Vendredi</td><td>11:30 – 13:30 &nbsp;/&nbsp; 18:30 – 21:30</td></tr>
-        <tr><td data-i18n="d_weekend">Samedi – Dimanche</td><td>11:30 – 14:30 &nbsp;/&nbsp; 18:30 – 21:30</td></tr>
+        <tr><td data-i18n="d_monthu">Lundi – Jeudi</td><td>12:00 – 13:30</td></tr>
+        <tr><td data-i18n="d_frisat">Vendredi et Samedi</td><td>12:00 – 14:30 &nbsp;/&nbsp; 19:00 – 21:30</td></tr>
+        <tr><td data-i18n="d_sun">Dimanche</td><td>12:00 – 14:30</td></tr>
       </table>
     </div>
 
@@ -413,16 +440,14 @@ footer img{height:34px}
 
     <div class="hours-panel" id="p-fetes">
       <table class="hours-table">
-        <tr><td data-i18n="d_vac">Vacances scolaires</td><td>11:30 – 14:30 &nbsp;/&nbsp; 18:30 – 21:30</td></tr>
-        <tr><td data-i18n="d_2412">24 &amp; 31 décembre</td><td data-i18n="v_midi">Service du midi uniquement</td></tr>
-        <tr><td data-i18n="d_2512">25 décembre &amp; 1er janvier</td><td data-i18n="v_ferme">Fermé</td></tr>
+        <tr><td data-i18n="d_decjan">Décembre et janvier</td><td data-i18n="v_ferme">Fermé</td></tr>
       </table>
     </div>
 
     <div class="hours-panel" id="p-carnaval">
       <table class="hours-table">
-        <tr><td data-i18n="d_bandes">Jours de bandes</td><td data-i18n="v_bandes">Ouvert en continu — venez en clet'che !</td></tr>
-        <tr><td data-i18n="d_autres">Autres jours</td><td data-i18n="v_autres">Horaires de saison classique</td></tr>
+        <tr><td data-i18n="d_carn_sam">Samedis de carnaval</td><td data-i18n="v_carnaval">Repas sur réservation, de 19h00 jusqu'à 4h00 du matin maximum</td></tr>
+        <tr><td colspan="2" style="text-align:left" data-i18n="d_carn_dim">Et les dimanches des bandes de Dunkerque et Malo</td></tr>
       </table>
       <span class="season-flash" data-i18n="flash_carnival">🎭 Pendant le Carnaval de Dunkerque, suivez nos réseaux pour les horaires du jour !</span>
     </div>
@@ -474,7 +499,7 @@ footer img{height:34px}
     <div class="score">
       <span class="num">4,7</span>
       <span class="stars" aria-label="4,7 étoiles sur 5">★★★★★</span>
-      <span data-i18n="rev_count">sur Google — plus de 200 avis</span>
+      <span data-i18n="rev_count">sur Google — plus de 500 avis</span>
     </div>
     <div class="review-grid">
       <div class="review">
@@ -602,10 +627,14 @@ const i18n = {
   en: {
     nav_home:"Home", nav_menu:"Menu", nav_hours:"Opening hours", nav_spaces:"The place", nav_reviews:"Reviews", nav_contact:"Contact",
     reserve:"Book a table", reserve_table:"Book a table", see_menu:"See the menu",
-    hero_title:"Facing the sea, rooted in the North",
+    hero_title:"Facing the sea, take a seat on the promenade",
+    hero_kicker:"My Malo restaurant · Malo-les-Bains seafront, Dunkirk",
+    intro_title:"Your bar-restaurant on the Malo-les-Bains promenade",
+    intro_p:"My Malo is a bar-restaurant facing the sea, right on the Malo-les-Bains promenade in Dunkirk. On the menu: Dunkirk mussels subject to landings, homemade Northern-French specialities — carbonade flamande, potjevleesch, Maroilles chicken — and fresh poke bowls. In fine weather, enjoy our two terraces facing the beach; the rest of the year, our boho lounge dining room welcomes you. Book online or call +33 9 79 74 16 55.",
     hero_sub:"Dunkirk mussels, homemade Northern-French classics and fresh poke bowls — in a laid-back, boho setting right on the seafront promenade, steps from the beach.",
     menu_eyebrow:"Homemade · Fresh produce", menu_title:"The menu",
-    tab_starters:"Starters & boards", tab_mains:"Mains", tab_sea:"Mussels & fish", tab_poke:"Poke bowls & salads", tab_desserts:"Desserts & ice cream", tab_drinks:"Drinks",
+    tab_starters:"Starters & boards", tab_mains:"Mains", tab_sea:"Mussels & fish", tab_poke:"Poke bowls & salads", tab_veg:"Vegetarian", tab_desserts:"Desserts & ice cream", tab_drinks:"Drinks",
+    d_burgerveg:"Homemade legume patty, brioche bun, lettuce, tomato, pickled onions, cheddar or Maroilles, My Malo burger sauce.",
     d_terroir:"Local farmhouse cheeses from Ferme des Moëres (Flamand rouge, craquant, beer-washed Tomme Flamande) and regional cured meats from « Clair bois ».",
     d_planchemer:"Smoked salmon, smoked halibut, homemade tuna spread, sautéed prawns. Available May to September.",
     d_tartare_e:"Duo of raw and smoked salmon.",
@@ -657,10 +686,10 @@ const i18n = {
     d_soft_n:"Softs & juices", d_soft:"Waters, sodas, Granini juices, syrups, diabolos.",
     carte_note:"Meat and fish origins: chicken from Hauts-de-France, EU Angus bavette, EU/French beef, Dunkirk mussels subject to landings, salmon farmed in Scotland, grey shrimp caught in the North Sea, regional charcuterie from Hauts-de-France. Allergen list available on request. Prices include tax and service. Alcohol abuse is dangerous for your health — drink responsibly.",
     hours_eyebrow:"Opening hours", hours_title:"We're open — season by season",
-    tab_normal:"Regular season", tab_summer:"Summer · terraces", tab_holidays:"Winter holidays", tab_carnival:"Carnival",
-    d_monfri:"Monday – Friday", d_weekend:"Saturday – Sunday", d_everyday:"Every day",
-    d_vac:"School holidays", d_2412:"Dec 24 & 31", v_midi:"Lunch service only", d_2512:"Dec 25 & Jan 1", v_ferme:"Closed",
-    d_bandes:"Parade days (« bandes »)", v_bandes:"Open all day — come in costume!", d_autres:"Other days", v_autres:"Regular season hours",
+    tab_normal:"Regular season", tab_summer:"Summer · terraces", tab_holidays:"End of year", tab_carnival:"Carnival",
+    d_monthu:"Monday – Thursday", d_frisat:"Friday & Saturday", d_sun:"Sunday", d_everyday:"Every day",
+    d_decjan:"December and January", v_ferme:"Closed",
+    d_carn_sam:"Carnival Saturdays", v_carnaval:"Dinner by reservation, from 7 pm until 4 am at the latest", d_carn_dim:"And on the Sundays of the Dunkerque and Malo bandes",
     flash_summer:"☀️ Our two seafront terraces are open!",
     flash_carnival:"🎭 During the Dunkirk Carnival, follow our socials for each day's hours!",
     hours_note:"Hours are indicative and may vary with the season and the weather. When in doubt, call us on +33 9 79 74 16 55.",
@@ -673,7 +702,7 @@ const i18n = {
     cap_poke1:"Fresh poke bowl", cap_poke2:"Salmon duo poke bowl", cap_speculoos:"Speculoos sundae", cap_smoothies:"House smoothies",
     cap_guirlandes:"String lights at dusk", cap_soiree:"Summer evening on the terrace", cap_crepuscule:"Dusk on the promenade",
     cap_soir:"Evenings on the seafront", cap_lsalle:"The letters, from the dining room", cap_ldk:"The Dunkerque letters", cap_plage:"The beach, right across",
-    rev_eyebrow:"What guests say", rev_title:"Your reviews", rev_count:"on Google — 200+ reviews",
+    rev_eyebrow:"What guests say", rev_title:"Your reviews", rev_count:"on Google — 500+ reviews",
     rev1:"“Quick service, delicious dishes, lovely decor, smiling team and fair prices. One of the best restaurants in Dunkirk!”",
     rev2:"“Warm and welcoming place, genuinely tasty food. Special mention for the very friendly service. Recommended.”",
     rev3:"“Attentive, fluent English-speaking waitress, food arrived promptly, very fair prices for the seafront. I'll be back.”",
@@ -685,10 +714,14 @@ const i18n = {
   nl: {
     nav_home:"Home", nav_menu:"De kaart", nav_hours:"Openingsuren", nav_spaces:"De zaak", nav_reviews:"Reviews", nav_contact:"Contact",
     reserve:"Reserveren", reserve_table:"Reserveer een tafel", see_menu:"Bekijk de kaart",
-    hero_title:"Aan zee, thuis in het Noorden",
+    hero_title:"Aan zee, strijk neer op de dijk",
+    hero_kicker:"Restaurant My Malo · Zeedijk Malo-les-Bains, Duinkerke",
+    intro_title:"Uw bar-restaurant op de zeedijk van Malo-les-Bains",
+    intro_p:"My Malo is een bar-restaurant recht aan zee, op de zeedijk van Malo-les-Bains in Duinkerke. Op de kaart: Duinkerkse mosselen volgens aanvoer, huisgemaakte specialiteiten uit het Noorden — carbonade flamande, potjevleesch, kip met Maroilles — en frisse pokébowls. Bij mooi weer geniet u van onze twee terrassen aan het strand; de rest van het jaar verwelkomt onze gezellige boho-zaal u. Reserveer online of bel +33 9 79 74 16 55.",
     hero_sub:"Duinkerkse mosselen, huisgemaakte klassiekers uit Noord-Frankrijk en frisse pokébowls — in een gezellig boho-kader op de zeedijk, op een paar stappen van het strand.",
     menu_eyebrow:"Huisgemaakt · Verse producten", menu_title:"De kaart",
-    tab_starters:"Voorgerechten & planken", tab_mains:"Hoofdgerechten", tab_sea:"Mosselen & vis", tab_poke:"Pokébowls & salades", tab_desserts:"Desserts & ijs", tab_drinks:"Dranken",
+    tab_starters:"Voorgerechten & planken", tab_mains:"Hoofdgerechten", tab_sea:"Mosselen & vis", tab_poke:"Pokébowls & salades", tab_veg:"Vegetarisch", tab_desserts:"Desserts & ijs", tab_drinks:"Dranken",
+    d_burgerveg:"Huisgemaakte peulvruchtenburger, briochebroodje, sla, tomaat, gepekelde uitjes, cheddar of Maroilles, My Malo-burgersaus.",
     d_terroir:"Lokale boerderijkazen van Ferme des Moëres (Flamand rouge, craquant, Tomme Flamande met bier) en streekcharcuterie van « Clair bois ».",
     d_planchemer:"Gerookte zalm, gerookte heilbot, huisgemaakte tonijnspread, gebakken gamba's. Beschikbaar van mei tot september.",
     d_tartare_e:"Duo van rauwe en gerookte zalm.",
@@ -740,10 +773,10 @@ const i18n = {
     d_soft_n:"Frisdranken & sappen", d_soft:"Waters, frisdranken, Granini-sappen, siropen, diabolo's.",
     carte_note:"Herkomst vlees en vis: kip uit Hauts-de-France, Angus-bavette EU, rund EU/Frankrijk, Duinkerkse mosselen volgens aanvoer, zalm gekweekt in Schotland, grijze garnalen uit de Noordzee, streekcharcuterie uit Hauts-de-France. Allergenenlijst op aanvraag. Prijzen inclusief taksen en bediening. Overmatig alcoholgebruik schaadt de gezondheid — drink met mate.",
     hours_eyebrow:"Openingsuren", hours_title:"Welkom, seizoen na seizoen",
-    tab_normal:"Gewoon seizoen", tab_summer:"Zomer · terrassen", tab_holidays:"Eindejaarsfeesten", tab_carnival:"Carnaval",
-    d_monfri:"Maandag – vrijdag", d_weekend:"Zaterdag – zondag", d_everyday:"Alle dagen",
-    d_vac:"Schoolvakanties", d_2412:"24 & 31 december", v_midi:"Enkel middagservice", d_2512:"25 december & 1 januari", v_ferme:"Gesloten",
-    d_bandes:"Stoetdagen (« bandes »)", v_bandes:"Doorlopend open — kom verkleed!", d_autres:"Andere dagen", v_autres:"Uren van het gewone seizoen",
+    tab_normal:"Gewoon seizoen", tab_summer:"Zomer · terrassen", tab_holidays:"Eindejaar", tab_carnival:"Carnaval",
+    d_monthu:"Maandag – donderdag", d_frisat:"Vrijdag en zaterdag", d_sun:"Zondag", d_everyday:"Alle dagen",
+    d_decjan:"December en januari", v_ferme:"Gesloten",
+    d_carn_sam:"Carnavalszaterdagen", v_carnaval:"Diner op reservering, van 19u00 tot uiterlijk 4u00 's nachts", d_carn_dim:"En op de zondagen van de bandes van Duinkerke en Malo",
     flash_summer:"☀️ Onze twee terrassen aan zee zijn open!",
     flash_carnival:"🎭 Tijdens het carnaval van Duinkerke: volg onze socials voor de uren van de dag!",
     hours_note:"Onze uren zijn indicatief en kunnen variëren met het seizoen en het weer. Bij twijfel: bel ons op +33 9 79 74 16 55.",
@@ -756,7 +789,7 @@ const i18n = {
     cap_poke1:"Frisse pokébowl", cap_poke2:"Pokébowl duo van zalm", cap_speculoos:"Speculooscoupe", cap_smoothies:"Huisgemaakte smoothies",
     cap_guirlandes:"Lichtjes in de schemering", cap_soiree:"Zomeravond op het terras", cap_crepuscule:"Schemering op de dijk",
     cap_soir:"Avonden op de dijk", cap_lsalle:"De letters, vanuit de zaal", cap_ldk:"De letters van Duinkerke", cap_plage:"Het strand, recht tegenover",
-    rev_eyebrow:"Wat onze gasten zeggen", rev_title:"Uw reviews", rev_count:"op Google — meer dan 200 reviews",
+    rev_eyebrow:"Wat onze gasten zeggen", rev_title:"Uw reviews", rev_count:"op Google — meer dan 500 reviews",
     rev1:"« Snelle bediening, heerlijke gerechten, mooi interieur, vriendelijk team en correcte prijzen. Voor mij een van de beste restaurants van Duinkerke! »",
     rev2:"« Warme, gezellige zaak, bijzonder lekker eten. Speciale vermelding voor de zeer sympathieke bediening. Een aanrader. »",
     rev3:"« Attente serveerster die perfect Engels spreekt, gerechten zonder wachttijd, zeer redelijke prijzen voor de zeedijk. Ik kom terug. »",
@@ -769,9 +802,13 @@ const i18n = {
     nav_home:"L'accueul", nav_menu:"Èl carte", nav_hours:"Chés horaires", nav_spaces:"L'indrot", nav_reviews:"Chés avis", nav_contact:"Contact",
     reserve:"Réserver", reserve_table:"Réserver eun' tabe", see_menu:"Vir èl carte",
     hero_title:"Dvant l'mér, chés pieds din ch'Nord",
+    hero_kicker:"Restaurant My Malo · Digue ed Malo-les-Bains, Dunkerque",
+    intro_title:"Eut' bar-restaurant su l'digue ed Malo-les-Bains",
+    intro_p:"My Malo, ch'est un bar-restaurant dvant l'mér, su l'digue ed Malo-les-Bains à Dunkerque. À l'carte : moules ed Dunkerque selon arrivache, spécialités ed ch'Nord faites à l'mason — carbonade flamande, potjevleesch, poulet au Maroilles — et pokébowls tout frais. Aux biaux jours, profitez d'nos deux terrasses dvant l'plache ; el reste ed l'année, l'salle lounge et bohème alle vous accueille. Réservez in ligne ou au 09 79 74 16 55.",
     hero_sub:"Moules ed Dunkerque, plats du Nord faits à l'mason et pokébowls tout frais — din un cadre lounge et bohème, su l'digue, à deux pas d'el plache.",
     menu_eyebrow:"Fait à l'mason · Produits frais", menu_title:"Èl carte",
-    tab_starters:"Intrées & planches", tab_mains:"Plats", tab_sea:"Moules & pichons", tab_poke:"Pokébowls & salades", tab_desserts:"Desserts & glaches", tab_drinks:"Boissons",
+    tab_starters:"Intrées & planches", tab_mains:"Plats", tab_sea:"Moules & pichons", tab_poke:"Pokébowls & salades", tab_veg:"Végétarien", tab_desserts:"Desserts & glaches", tab_drinks:"Boissons",
+    d_burgerveg:"Steak ed légumineuse à l'mason, bun brioché, salade, tomate, ognons pickles, cheddar ou Maroilles, sauce burger My Malo.",
     d_terroir:"Fromaches d'no coin d'la ferme des Moëres (Flamand rouge, craquant, Tomme Flamande à l'bière) et charcut'rie des salaisons du « Clair bois ».",
     d_planchemer:"Saumon fumé, flétan fumé, tartinade ed thon à l'mason, gambas sautées. À c't'heure ed mai à septembe.",
     d_tartare_e:"Duo d'saumon cru et d'saumon fumé.",
@@ -823,10 +860,10 @@ const i18n = {
     d_soft_n:"Softs & jus", d_soft:"Eaux, sodas, jus Granini, sirops, diabolos.",
     carte_note:"Origines viandes et pichons : poulet des Hauts-de-France, bavette Angus U.E., bœu U.E./France, moules ed Dunkerque selon arrivache, saumon élevé in Écosse, crevettes grises pêchées in mér du Nord, charcut'rie régionale des Hauts-de-France. L'liste des allergènes est disponibe su d'mande. Prix taxes et service compris. L'abus d'alcool est dangereux pour l'santé, à consommer aveuc modération.",
     hours_eyebrow:"Chés horaires", hours_title:"In vous attind, selon l'saison",
-    tab_normal:"Saison classique", tab_summer:"Été · terrasses", tab_holidays:"Fêtes ed fin d'année", tab_carnival:"Carnaval",
-    d_monfri:"Lundi – Vendredi", d_weekend:"Sam'di – Dimanche", d_everyday:"Tous les jours",
-    d_vac:"Vacances scolaires", d_2412:"24 & 31 décembe", v_midi:"Service du midi rin qu'ça", d_2512:"25 décembe & 1er janvier", v_ferme:"Freumé",
-    d_bandes:"Jours ed bandes", v_bandes:"Ouvert tout l'jour — vénez in clet'che, hein biloute !", d_autres:"Eutes jours", v_autres:"Horaires ed saison classique",
+    tab_normal:"Saison classique", tab_summer:"Été · terrasses", tab_holidays:"Fin d'année", tab_carnival:"Carnaval",
+    d_monthu:"Lundi – Jeudi", d_frisat:"Vendredi et Sam'di", d_sun:"Dimanche", d_everyday:"Tous les jours",
+    d_decjan:"Décembe et janvier", v_ferme:"Freumé",
+    d_carn_sam:"Sam'dis d'carnaval", v_carnaval:"Repas su réservation, ed 19h00 jusqu'à 4h00 du matin maxi", d_carn_dim:"Et chés dimanches des bandes ed Dunkerque et d'Malo",
     flash_summer:"☀️ Nos deux terrasses dvant l'mér is sont ouvertes !",
     flash_carnival:"🎭 Pindant ch'Carnaval ed Dunkerque, suivez nos réseaux pour chés horaires du jour !",
     hours_note:"Nos horaires y sont indicatifs et is peuv'tent bouger selon l'saison et l'temps qu'i fait. Si t'es pas sûr, téléphone-nous au 09 79 74 16 55.",
@@ -839,7 +876,7 @@ const i18n = {
     cap_poke1:"Pokébowl tout frais", cap_poke2:"Pokébowl duo d'saumon", cap_speculoos:"Coupe spéculoos", cap_smoothies:"Smoothies à l'mason",
     cap_guirlandes:"Chés guirlandes à l'nuit tombante", cap_soiree:"Soirée d'été in terrasse", cap_crepuscule:"Ch'crépuscule su l'digue",
     cap_soir:"Chés soirées su l'digue", cap_lsalle:"Chés lettes, dépis l'salle", cap_ldk:"Chés lettes ed Dunkerque", cap_plage:"L'plache, juste in face",
-    rev_eyebrow:"Is in parl'tent", rev_title:"Vos avis", rev_count:"su Google — pus ed 200 avis",
+    rev_eyebrow:"Is in parl'tent", rev_title:"Vos avis", rev_count:"su Google — pus ed 500 avis",
     rev1:"« Commande rapide, plats délicieux, belle déco, équipe souriante et prix corrects. Pour mi, un des meilleurs restaurants ed Dunkerque ! »",
     rev2:"« Indrot caleureux, plats particulièremint savoureux. Mention spéciale pour ch'service, très sympathique. Ej' recommande. »",
     rev3:"« Serveuse attintionnée et parfaitemint anglophone, plats arrivés sans attinte, prix très raisonnabes pour ch'front d'mér. J'y r'tournerai. »",
